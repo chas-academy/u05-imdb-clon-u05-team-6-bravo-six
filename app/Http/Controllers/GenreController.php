@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Genre;
+use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
 class GenreController extends Controller
@@ -15,6 +16,7 @@ class GenreController extends Controller
     public function index()
     {
         //
+        return view('genres.index', ['genres' => Genre::all()]);
     }
 
     /**
@@ -47,6 +49,7 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         //
+        return view('genres.show', ['genre' => $genre]);
     }
 
     /**
