@@ -16,8 +16,8 @@ class CreateGenresTable extends Migration
         //Create genre table with id timestamp and name of the genre
         Schema::create('genres', function (Blueprint $table) {
             $table->id();
-            $table->timestamps();
             $table->string("name");
+            $table->timestamps();
         });
     }
 
