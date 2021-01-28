@@ -321,21 +321,11 @@ eval("\n\nvar bind = __webpack_require__(/*! ./helpers/bind */ \"./node_modules/
   \*****************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("__webpack_require__(/*! ./bootstrap */ \"./resources/js/bootstrap.js\");\n\n__webpack_require__(/*! alpinejs */ \"./node_modules/alpinejs/dist/alpine.js\");//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYXBwLmpzPzZkNDAiXSwibmFtZXMiOlsicmVxdWlyZSJdLCJtYXBwaW5ncyI6IkFBQUFBLG1CQUFPLENBQUMsZ0RBQUQsQ0FBUDs7QUFFQUEsbUJBQU8sQ0FBQyx3REFBRCxDQUFQIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL2FwcC5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbInJlcXVpcmUoJy4vYm9vdHN0cmFwJyk7XHJcblxyXG5yZXF1aXJlKCdhbHBpbmVqcycpO1xyXG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/app.js\n");
-
-/***/ }),
-
-/***/ "./resources/js/bootstrap.js":
 /*!***********************************!*\
   !*** ./resources/js/bootstrap.js ***!
   \***********************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("window._ = __webpack_require__(/*! lodash */ \"./node_modules/lodash/lodash.js\");\n/**\r\n * We'll load jQuery and the Bootstrap jQuery plugin which provides support\r\n * for JavaScript based Bootstrap features such as modals and tabs. This\r\n * code may be modified to fit the specific needs of your application.\r\n */\n\ntry {\n  window.Popper = __webpack_require__(/*! popper.js */ \"./node_modules/popper.js/dist/esm/popper.js\").default;\n  window.$ = window.jQuery = __webpack_require__(/*! jquery */ \"./node_modules/jquery/dist/jquery.js\");\n\n  __webpack_require__(/*! bootstrap */ \"./node_modules/bootstrap/dist/js/bootstrap.js\");\n} catch (e) {}\n/**\r\n * We'll load the axios HTTP library which allows us to easily issue requests\r\n * to our Laravel back-end. This library automatically handles sending the\r\n * CSRF token as a header based on the value of the \"XSRF\" token cookie.\r\n */\n\n\nwindow.axios = __webpack_require__(/*! axios */ \"./node_modules/axios/index.js\");\nwindow.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';\n/**\r\n * Echo exposes an expressive API for subscribing to channels and listening\r\n * for events that are broadcast by Laravel. Echo and event broadcasting\r\n * allows your team to easily build robust real-time web applications.\r\n */\n// import Echo from 'laravel-echo';\n// window.Pusher = require('pusher-js');\n// window.Echo = new Echo({\n//     broadcaster: 'pusher',\n//     key: process.env.MIX_PUSHER_APP_KEY,\n//     cluster: process.env.MIX_PUSHER_APP_CLUSTER,\n//     forceTLS: true\n// });//# sourceURL=[module]\n//# sourceMappingURL=data:application/json;charset=utf-8;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbIndlYnBhY2s6Ly8vLi9yZXNvdXJjZXMvanMvYm9vdHN0cmFwLmpzP2Y1NjgiXSwibmFtZXMiOlsid2luZG93IiwiXyIsInJlcXVpcmUiLCJQb3BwZXIiLCIkIiwialF1ZXJ5IiwiZSIsImF4aW9zIiwiZGVmYXVsdHMiLCJoZWFkZXJzIiwiY29tbW9uIl0sIm1hcHBpbmdzIjoiQUFBQUEsTUFBTSxDQUFDQyxDQUFQLEdBQVdDLG1CQUFPLENBQUMsK0NBQUQsQ0FBbEI7QUFFQTtBQUNBO0FBQ0E7QUFDQTtBQUNBOztBQUVBLElBQUk7QUFDQUYsUUFBTSxDQUFDRyxNQUFQLEdBQWdCRCwyRkFBaEI7QUFDQUYsUUFBTSxDQUFDSSxDQUFQLEdBQVdKLE1BQU0sQ0FBQ0ssTUFBUCxHQUFnQkgsbUJBQU8sQ0FBQyxvREFBRCxDQUFsQzs7QUFFQUEscUJBQU8sQ0FBQyxnRUFBRCxDQUFQO0FBQ0gsQ0FMRCxDQUtFLE9BQU9JLENBQVAsRUFBVSxDQUFFO0FBRWQ7QUFDQTtBQUNBO0FBQ0E7QUFDQTs7O0FBRUFOLE1BQU0sQ0FBQ08sS0FBUCxHQUFlTCxtQkFBTyxDQUFDLDRDQUFELENBQXRCO0FBRUFGLE1BQU0sQ0FBQ08sS0FBUCxDQUFhQyxRQUFiLENBQXNCQyxPQUF0QixDQUE4QkMsTUFBOUIsQ0FBcUMsa0JBQXJDLElBQTJELGdCQUEzRDtBQUVBO0FBQ0E7QUFDQTtBQUNBO0FBQ0E7QUFFQTtBQUVBO0FBRUE7QUFDQTtBQUNBO0FBQ0E7QUFDQTtBQUNBIiwiZmlsZSI6Ii4vcmVzb3VyY2VzL2pzL2Jvb3RzdHJhcC5qcy5qcyIsInNvdXJjZXNDb250ZW50IjpbIndpbmRvdy5fID0gcmVxdWlyZSgnbG9kYXNoJyk7XHJcblxyXG4vKipcclxuICogV2UnbGwgbG9hZCBqUXVlcnkgYW5kIHRoZSBCb290c3RyYXAgalF1ZXJ5IHBsdWdpbiB3aGljaCBwcm92aWRlcyBzdXBwb3J0XHJcbiAqIGZvciBKYXZhU2NyaXB0IGJhc2VkIEJvb3RzdHJhcCBmZWF0dXJlcyBzdWNoIGFzIG1vZGFscyBhbmQgdGFicy4gVGhpc1xyXG4gKiBjb2RlIG1heSBiZSBtb2RpZmllZCB0byBmaXQgdGhlIHNwZWNpZmljIG5lZWRzIG9mIHlvdXIgYXBwbGljYXRpb24uXHJcbiAqL1xyXG5cclxudHJ5IHtcclxuICAgIHdpbmRvdy5Qb3BwZXIgPSByZXF1aXJlKCdwb3BwZXIuanMnKS5kZWZhdWx0O1xyXG4gICAgd2luZG93LiQgPSB3aW5kb3cualF1ZXJ5ID0gcmVxdWlyZSgnanF1ZXJ5Jyk7XHJcblxyXG4gICAgcmVxdWlyZSgnYm9vdHN0cmFwJyk7XHJcbn0gY2F0Y2ggKGUpIHt9XHJcblxyXG4vKipcclxuICogV2UnbGwgbG9hZCB0aGUgYXhpb3MgSFRUUCBsaWJyYXJ5IHdoaWNoIGFsbG93cyB1cyB0byBlYXNpbHkgaXNzdWUgcmVxdWVzdHNcclxuICogdG8gb3VyIExhcmF2ZWwgYmFjay1lbmQuIFRoaXMgbGlicmFyeSBhdXRvbWF0aWNhbGx5IGhhbmRsZXMgc2VuZGluZyB0aGVcclxuICogQ1NSRiB0b2tlbiBhcyBhIGhlYWRlciBiYXNlZCBvbiB0aGUgdmFsdWUgb2YgdGhlIFwiWFNSRlwiIHRva2VuIGNvb2tpZS5cclxuICovXHJcblxyXG53aW5kb3cuYXhpb3MgPSByZXF1aXJlKCdheGlvcycpO1xyXG5cclxud2luZG93LmF4aW9zLmRlZmF1bHRzLmhlYWRlcnMuY29tbW9uWydYLVJlcXVlc3RlZC1XaXRoJ10gPSAnWE1MSHR0cFJlcXVlc3QnO1xyXG5cclxuLyoqXHJcbiAqIEVjaG8gZXhwb3NlcyBhbiBleHByZXNzaXZlIEFQSSBmb3Igc3Vic2NyaWJpbmcgdG8gY2hhbm5lbHMgYW5kIGxpc3RlbmluZ1xyXG4gKiBmb3IgZXZlbnRzIHRoYXQgYXJlIGJyb2FkY2FzdCBieSBMYXJhdmVsLiBFY2hvIGFuZCBldmVudCBicm9hZGNhc3RpbmdcclxuICogYWxsb3dzIHlvdXIgdGVhbSB0byBlYXNpbHkgYnVpbGQgcm9idXN0IHJlYWwtdGltZSB3ZWIgYXBwbGljYXRpb25zLlxyXG4gKi9cclxuXHJcbi8vIGltcG9ydCBFY2hvIGZyb20gJ2xhcmF2ZWwtZWNobyc7XHJcblxyXG4vLyB3aW5kb3cuUHVzaGVyID0gcmVxdWlyZSgncHVzaGVyLWpzJyk7XHJcblxyXG4vLyB3aW5kb3cuRWNobyA9IG5ldyBFY2hvKHtcclxuLy8gICAgIGJyb2FkY2FzdGVyOiAncHVzaGVyJyxcclxuLy8gICAgIGtleTogcHJvY2Vzcy5lbnYuTUlYX1BVU0hFUl9BUFBfS0VZLFxyXG4vLyAgICAgY2x1c3RlcjogcHJvY2Vzcy5lbnYuTUlYX1BVU0hFUl9BUFBfQ0xVU1RFUixcclxuLy8gICAgIGZvcmNlVExTOiB0cnVlXHJcbi8vIH0pO1xyXG4iXSwic291cmNlUm9vdCI6IiJ9\n//# sourceURL=webpack-internal:///./resources/js/bootstrap.js\n");
-
-/***/ }),
-
-/***/ "./node_modules/bootstrap/dist/js/bootstrap.js":
 /*!*****************************************************!*\
   !*** ./node_modules/bootstrap/dist/js/bootstrap.js ***!
   \*****************************************************/
@@ -401,7 +391,7 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /************************************************************************/
 /******/ 	// The module cache
 /******/ 	var __webpack_module_cache__ = {};
-/******/ 	
+/******/
 /******/ 	// The require function
 /******/ 	function __webpack_require__(moduleId) {
 /******/ 		// Check if module is in cache
@@ -414,20 +404,20 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			loaded: false,
 /******/ 			exports: {}
 /******/ 		};
-/******/ 	
+/******/
 /******/ 		// Execute the module function
 /******/ 		__webpack_modules__[moduleId].call(module.exports, module, module.exports, __webpack_require__);
-/******/ 	
+/******/
 /******/ 		// Flag the module as loaded
 /******/ 		module.loaded = true;
-/******/ 	
+/******/
 /******/ 		// Return the exports of the module
 /******/ 		return module.exports;
 /******/ 	}
-/******/ 	
+/******/
 /******/ 	// expose the modules object (__webpack_modules__)
 /******/ 	__webpack_require__.m = __webpack_modules__;
-/******/ 	
+/******/
 /******/ 	// the startup function
 /******/ 	// It's empty as some runtime module handles the default behavior
 /******/ 	__webpack_require__.x = x => {}
@@ -443,7 +433,7 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			}
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/global */
 /******/ 	(() => {
 /******/ 		__webpack_require__.g = (function() {
@@ -455,12 +445,12 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			}
 /******/ 		})();
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/hasOwnProperty shorthand */
 /******/ 	(() => {
 /******/ 		__webpack_require__.o = (obj, prop) => Object.prototype.hasOwnProperty.call(obj, prop)
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/make namespace object */
 /******/ 	(() => {
 /******/ 		// define __esModule on exports
@@ -471,7 +461,7 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			Object.defineProperty(exports, '__esModule', { value: true });
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/node module decorator */
 /******/ 	(() => {
 /******/ 		__webpack_require__.nmd = (module) => {
@@ -480,34 +470,34 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			return module;
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /******/ 	/* webpack/runtime/jsonp chunk loading */
 /******/ 	(() => {
 /******/ 		// no baseURI
-/******/ 		
+/******/
 /******/ 		// object to store loaded and loading chunks
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// Promise = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
 /******/ 			"/js/app": 0
 /******/ 		};
-/******/ 		
+/******/
 /******/ 		var deferredModules = [
 /******/ 			["./resources/js/app.js"],
 /******/ 			["./resources/sass/app.scss"]
 /******/ 		];
 /******/ 		// no chunk on demand loading
-/******/ 		
+/******/
 /******/ 		// no prefetching
-/******/ 		
+/******/
 /******/ 		// no preloaded
-/******/ 		
+/******/
 /******/ 		// no HMR
-/******/ 		
+/******/
 /******/ 		// no HMR manifest
-/******/ 		
+/******/
 /******/ 		var checkDeferredModules = x => {};
-/******/ 		
+/******/
 /******/ 		// install a JSONP callback for chunk loading
 /******/ 		var webpackJsonpCallback = (parentChunkLoadingFunction, data) => {
 /******/ 			var [chunkIds, moreModules, runtime, executeModules] = data;
@@ -531,18 +521,18 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			while(resolves.length) {
 /******/ 				resolves.shift()();
 /******/ 			}
-/******/ 		
+/******/
 /******/ 			// add entry modules from loaded chunk to deferred list
 /******/ 			if(executeModules) deferredModules.push.apply(deferredModules, executeModules);
-/******/ 		
+/******/
 /******/ 			// run deferred modules when all chunks ready
 /******/ 			return checkDeferredModules();
 /******/ 		}
-/******/ 		
+/******/
 /******/ 		var chunkLoadingGlobal = self["webpackChunk"] = self["webpackChunk"] || [];
 /******/ 		chunkLoadingGlobal.forEach(webpackJsonpCallback.bind(null, 0));
 /******/ 		chunkLoadingGlobal.push = webpackJsonpCallback.bind(null, chunkLoadingGlobal.push.bind(chunkLoadingGlobal));
-/******/ 		
+/******/
 /******/ 		function checkDeferredModulesImpl() {
 /******/ 			var result;
 /******/ 			for(var i = 0; i < deferredModules.length; i++) {
@@ -570,7 +560,7 @@ eval("// shim for using process in browser\nvar process = module.exports = {};\n
 /******/ 			return (checkDeferredModules = checkDeferredModulesImpl)();
 /******/ 		};
 /******/ 	})();
-/******/ 	
+/******/
 /************************************************************************/
 /******/ 	// run startup
 /******/ 	__webpack_require__.x();
