@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
+use App\Models\Genre;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
-class CommentController extends Controller
+class GenreController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -16,7 +16,7 @@ class CommentController extends Controller
     public function index()
     {
         //
-        return view('comments.index', ['comments' => Comment::all()]);
+        return view('genres.index', ['genres' => Genre::all()]);
     }
 
     /**
@@ -43,21 +43,22 @@ class CommentController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function show(Comment $comment)
+    public function show(Genre $genre)
     {
-        return view('comments.show', ['comment' =>$comment]);
+        //
+        return view('genres.show', ['genre' => $genre]);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function edit(Comment $comment)
+    public function edit(Genre $genre)
     {
         //
     }
@@ -66,10 +67,10 @@ class CommentController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Genre $genre)
     {
         //
     }
@@ -77,10 +78,10 @@ class CommentController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param  \App\Models\Genre  $genre
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Comment $comment)
+    public function destroy(Genre $genre)
     {
         //
     }

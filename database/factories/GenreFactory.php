@@ -2,17 +2,18 @@
 
 namespace Database\Factories;
 
-use App\Models\Comment;
+use App\Models\Genre;
+use Facade\Ignition\Support\FakeComposer;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CommentFactory extends Factory
+class GenreFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Comment::class;
+    protected $model = Genre::class;
 
     /**
      * Define the model's default state.
@@ -22,9 +23,7 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $faker->name,
-            'email' => $faker->email,
-            'comment' => $faker->text(), 
+            "name" => $this->faker->name
         ];
     }
 }
