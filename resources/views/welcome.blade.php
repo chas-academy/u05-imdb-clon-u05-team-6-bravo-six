@@ -7,7 +7,8 @@
 </head>
 <body>
     <h3>Group 6</h3>
-    <h4>Comments page</h4>
-    <p>Cloning the IMDB sites</p>
+    <a href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">View all Comments</a>
+    <a href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">View all Genres</a>
+    <a href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">View all Titles</a>
 </body>
 </html>
