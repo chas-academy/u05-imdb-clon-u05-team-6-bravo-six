@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
+use App\Http\Controllers\CommentController;
+use App\Http\Controllers\TitleController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
