@@ -19,6 +19,7 @@ class DatabaseSeeder extends Seeder
     {
         $this->call(TitleTableSeeder::class);
         $this->call(GenreTableSeeder::class);
+        $this->call(CommentTableSeeder::class);
         // \App\Models\User::factory(10)->create();
     }
 }
