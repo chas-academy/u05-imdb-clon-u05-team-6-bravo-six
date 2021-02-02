@@ -22,8 +22,6 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'name' => $faker->name,
-            'email' => $faker->email,
             'comment' => $faker->text(), 
         ];
     }

@@ -14,25 +14,10 @@ class CreateCommentsTable extends Migration
     public function up()
     {
         
-        Schema::create('posts', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('title');
-            $table->text('body');
-            $table->timestamps();
-        });
-
         Schema::create('comments', function (Blueprint $table) {
-            $table->increments('id');
-            $table->string('name');
-            $table->string('email');
+            $table->id();
             $table->text('body');
-            //delete approved column, is it necessary?
-            $table->dropColumn('approved');
-            $table->integer('post_id')->unsigned();
             $table->timestamps();
-            //add foreign key
-            $table->foreign('post_id')->references('id')
-                ->on('posts')->onDelete('cascade');
         });
     }
 
@@ -43,7 +28,6 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('posts');
         Schema::dropIfExists('comments');
     }
 }
