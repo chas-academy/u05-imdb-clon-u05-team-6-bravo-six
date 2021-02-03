@@ -17,10 +17,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
+        \App\Models\User::factory(10)->create();
         $this->call(TitleTableSeeder::class);
         $this->call(GenreTableSeeder::class);
         $this->call(CommentTableSeeder::class);
         $this->call(ReviewTableSeeder::class);
-        // \App\Models\User::factory(10)->create();
+     
     }
 }
