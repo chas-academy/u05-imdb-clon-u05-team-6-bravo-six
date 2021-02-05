@@ -23,6 +23,9 @@ class CommentFactory extends Factory
     {
         return [
             'body' => $this->faker->text(),
+            'user_id' => \App\Models\User::inRandomOrder()->value('id'),
+            'title_id' => \App\Models\Title::inRandomOrder()->value('id'),
+
         ];
     }
 }
