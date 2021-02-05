@@ -2,17 +2,17 @@
 
 namespace Database\Factories;
 
-use App\Models\Comment;
+use App\Models\Review;
 use Illuminate\Database\Eloquent\Factories\Factory;
 
-class CommentFactory extends Factory
+class ReviewFactory extends Factory
 {
     /**
      * The name of the factory's corresponding model.
      *
      * @var string
      */
-    protected $model = Comment::class;
+    protected $model = Review::class;
 
     /**
      * Define the model's default state.
@@ -22,10 +22,10 @@ class CommentFactory extends Factory
     public function definition()
     {
         return [
-            'body' => $this->faker->text(),
+            'body' => $this->faker->text($maxNbChars = 200),
+            'rating' => $this->faker->numberBetween($min = 1, $max = 6),
             'user_id' => \App\Models\User::inRandomOrder()->value('id'),
-            'title_id' => \App\Models\Title::inRandomOrder()->value('id'),
-
+            'title_id' => \App\Models\Title::inRandomOrder()->value('id')
         ];
     }
 }

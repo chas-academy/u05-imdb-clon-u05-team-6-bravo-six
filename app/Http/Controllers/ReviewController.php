@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Title;
+use App\Models\Review;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
-class TitleController extends Controller
+class ReviewController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,7 +15,7 @@ class TitleController extends Controller
      */
     public function index()
     {
-        return view('titles.index', ['titles' => Title::all()]);
+        return view('review.index', ['reviews' => Review::all()]);
     }
 
     /**
