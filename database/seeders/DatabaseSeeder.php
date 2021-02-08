@@ -18,10 +18,10 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         \App\Models\User::factory(10)->create();
-        $this->call(TitleTableSeeder::class);
         $this->call(GenreTableSeeder::class);
-        $this->call(CommentTableSeeder::class);
+        $this->call(TitleTableSeeder::class);
+        $this->call(SecondaryGenreTableSeeder::class);
         $this->call(ReviewTableSeeder::class);
-     
+        $this->call(CommentTableSeeder::class);
     }
 }

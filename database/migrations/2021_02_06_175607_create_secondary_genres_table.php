@@ -16,6 +16,8 @@ class CreateSecondaryGenresTable extends Migration
         Schema::create('secondary_genres', function (Blueprint $table) {
             $table->id();
             $table->string("name");
+            $table->foreignId('title_id')->constrained();
+            $table->foreignId('genre_id')->constrained();
             $table->timestamps();
         });
     }
