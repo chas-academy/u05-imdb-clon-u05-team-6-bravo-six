@@ -48,8 +48,9 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //
-        return view('genres.show', ['genre' => $genre]);
+        //'/genres/4
+        $titles = $genre->titlesSecondary();
+        return view('genres.show', ['genre' => $genre, 'titles' => $titles]);
     }
 
     /**
