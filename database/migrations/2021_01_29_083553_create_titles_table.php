@@ -17,8 +17,9 @@ class CreateTitlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->timestamps();
-            $table->foreignId('user_id')->constrained();
-            $table->foreignId('title_id')->constrained();
+            $table->foreignId('genre_id')->constrained(); //this is PRIMARY_GENRE 
+            $table->foreignId('user_id')->constrained(); //this also?
+            // $table->foreignId('title_id')->constrained(); //this is most likely a mistake
         });
     }
 

@@ -7,5 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 
 class Title extends Model
 {
+    public function secondary_genre_relationships()
+    {
+        return $this->hasMany('\App\Models\SecondaryGenre')->get();
+    }
+
+    public function reviews()
+    {
+        return $this->hasMany('\App\Models\Review')->get();
+    }
     use HasFactory;
 }
