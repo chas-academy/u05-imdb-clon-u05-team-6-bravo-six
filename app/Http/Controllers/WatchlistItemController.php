@@ -9,6 +9,6 @@ class WatchlistItemController extends Controller
 {
     public function index()
     {
-        return view('WatchlistItems.index', ['watchlistitems' => WatchlistItem::all()]);
+        return view('watchlistItems.index', ['watchlistitems' => WatchlistItem::all()]);
     }
 }
