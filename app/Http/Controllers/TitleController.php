@@ -47,7 +47,8 @@ class TitleController extends Controller
      */
     public function show($id)
     {
-        //
+
+        return view('titles.show', ['titles' => Title::get($id)]);
     }
 
     /**
