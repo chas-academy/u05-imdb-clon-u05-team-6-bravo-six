@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateCommentsTable extends Migration
+class AddForeignKeyToWatchlistItemsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,9 @@ class CreateCommentsTable extends Migration
      */
     public function up()
     {
-
-        Schema::create('comments', function (Blueprint $table) {
-            $table->id();
-            $table->text('body');
-            $table->timestamps();
-            $table->foreignId('user_id')->constrained();
-            //$table->foreignId('review_id')->constrained();
+        Schema::table('watchlist_items', function (Blueprint $table) {
+            //
+            $table->foreignId('watchlist_id')->constrained();
         });
     }
 
@@ -30,6 +26,8 @@ class CreateCommentsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('comments');
+        Schema::table('watchlist_items', function (Blueprint $table) {
+            $table->dropColumn('watchlist_id');
+        });
     }
 }

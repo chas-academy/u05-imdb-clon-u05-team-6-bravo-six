@@ -11,5 +11,7 @@
     <a href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">View all Genres</a>
     <a href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">View all Titles</a>
     <a href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} ">View reviews</a>
+    <a href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">View all watchlists</a>
+    <a href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">View all watchlists items</a>
 </body>
 </html>

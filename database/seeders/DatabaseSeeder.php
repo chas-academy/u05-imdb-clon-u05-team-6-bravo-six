@@ -23,5 +23,7 @@ class DatabaseSeeder extends Seeder
         $this->call(SecondaryGenreTableSeeder::class);
         $this->call(ReviewTableSeeder::class);
         $this->call(CommentTableSeeder::class);
+        $this->call(WatchlistSeeder::class);
+        $this->call(WatchlistItemSeeder::class);
     }
 }

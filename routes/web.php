@@ -6,6 +6,10 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\WatchlistController;
+use App\Http\Controllers\WatchlistItemController;
+use App\Models\WatchlistItem;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -33,6 +37,8 @@ Route::resource('genres', GenreController::class);
 Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
+Route::resource('watchlists', WatchlistController::class);
+Route::resource('watchlistitems', WatchlistItemController::class);
 
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
