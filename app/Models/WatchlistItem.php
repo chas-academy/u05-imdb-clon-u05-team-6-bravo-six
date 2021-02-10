@@ -9,7 +9,7 @@ class WatchlistItem extends Model
 {
     public function WatchlistItem()
     {
-        return $this->belongsTo('\App\Models\Watchlist')->get();
+        return $this->belongsTo('\App\Models\Watchlist')->first();
     }
     use HasFactory;
 }
