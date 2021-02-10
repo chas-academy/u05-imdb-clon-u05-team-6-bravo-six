@@ -13,10 +13,5 @@
     <a href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} ">View reviews</a>
     <a href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">View all watchlists</a>
     <a href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">View all watchlists items</a>
-    <form method="GET" action="/titles/show">
-    @csrf
-    <input id="titleNumber" type="number">
-        <button type="sumbit" value="submit">
-    </form>
 </body>
 </html>
