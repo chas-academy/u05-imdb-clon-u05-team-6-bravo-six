@@ -24,6 +24,9 @@ use App\Models\WatchlistItem;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/bootstrap', function () {
+    return view('bootstrap');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
