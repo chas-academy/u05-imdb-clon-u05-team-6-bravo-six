@@ -1,3 +1,20 @@
+<h2>Bootstrap</h2>
+<h3>How to add bootstrap template to a view</h3>
+<p><b>Add template:</b></p>
+<p>@extends('layouts.app')</p>
+<p><b>Then add your code between the lines</b></p>
+<p>@section('content')</p>
+<p><b>and</b></p>
+<p>@endsection</p>
+
+<h3>How containers work:</h3>
+<a href="https://getbootstrap.com/docs/5.0/layout/containers/">Documentation</a>
+
+<h3>How Bootstrap grid system works:</h3>
+<a href="https://getbootstrap.com/docs/4.0/layout/grid/">Documentation</a>
+
+
+
 <p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
 
 <p align="center">
