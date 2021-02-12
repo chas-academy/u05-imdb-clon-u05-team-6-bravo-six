@@ -84,35 +84,35 @@
 
         <main class="py-4">
             @yield('content')
-            <div class="container">
+            {{-- <div class="container">
                 <div class="row">
                     <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                    <li>ABC</li>
-                    <li>DEF</li>
-                    <li>GHI</li>
-                    <li>JKL</li>
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
                     </div>
                     
                     <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                    <li>ABC</li>
-                    <li>DEF</li>
-                    <li>GHI</li>
-                    <li>JKL</li>
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
                     </div>
                     <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                    <li>ABC</li>
-                    <li>DEF</li>
-                    <li>GHI</li>
-                    <li>JKL</li>
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
                     </div>
                     <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                    <li>ABC</li>
-                    <li>DEF</li>
-                    <li>GHI</li>
-                    <li>JKL</li>
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
                     </div>
                 </div>
-            </div>
+            </div> --}}
             
         </main>
     </div>
