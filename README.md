@@ -6,6 +6,13 @@
 <p>@section('content')</p>
 <p><b>and</b></p>
 <p>@endsection</p>
+<p>Example:</p>
+<p><i>@extends('layouts.app')</i></p>
+<p><i>@section('content')</i></p>
+
+<p><i>INSERT HACKER CODE SUPER NOVA HERE</i></p>
+
+<p><i>@endsection</i></p>
 
 <h3>How containers work:</h3>
 <a href="https://getbootstrap.com/docs/5.0/layout/containers/">Documentation</a>
