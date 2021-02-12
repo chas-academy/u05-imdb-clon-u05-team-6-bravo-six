@@ -7,7 +7,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Laravel') }}</title>
+    <title>{{ config('app.name', 'Group 6') }}</title>
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
@@ -24,7 +24,7 @@
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
-                    {{ config('app.name', 'Laravel') }}
+                    {{ config('app.name', 'Group 6') }}
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -32,7 +32,14 @@
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
-                    <ul class="navbar-nav mr-auto">
+                    <ul class="nav navbar-nav">
+
+                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
+                   <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>
 
                     </ul>
 
@@ -76,7 +83,41 @@
         </nav>
 
         <main class="py-4">
+            <div class="container">
             @yield('content')
+            {{-- 
+            
+             --}}
+            </div>
+             <!-- <div class="container">
+                <div class="row">
+                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
+                    
+                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
+                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
+                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
+                </div>
+            </div> -->
         </main>
     </div>
 </body>

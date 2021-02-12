@@ -23,6 +23,9 @@ use App\Http\Controllers\WatchlistItemController;
 Route::get('/', function () {
     return view('welcome');
 });
+Route::get('/bootstrap', function () {
+    return view('bootstrap');
+});
 
 Route::get('/dashboard', function () {
     return view('dashboard');
@@ -38,5 +41,9 @@ Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistitems', WatchlistItemController::class);
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
+Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
