@@ -8,6 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 class Review extends Model
 {
 
+    public static function find($review_id)
+    {
+    }
+
     public function user()
     {
         return $this->belongsTo('\App\Models\User')->first();
