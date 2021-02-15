@@ -17,16 +17,10 @@ class CreateCommentsTable extends Migration
         Schema::create('comments', function (Blueprint $table) {
             $table->id();
             $table->string('name');
-            $table->text('comment');
+            $table->string('body');
             $table->timestamps();
-            $table->increments('id');
-            $table->integer('review_id')->unsigned();;
+            $table->boolean('approved')->default(true);
             $table->foreignId('user_id')->constrained();
-
-        });
-        Schema::table('comments', function ($table) {
-            $table->foreignId('review_id')->
-            references('id')->on('review')->onDelete('cascade');
         });
     }
 
@@ -39,6 +33,6 @@ class CreateCommentsTable extends Migration
     public function down()
     {
         Schema::dropIfExists('comments');
-//        Schema::dropForeign('[review_id]);
+        //        Schema::dropForeign('[review_id]);
     }
 }

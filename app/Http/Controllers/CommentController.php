@@ -6,6 +6,7 @@ use App\Models\Comment;
 use App\Models\Review;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -48,14 +49,12 @@ class CommentController extends Controller
         $review = Review::find($review_id);
 
         $comment = new Comment();
-        $comment->name = $request->name;
-        $comment->comment = $request->comment;
-        $comment->approved = true;
-        $comment->review()->associate($review);
-
+        $comment->name = Auth::user()->name;
+        $comment->body = $request->comment;
+        $comment->review_id = $review->id; //
         $comment->save();
-
-        }
+        return redirect()->back();
+    }
 
     /**
      * Display the specified resource.
@@ -65,7 +64,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        return view('comments.show', ['comment' =>$comment]);
+        return view('comments.show', ['comment' => $comment]);
     }
 
     /**

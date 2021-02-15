@@ -21,11 +21,13 @@ class CommentFactory extends Factory
      */
     public function definition()
     {
-        return [
-            'body' => $this->faker->text(),
-            'user_id' => \App\Models\User::inRandomOrder()->value('id'),
-            'review_id' => \App\Models\Review::inRandomOrder()->value('id'),
+        $user = \App\Models\User::inRandomOrder()->first();
 
+        return [
+            'name' => $user->name,
+            'body' => $this->faker->text(),
+            'user_id' => $user->id,
+            'review_id' => \App\Models\Review::inRandomOrder()->value('id'),
         ];
     }
 }

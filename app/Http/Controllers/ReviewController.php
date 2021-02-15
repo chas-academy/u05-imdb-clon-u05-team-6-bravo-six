@@ -47,6 +47,7 @@ class ReviewController extends Controller
      */
     public function show($id)
     {
+        return view('reviews.show', ['review' => Review::find($id)]);
         //
     }
 

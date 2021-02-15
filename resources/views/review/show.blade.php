@@ -1,6 +1,6 @@
 @extends('main')
 
-<?php $review = ; 
+<?php //$review = ; 
 $titleTag = htmlspecialchars($review->title); ?>
 @section('title', "| $titleTag")
 

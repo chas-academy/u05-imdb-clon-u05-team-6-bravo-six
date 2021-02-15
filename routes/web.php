@@ -42,8 +42,8 @@ Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistitems', WatchlistItemController::class);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
-Auth::routes();
+// Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
