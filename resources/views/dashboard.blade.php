@@ -35,6 +35,9 @@
 
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <h3 class="text-center">Your watchlists:</h3>
+                    @foreach ($watchlists as $watchlist)
+                        <a>{{$watchlist->name}}</a>
+                    @endforeach
                     </div>
                 </div>
             </div> 

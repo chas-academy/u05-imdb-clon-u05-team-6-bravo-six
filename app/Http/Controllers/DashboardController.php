@@ -24,10 +24,10 @@ class DashboardController extends Controller
         return view('dashboard', 
         ['reviews' => Auth::user()->reviews()],
         ['comments' => Auth::user()->comments()],
-        ['watchlists' => Auth::user()->watchlists()]
+        ['watchlists' => Auth::user()->watchlists()]);
         //,['titles' => Title::all()]
         
         
-        );
+        
     }
 }
