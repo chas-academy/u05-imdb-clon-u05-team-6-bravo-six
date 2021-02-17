@@ -1,6 +1,6 @@
 @extends('main')
 
-<?php $review = ; 
+<?php $review = ;
 $titleTag = htmlspecialchars($review->title); ?>
 @section('title', "| $titleTag")
 
@@ -28,23 +28,22 @@ $titleTag = htmlspecialchars($review->title); ?>
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
-            {{ Form::open(['route' => ['comments.store', $review->id], 'method' => 'POST']) }}
+            <form action="" method="post">
 
             <div class="row">
                 <div class="col-md-6">
-                    {{ Form::label('name', "Name:") }}
-                    {{ Form::text('name', null, ['class' => 'form-control']) }}
+                    <label for="name">Name</label>
+                    <input id="name" type="text" >
                 </div>
 
                 <div class="col-md-12">
-                    {{ Form::label('comment', "Comment:") }}
-                    {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '5']) }}
-
-                    {{ Form::submit('Add Comment', ['class' => 'btn btn-success btn-block', 'style' => 'margin-top:15px;']) }}
+                    <label for="comment">Comment</label>
+                    <input id="comment" type="text" >
+                    <button type="Submit">Submit</button>
                 </div>
             </div>
+            </form>
 
-            {{ Form::close() }}
         </div>
     </div>
 @endsection
