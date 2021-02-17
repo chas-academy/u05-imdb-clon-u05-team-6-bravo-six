@@ -1,24 +1,35 @@
-
-
-
-<!-- <x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
-
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+@extends('layouts.app')
+@section('content')
+            <div class="container">
+                <h1 class="text-center">Welcome {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </h1>
+                <div class="row">
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12" >
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
                     
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <li>ABC</li>
+                        <li>DEF</li>
+                        <li>GHI</li>
+                        <li>JKL</li>
+                    </div>
                 </div>
-            </div>
-        </div>
-    </div> -->
-</x-app-layout>
-<p>testttaar</p>
+            </div> 
+            @endsection
 
 
