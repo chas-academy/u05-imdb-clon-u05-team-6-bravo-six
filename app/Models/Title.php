@@ -12,6 +12,15 @@ class Title extends Model
         return $this->hasMany('\App\Models\SecondaryGenre')->get();
     }
 
+    public function genre()
+    {
+        return $this->belongsTo('\App\Models\Genre')->first();
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('\App\Models\User')->first();
+    }
     public function reviews()
     {
         return $this->hasMany('\App\Models\Review')->get();
