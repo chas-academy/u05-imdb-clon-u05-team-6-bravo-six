@@ -55,4 +55,8 @@ class User extends Authenticatable
     {
         return $this->hasMany('\App\Models\Title')->get();
     }
+    public function watchlists()
+    {
+        return $this->hasMany('\App\Models\Watchlist')->get();
+    }
 }
