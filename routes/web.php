@@ -34,7 +34,9 @@ Route::get('/dashboard', function () {
 require __DIR__ . '/auth.php';
 
 Auth::routes();
-
+Route::prefix('admin')->group(function () {
+    Route::resource('titles', App\Http\Controllers\Admin\TitleController::class);
+});
 Route::resource('genres', GenreController::class);
 Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
