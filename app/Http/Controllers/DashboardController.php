@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
-//use Illuminate\Models\Title;
+
 
 class DashboardController extends Controller
 {
@@ -22,10 +22,10 @@ class DashboardController extends Controller
         
 
         return view('dashboard', 
-        ['reviews' => Auth::user()->reviews()],
-        ['comments' => Auth::user()->comments()],
-        ['watchlists' => Auth::user()->watchlists()]);
-        //,['titles' => Title::all()]
+        ['reviews' => Auth::user()->reviews(),
+        'comments' => Auth::user()->comments(),
+        'watchlists' => Auth::user()->watchlists()]);
+        
         
         
         
