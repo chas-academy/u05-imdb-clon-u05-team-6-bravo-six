@@ -22,6 +22,7 @@ class ReviewFactory extends Factory
     public function definition()
     {
         return [
+            'title' => $this->faker->text(30),
             'body' => $this->faker->text($maxNbChars = 200),
             'rating' => $this->faker->numberBetween($min = 1, $max = 6),
             'user_id' => \App\Models\User::inRandomOrder()->value('id'),

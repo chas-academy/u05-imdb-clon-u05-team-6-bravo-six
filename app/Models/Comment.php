@@ -7,6 +7,19 @@ use Illuminate\Database\Eloquent\Model;
 
 class Comment extends Model
 {
+    /**
+     * @var mixed
+     */
+    private $name;
+    /**
+     * @var mixed
+     */
+    private $comment;
+    /**
+     * @var bool|mixed
+     */
+    private $approved;
+
     public function user()
     {
         return $this->belongsTo('\App\Models\User')->first();

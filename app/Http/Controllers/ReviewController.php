@@ -15,7 +15,7 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        return view('review.index', ['reviews' => Review::all()]);
+        return view('reviews.index', ['reviews' => Review::all()]);
     }
 
     /**
@@ -45,8 +45,9 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Review $review)
     {
+        return view('reviews.show', ['review' => $review]);
         //
     }
 
