@@ -16,7 +16,7 @@
 @foreach ($titles as $title)
 <tr>
     <td>{{$title->id}}</td>
-    <td>{{$title->title}}</td>
+    <td><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'show'], ['title' => $title->id])}}">{{$title->title}}</a></td>
     <td>{{$title->genre()->name}}</td>
     <td>{{$title->created_at}}</td>
     <td>{{$title->updated_at}}</td>
