@@ -3,8 +3,10 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
+use App\Models\Review;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class CommentController extends Controller
 {
@@ -32,12 +34,26 @@ class CommentController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param \Illuminate\Http\Request $request
+     * @param $review_id
      * @return \Illuminate\Http\Response
+     * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request)
+    public function store(Request $request, $review_id)
     {
-        //
+        $this->validate($request, array(
+            'name'      =>  'required|max:255',
+            'comment'   =>  'required|min:5|max:2000'
+        ));
+
+        $review = Review::find($review_id);
+
+        $comment = new Comment();
+        $comment->name = Auth::user()->name;
+        $comment->body = $request->comment;
+        $comment->review_id = $review->id; //
+        $comment->save();
+        return redirect()->back();
     }
 
     /**
@@ -48,7 +64,7 @@ class CommentController extends Controller
      */
     public function show(Comment $comment)
     {
-        return view('comments.show', ['comment' =>$comment]);
+        return view('comments.show', ['comment' => $comment]);
     }
 
     /**

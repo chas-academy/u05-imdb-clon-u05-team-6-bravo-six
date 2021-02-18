@@ -24,6 +24,7 @@
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
+<<<<<<< HEAD
             {{ Form::open(['route' => ['comments.store', $review->id], 'method' => 'POST']) }}
 
             <div class="row">
@@ -41,6 +42,24 @@
             </div>
 
             {{ Form::close() }}
+=======
+            <form action="" method="post">
+                @csrf
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <label for="name">Name</label>
+                        <input id="name" type="text" >
+                    </div>
+
+                    <div class="col-md-12">
+                        <label for="comment">Comment</label>
+                        <input id="comment" type="text" >
+                        <button type="Submit">Submit</button>
+                    </div>
+                </div>
+            </form>
+>>>>>>> main
         </div>
     </div>
 @endsection
