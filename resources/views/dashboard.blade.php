@@ -1,17 +1,48 @@
-<x-app-layout>
-    <x-slot name="header">
-        <h2 class="font-semibold text-xl text-gray-800 leading-tight">
-            {{ __('Dashboard') }}
-        </h2>
-    </x-slot>
+@extends('layouts.app')
+@section('content')
+            <div class="container">
+                <h1 class="text-center">Welcome {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </h1>
+                <div class="row">
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12" >
+                    <h3 class="text-center">Recent activity:</h3>
+                    @foreach ($sortedData as $data)
+                    <li>    
+                        <a>{{$data->body}}</a>
+                    </li>
+                    @endforeach
+                    </div>
+                    
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                        <h3 class="text-center">Your Reviews:</h3>
+                        <br/>
+                        
+                        @foreach ($reviews as $review)
+                            <div>
+                                <a>{{ $review->title()->title }}</a>
+                                <br/>
+                                <a>{{$review->body}} - {{$review->rating}}</a> {{-- Should later serve as link to review --}}
+                                
+                            </div>
+                        @endforeach
+                    </div>
 
-    <div class="py-12">
-        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
-            <div class="bg-white overflow-hidden shadow-sm sm:rounded-lg">
-                <div class="p-6 bg-white border-b border-gray-200">
-                    You're logged in!
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <h3 class="text-center">Your comments:</h3>
+                        @foreach ($comments as $comment)
+                            <a>{{$comment->body}}</a>
+                        @endforeach
+                    </div>
+
+                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <h3 class="text-center">Your watchlists:</h3>
+                    @foreach ($watchlists as $watchlist)
+                        <a>{{$watchlist->name}}</a>
+                    @endforeach
+                    </div>
+                     
+                    
                 </div>
-            </div>
-        </div>
-    </div>
-</x-app-layout>
+            </div> 
+            @endsection
+
+
