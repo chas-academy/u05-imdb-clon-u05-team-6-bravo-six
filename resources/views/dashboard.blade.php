@@ -15,11 +15,10 @@
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <h3 class="text-center">Your Reviews:</h3>
                         <br/>
-                        {{-- $title = App\Models\Review::find(1); used in attempt to solve problem below --}}
+                        
                         @foreach ($reviews as $review)
                             <div>
-                            
-                                <a>{{ $review->title()->title }}</a>{{-- problem: must return a relationship instance --}}
+                                <a>{{ $review->title()->title }}</a>
                                 <br/>
                                 <a>{{$review->body}} - {{$review->rating}}</a> {{-- Should later serve as link to review --}}
                                 
