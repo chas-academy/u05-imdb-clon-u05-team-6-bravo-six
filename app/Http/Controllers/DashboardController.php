@@ -13,7 +13,7 @@ class DashboardController extends Controller
         $reviews = collect(Auth::user()->reviews());
         $comments = collect(Auth::user()->comments());
 
-        $sortedData = $reviews->merge($comments)->sortByDesc('created_at');
+        $sortedData = $reviews->merge($comments)->sortByDesc('updated_at');
         
         return view('dashboard', 
         ['reviews' => Auth::user()->reviews(),
