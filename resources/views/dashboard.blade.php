@@ -5,10 +5,11 @@
                 <div class="row">
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12" >
                     <h3 class="text-center">Recent activity:</h3>
-                    <li>Here you</li>
-                    <li>will see</li>
-                    <li>recent activity</li>
-                    <li>hopfully soon</li>
+                    @foreach ($sortedData as $data)
+                    <li>    
+                        <a>{{$data->body}}</a>
+                    </li>
+                    @endforeach
                     </div>
                     
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -39,6 +40,8 @@
                         <a>{{$watchlist->name}}</a>
                     @endforeach
                     </div>
+                     
+                    
                 </div>
             </div> 
             @endsection

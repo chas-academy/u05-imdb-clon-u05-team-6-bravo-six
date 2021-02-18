@@ -9,25 +9,17 @@ use Illuminate\Support\Facades\Auth;
 class DashboardController extends Controller
 {
     public function index(){
-        //didn't succed in sending variables defined below to view w/o error, will try later with more test data
-        $userData = [ //supposed to later be used to show recent activity, sorted by timestamp. Will this solution work, i honestly don't know
-            'watchlists' => Auth::user()->watchlists(),
-            'reviews' => Auth::user()->reviews(),
-            'comments' => Auth::user()->comments()
-        ];
-        $userWatchlists = ['watchlists' => Auth::user()->watchlists()]; //used to show watchlists
-        $userReviews =['reviews' => Auth::user()->reviews()]; //used to show reviews
-        $userComments = ['comments' => Auth::user()->comments()]; //used to show comments
-
         
+        $reviews = collect(Auth::user()->reviews());
+        $comments = collect(Auth::user()->comments());
 
+        $sortedData = $reviews->merge($comments)->sortByDesc('created_at');
+        
         return view('dashboard', 
         ['reviews' => Auth::user()->reviews(),
         'comments' => Auth::user()->comments(),
-        'watchlists' => Auth::user()->watchlists()]);
-        
-        
-        
+        'watchlists' => Auth::user()->watchlists(),
+        'sortedData' => $sortedData]);
         
     }
 }
