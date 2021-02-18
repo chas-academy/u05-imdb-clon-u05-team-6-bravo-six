@@ -29,6 +29,7 @@ $titleTag = htmlspecialchars($review->title); ?>
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
             <form action="" method="post">
+                @csrf
 
             <div class="row">
                 <div class="col-md-6">
@@ -37,7 +38,7 @@ $titleTag = htmlspecialchars($review->title); ?>
                 </div>
 
                 <div class="col-md-12">
-                    <label for="comment">Comment</label>
+                    <label for="comment" >Comment</label>
                     <input id="comment" type="text" >
                     <button type="Submit">Submit</button>
                 </div>
