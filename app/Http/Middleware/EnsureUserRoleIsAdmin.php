@@ -16,6 +16,8 @@ class EnsureUserRoleIsAdmin
      */
     public function handle(Request $request, Closure $next)
     {
-        return $next($request);
+        if ($request->user('web') !== null && $request->user('web')->user_admin === 1) {
+            return $next($request);
+        } else return redirect('login'); //maybe?
     }
 }
