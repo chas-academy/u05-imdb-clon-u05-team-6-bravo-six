@@ -41,11 +41,9 @@ class CommentController extends Controller
      */
     public function store(Request $request)
     {
-
-        $review_id =
-            $this->validate($request, array(
-                'comment'   =>  'required|min:5|max:2000'
-            ));
+        $this->validate($request, array(
+            'comment'   =>  'required|min:5|max:2000'
+        ));
         $comment = new Comment();
         $comment->name = Auth::user()->name;
         $comment->user_id = Auth::user()->id;
