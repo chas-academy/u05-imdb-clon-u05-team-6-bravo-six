@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.app')
 
 
 @section('content')
@@ -16,7 +16,7 @@
             @foreach($review->comments() as $comment)
                 <div class="comment">
                     <p><strong>Name:</strong> {{ $comment->name }}</p>
-                    <p><strong>Comment:</strong><br/>{{ $comment->comment }}</p><br>
+                    <p><strong>Comment:</strong><br/>{{ $comment->body }}</p><br>
                 </div>
             @endforeach
         </div>
@@ -24,28 +24,9 @@
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
-<<<<<<< HEAD
-            {{ Form::open(['route' => ['comments.store', $review->id], 'method' => 'POST']) }}
-
-            <div class="row">
-                <div class="col-md-6">
-                    {{ Form::label('name', "Name:") }}
-                    {{ Form::text('name', null, ['class' => 'form-control']) }}
-                </div>
-
-                <div class="col-md-12">
-                    {{ Form::label('comment', "Comment:") }}
-                    {{ Form::textarea('comment', null, ['class' => 'form-control', 'rows' => '5']) }}
-
-                    {{ Form::submit('Add Comment', ['class' => 'btn btn-success btn-block', 'style' => 'margin-top:15px;']) }}
-                </div>
-            </div>
-
-            {{ Form::close() }}
-=======
-            <form action="" method="post">
+            {{-- no worky --}}
+            <form action=" {{action([\App\Http\Controllers\CommentController::class, 'store'])}} " method="post"> 
                 @csrf
-
                 <div class="row">
                     <div class="col-md-6">
                         <label for="name">Name</label>
@@ -59,7 +40,6 @@
                     </div>
                 </div>
             </form>
->>>>>>> main
         </div>
     </div>
 @endsection
