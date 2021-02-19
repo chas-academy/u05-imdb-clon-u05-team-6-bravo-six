@@ -38,6 +38,9 @@ require __DIR__ . '/auth.php';
 
 Auth::routes();
 Route::prefix('admin')->middleware('user_admin')->group(function () {
+    Route::get('/', function () {
+        return view('admin.dashboard');
+    });
     Route::get('/titles/{title}/reviews', [AdminTitleController::class, 'reviews']);
     Route::get('/titles/{title}/secondary-genres', [AdminTitleController::class, 'secondary_genres']);
     Route::put('/titles/{title}/secondary-genres', [AdminTitleController::class, 'update_genres']);
