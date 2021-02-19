@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.app')
 
 
 @section('content')
@@ -16,7 +16,7 @@
             @foreach($review->comments() as $comment)
                 <div class="comment">
                     <p><strong>Name:</strong> {{ $comment->name }}</p>
-                    <p><strong>Comment:</strong><br/>{{ $comment->comment }}</p><br>
+                    <p><strong>Comment:</strong><br/>{{ $comment->body }}</p><br>
                 </div>
             @endforeach
         </div>
@@ -24,7 +24,8 @@
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
-            <form action="" method="post">
+            {{-- no worky --}}
+            <form action=" {{action([\App\Http\Controllers\CommentController::class, 'store'])}} " method="post"> 
                 @csrf
 
                 <div class="row">
