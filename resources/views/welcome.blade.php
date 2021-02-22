@@ -1,4 +1,11 @@
-<!doctype html>
+@extends('layouts.app')
+@section('content')
+    Welcome!
+@endsection
+
+
+
+{{-- <!doctype html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
@@ -40,7 +47,6 @@
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>
-
                     </ul>
 
                     <!-- Right Side Of Navbar -->
@@ -83,7 +89,7 @@
         </nav>
 
         <main class="py-4">
-            @yield('content')
+            @yield('content') --}}
             {{-- <div class="container">
                 <div class="row">
                     <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
@@ -114,7 +120,7 @@
                 </div>
             </div> --}}
             
-        </main>
+        {{-- </main>
     </div>
 </body>
-</html>
+</html> --}}

@@ -40,7 +40,9 @@
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>
-
+                    @if (Auth::user()->user_admin === 1)
+                    <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Administrator Panel</a>
+                    @endif
                     </ul>
 
                     <!-- Right Side Of Navbar -->
