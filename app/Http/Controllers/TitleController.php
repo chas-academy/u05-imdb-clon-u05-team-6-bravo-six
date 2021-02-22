@@ -83,4 +83,9 @@ class TitleController extends Controller
     {
         //
     }
+
+    public function reviews(Title $title)
+    {
+        return view('titles.reviews', ['reviews' => $title->reviews(), 'title' => $title]);
+    }
 }

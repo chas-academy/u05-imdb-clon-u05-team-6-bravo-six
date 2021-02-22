@@ -38,6 +38,7 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 
 Route::resource('genres', GenreController::class);
+Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
 Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
