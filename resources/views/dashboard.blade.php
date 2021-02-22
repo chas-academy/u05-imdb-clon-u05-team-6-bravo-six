@@ -8,10 +8,12 @@
                     @foreach ($sortedData as $data)
                     <li>    
                         <a>{{$data->body}}</a>
-                        <h10>
+                        <br/>
+                        <small class="text-muted">
                             {{$data->created_at}}
-                        </h10>
+                        </small>
                     </li>
+                    
                     @endforeach
                     </div>
                     
@@ -20,11 +22,13 @@
                         <br/>
                         
                         @foreach ($reviews as $review)
-                            <div>
-                                <a>{{ $review->title()->title }}</a>
-                                <br/>
-                                <a>{{$review->body}} - {{$review->rating}}</a> {{-- Should later serve as link to review --}}
+                            <div class="card">
+                                <a><b>{{ $review->title()->title }}</b></a>
                                 
+                                <a>{{$review->body}} - {{$review->rating}}</a> {{-- Should later serve as link to review --}}
+                                <small class="text-muted">
+                                    {{$data->created_at}}
+                                </small>
                             </div>
                         @endforeach
                     </div>
@@ -32,14 +36,24 @@
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <h3 class="text-center">Your comments:</h3>
                         @foreach ($comments as $comment)
+                        <div class="card">
                             <a>{{$comment->body}}</a>
+                            <small class="text-muted">
+                                {{$data->created_at}}
+                            </small>
+                        </div>
                         @endforeach
                     </div>
 
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
                     <h3 class="text-center">Your watchlists:</h3>
                     @foreach ($watchlists as $watchlist)
+                    <div class="card">
                         <a>{{$watchlist->name}}</a>
+                        <small class="text-muted">
+                            {{$data->created_at}}
+                        </small>
+                    </div>
                     @endforeach
                     </div>
                      
