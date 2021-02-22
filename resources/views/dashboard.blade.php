@@ -23,9 +23,14 @@
                         
                         @foreach ($reviews as $review)
                             <div class="card">
-                                <a><b>{{ $review->title()->title }}</b></a>
                                 
-                                <a>{{$review->body}} - {{$review->rating}}</a> {{-- Should later serve as link to review --}}
+                                <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
+                                    {{ $review->title()->title }}
+                                </a>
+                                
+                                <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["title"=>$review->title_id]), ["review"=>$review->id]}}">
+                                    {{$review->body}} - {{$review->rating}}
+                                </a> {{-- Should later serve as link to review --}}
                                 <small class="text-muted">
                                     {{$data->created_at}}
                                 </small>

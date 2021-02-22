@@ -4,7 +4,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>{{ $review->title }}</h1>
+            <h1>{{ $review->title()->title }}</h1>
             <p>{{ $review->body }}</p>
             <hr>
             <p>Posted In: {{ $review->title()->genre()->name }}</p>
