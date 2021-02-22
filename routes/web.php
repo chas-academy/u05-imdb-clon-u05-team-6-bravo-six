@@ -47,6 +47,7 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('titles', AdminTitleController::class);
 });
 Route::resource('genres', GenreController::class);
+Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
 Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);

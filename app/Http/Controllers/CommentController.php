@@ -39,19 +39,16 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request, $review_id)
+    public function store(Request $request)
     {
         $this->validate($request, array(
-            'name'      =>  'required|max:255',
             'comment'   =>  'required|min:5|max:2000'
         ));
-
-        $review = Review::find($review_id);
-
         $comment = new Comment();
         $comment->name = Auth::user()->name;
+        $comment->user_id = Auth::user()->id;
         $comment->body = $request->comment;
-        $comment->review_id = $review->id; //
+        $comment->review_id = $request->review_id;
         $comment->save();
         return redirect()->back();
     }

@@ -25,17 +25,13 @@
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
             {{-- no worky --}}
-            <form action=" {{action([\App\Http\Controllers\CommentController::class, 'store'])}} " method="post"> 
+            <form action=" {{action([\App\Http\Controllers\CommentController::class, 'store'])}} " method="POST"> 
                 @csrf
+                <input type="hidden" name="review_id" value="{{$review->id}}">
                 <div class="row">
-                    <div class="col-md-6">
-                        <label for="name">Name</label>
-                        <input id="name" type="text" >
-                    </div>
-
                     <div class="col-md-12">
                         <label for="comment">Comment</label>
-                        <input id="comment" type="text" >
+                        <input name="comment" id="comment" type="text" >
                         <button type="Submit">Submit</button>
                     </div>
                 </div>
