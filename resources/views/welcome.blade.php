@@ -1,4 +1,4 @@
 @extends('layouts.app')
 @section('content')
-    Welcome!
+    Welcome to the site!
 @endsection
