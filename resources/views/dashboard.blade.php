@@ -28,7 +28,7 @@
                                     {{ $review->title()->title }}
                                 </a>
                                 
-                                <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["title"=>$review->title_id]), ["review"=>$review->id]}}">
+                                <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
                                     {{$review->body}} - {{$review->rating}}
                                 </a> {{-- Should later serve as link to review --}}
                                 <small class="text-muted">
