@@ -1,11 +1,7 @@
-@extends('main')
-
-<?php $review = ;
-$titleTag = htmlspecialchars($review->title); ?>
-@section('title', "| $titleTag")
+@extends('layouts.app')
 
 @section('content')
-
+testtesttesttest
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>{{ $review->title }}</h1>
@@ -28,7 +24,7 @@ $titleTag = htmlspecialchars($review->title); ?>
 
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
-            <form action="" method="post">
+            <form action="{{action([App\Http\Controllers\CommentController::class, 'store'])}}" method="post">
                 @csrf
 
             <div class="row">
