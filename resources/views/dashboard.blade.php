@@ -8,6 +8,9 @@
                     @foreach ($sortedData as $data)
                     <li>    
                         <a>{{$data->body}}</a>
+                        <h10>
+                            {{$data->created_at}}
+                        </h10>
                     </li>
                     @endforeach
                     </div>
