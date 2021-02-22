@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class WatchlistItem extends Model
 {
-    public function WatchlistItem()
+    public function watchlist()
     {
         return $this->belongsTo('\App\Models\Watchlist')->first();
     }

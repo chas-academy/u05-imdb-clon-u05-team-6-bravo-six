@@ -42,6 +42,7 @@
                     <h3 class="text-center">Your comments:</h3>
                         @foreach ($comments as $comment)
                         <div class="card">
+
                             <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
                                 {{$comment->body}}
                             </a>
@@ -56,7 +57,7 @@
                     <h3 class="text-center">Your watchlists:</h3>
                     @foreach ($watchlists as $watchlist)
                     <div class="card">
-                        <a>{{$watchlist->name}}</a>
+                        <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}">{{$watchlist->name}}</a>
                         <small class="text-muted">
                             {{$data->created_at}}
                         </small>
