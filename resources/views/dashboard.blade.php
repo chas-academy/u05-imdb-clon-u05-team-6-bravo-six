@@ -30,7 +30,7 @@
                                 
                                 <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
                                     {{$review->body}} - {{$review->rating}}
-                                </a> {{-- Should later serve as link to review --}}
+                                </a> 
                                 <small class="text-muted">
                                     {{$data->created_at}}
                                 </small>
@@ -42,7 +42,9 @@
                     <h3 class="text-center">Your comments:</h3>
                         @foreach ($comments as $comment)
                         <div class="card">
-                            <a>{{$comment->body}}</a>
+                            <a href="{{action([App\Http\Controllers\CommentController::class, 'show'], ["comment"=>$comment->id])}}">
+                                {{$comment->body}}
+                            </a>
                             <small class="text-muted">
                                 {{$data->created_at}}
                             </small>
