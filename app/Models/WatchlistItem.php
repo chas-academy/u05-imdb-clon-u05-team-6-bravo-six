@@ -11,5 +11,9 @@ class WatchlistItem extends Model
     {
         return $this->belongsTo('\App\Models\Watchlist')->first();
     }
+    public function title()
+    {
+        return $this->belongsTo('\App\Models\Title')->first();
+    }
     use HasFactory;
 }
