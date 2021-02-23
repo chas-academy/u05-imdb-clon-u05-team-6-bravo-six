@@ -1,4 +1,4 @@
 @extends('layouts.admin')
 @section('content')
-<p>Make something awsome here please!</p>
+<p>Make something awesome here please!</p>
 @endsection
