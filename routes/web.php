@@ -42,7 +42,7 @@ Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
 Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
-Route::post('title/{title}/reviews', 'ReviewController@store');
+Route::post('title/{title}/reviews', [ReviewController::class, 'store']);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistitems', WatchlistItemController::class);
 

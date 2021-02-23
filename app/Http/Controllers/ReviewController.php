@@ -6,6 +6,7 @@ use App\Models\Review;
 use App\Models\Title;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -26,7 +27,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //
+        //return a view for creating a review (review.create) 
     }
 
     /**
@@ -37,16 +38,17 @@ class ReviewController extends Controller
      */
     public function store(Request $request, Title $title)
     {
-        $this->validate($request),[
-            
-            $review = new Review;
-            $review->rating = $request->rating;
-            $review->comment = $request->comment;
-            $review->title_id = $title->id;
-            $review->save();
+        // $this->validate($request, array()),[
 
-            return redirect()->back();
-        ]);
+        $review = new Review;
+        $review->rating = $request->rating;
+        //save review title somehow
+        $review->body = $request->body;
+        $review->title_id = $title->id;
+        $review->user_id = Auth::user()->id;
+        $review->save();
+        return redirect()->back();
+        // ]);
     }
 
     /**
@@ -67,13 +69,13 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $title,$id)
+    public function edit(Title $title, $id)
     {
         $review = Review::find($id);
 
         return view('title.review.edit', [
             'title' => $title,
-            'review' => $review, 
+            'review' => $review,
         ]);
     }
 
