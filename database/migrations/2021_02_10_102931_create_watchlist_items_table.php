@@ -15,7 +15,7 @@ class CreateWatchlistItemsTable extends Migration
     {
         Schema::create('watchlist_items', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('title_id')->constrained();
+            $table->foreignId('title_id')->constrained()->onDelete('cascade');
             $table->timestamps();
         });
     }
