@@ -36,7 +36,7 @@
                     
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\UserController::class, 'index'])}}">Users</a></li>
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
-                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\GenreController::class, 'index'])}}">Genres</a></li>
                    <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\TitleController::class, 'index'])}}">Titles</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>

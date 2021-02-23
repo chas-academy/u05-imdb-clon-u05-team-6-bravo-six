@@ -3,6 +3,7 @@
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TitleController as AdminTitleController;
 use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\GenreController as AdminGenreController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
@@ -46,6 +47,7 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::get('/titles/{title}/secondary-genres', [AdminTitleController::class, 'secondary_genres']);
     Route::put('/titles/{title}/secondary-genres', [AdminTitleController::class, 'update_genres']);
     Route::resource('titles', AdminTitleController::class);
+    Route::resource('genres', AdminGenreController::class);
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
