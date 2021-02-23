@@ -10,9 +10,13 @@ class CommentController extends Controller
 {
     public function index()
     {
-        $comments = Comment::orderByDesc('updated_at')->paginate(25);
+        $sort = (request()->get('sort')) ? request()->get('sort') : 'updated_at';
+        $comments = Comment::orderBy($sort)->paginate(25);
+        if ($sort === 'updated_at' || $sort === 'created_at') {
+            $comments = Comment::orderByDesc($sort)->paginate(25);
+        };
         // $comments = $comments->paginate(25);
-        return view('admin.comments.index', ['comments' => $comments]);
+        return view('admin.comments.index', ['comments' => $comments, 'sort' => $sort]);
     }
     public function show(Comment $comment)
     {

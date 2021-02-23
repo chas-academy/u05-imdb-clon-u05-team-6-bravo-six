@@ -4,10 +4,10 @@
 <table>
 <thead>
     <tr>
-        <th>Id</th>
+        <th><a href=" {{action([\App\Http\Controllers\Admin\CommentController::class, 'index'], ['sort' => 'id'])}} ">Id</a></th>
         <th>Posted on (review)</th>
-        <th>Created at</th>
-        <th>Updated at</th>
+        <th><a href=" {{action([\App\Http\Controllers\Admin\CommentController::class, 'index'], ['sort' => 'created_at'])}} ">Created At</a></th>
+        <th><a href=" {{action([\App\Http\Controllers\Admin\CommentController::class, 'index'], ['sort' => 'updated_at'])}} ">Updated At</a></th>
         <th>Posted by</th>
                 <th></th>
     </tr>
@@ -27,5 +27,5 @@
 
 </tbody>
 </table>
-<div class="container">{{$comments->links()}}</div>
+<div class="container">{{$comments->appends(['sort' => $sort])->links()}}</div>
 @endsection
