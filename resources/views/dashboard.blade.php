@@ -41,6 +41,7 @@
                                     {{$data->created_at}}
                                 </small>
                             </div>
+                        <br/>
                         @endforeach
                     </div>
 
@@ -56,6 +57,7 @@
                                 {{$data->created_at}}
                             </small>
                         </div>
+                        <br/>
                         @endforeach
                     </div>
 
@@ -68,6 +70,7 @@
                             {{$data->created_at}}
                         </small>
                     </div>
+                    <br/>
                     @endforeach
                     </div>
                      
