@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<h4>Titles</h4>
+<h2>Titles</h2>
 <table>
 <thead>
     <tr>

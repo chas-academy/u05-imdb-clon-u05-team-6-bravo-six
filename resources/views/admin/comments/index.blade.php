@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<h4>Comments</h4>
+<h2>Comments</h2>
 <table>
 <thead>
     <tr>
