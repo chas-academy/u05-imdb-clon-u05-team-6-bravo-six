@@ -6,12 +6,19 @@
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12" >
                     <h3 class="text-center">Recent activity:</h3>
                     @foreach ($sortedData as $data)
-                    <li>    
-                        <a>{{$data->body}}</a>
-                        <br/>
-                        <small class="text-muted">
-                            {{$data->created_at}}
-                        </small>
+                    <li>
+              
+                        @if ($data->getTable() === "reviews")   
+                        <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->id])}}">
+                            {{$data->body}}
+                        </a>
+                        @else 
+                        
+                        <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->review_id])}}">
+                            {{$data->body}}
+                        </a>
+                        @endif
+                    
                     </li>
                     
                     @endforeach
@@ -19,7 +26,6 @@
                     
                     <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         <h3 class="text-center">Your Reviews:</h3>
-                        <br/>
                         
                         @foreach ($reviews as $review)
                             <div class="card">
