@@ -12,11 +12,19 @@
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->id])}}">
                             {{$data->body}}
                         </a>
+                        <br/>
+                        <small class="text-muted">
+                            {{$data->created_at}}
+                        </small>
                         @else 
                         
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->review_id])}}">
                             {{$data->body}}
                         </a>
+                        <br/>
+                        <small class="text-muted">
+                            {{$data->created_at}}
+                        </small>
                         @endif
                     
                     </li>
@@ -38,7 +46,7 @@
                                     {{$review->body}} - {{$review->rating}}
                                 </a> 
                                 <small class="text-muted">
-                                    {{$data->created_at}}
+                                    {{$review->created_at}}
                                 </small>
                             </div>
                         <br/>
@@ -54,7 +62,7 @@
                                 {{$comment->body}}
                             </a>
                             <small class="text-muted">
-                                {{$data->created_at}}
+                                {{$comment->created_at}}
                             </small>
                         </div>
                         <br/>
@@ -67,7 +75,7 @@
                     <div class="card">
                         <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}">{{$watchlist->name}}</a>
                         <small class="text-muted">
-                            {{$data->created_at}}
+                            {{$watchlist->created_at}}
                         </small>
                     </div>
                     <br/>
