@@ -1,4 +1,4 @@
 @extends('layouts.admin')
 @section('content')
-<h1>HEJSAN</h1>
+<p>Make something awsome here please!</p>
 @endsection
