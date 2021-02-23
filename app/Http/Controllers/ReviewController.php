@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Review;
+use App\Models\Title;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
@@ -34,9 +35,14 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Title $title)
     {
-        //
+        $this->validate(request(),[
+            'body'=>'required|min:5'
+        ]);
+
+        $title->addReview(request('body'));
+        return back();
     }
 
     /**
