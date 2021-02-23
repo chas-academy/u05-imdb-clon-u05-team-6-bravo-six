@@ -17,10 +17,7 @@
         <input class="form-control" name="email" value="{{$user->email}}">
     </div>
     <button class="btn btn-secondary btn-lg" type="submit">Save changes</button>
+
+
 </form>
-{{-- <div class="container">
-    <h3>Relationships</h3>
-    <div><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'secondary_genres'], ['user' => $user->id])}}">Secondary Genres</a></div>
-    <div><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'reviews'], ['user' => $user->id])}}">Reviews</a>
-</div> --}}
 @endsection

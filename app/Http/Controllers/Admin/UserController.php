@@ -44,7 +44,6 @@ class UserController extends Controller
 
     public function update(Request $request, User $user)
     {
-        // $user->id = $request->id;
         $user->name = $request->name;
         $user->email = $request->email;
         $user->save();
@@ -52,8 +51,10 @@ class UserController extends Controller
     }
 
 
-    public function destroy($id)
+    public function destroy(User $user)
     {
-        //
+        $user->delete();
+        return redirect()->back();
+        // return view('admin.users.index');
     }
 }
