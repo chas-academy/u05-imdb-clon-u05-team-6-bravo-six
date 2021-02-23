@@ -33,18 +33,18 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-
+                    @if (Auth::check())
+                    @if (Auth::user()->user_admin === 1)
+                    <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Admin Mode</a></li>
+                    @endif
+                    @endif
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
                     <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
                    <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>
-                    @if (Auth::check())
-                    @if (Auth::user()->user_admin === 1)
-                    <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Administrator Panel</a></li>
-                    @endif
-                    @endif
+
                     </ul>
 
                     <!-- Right Side Of Navbar -->
