@@ -14,7 +14,7 @@
                         </a>
                         <br/>
                         <small class="text-muted">
-                            {{$data->created_at}}
+                            {{$data->updated_at}}
                         </small>
                         @else 
                         
@@ -23,7 +23,7 @@
                         </a>
                         <br/>
                         <small class="text-muted">
-                            {{$data->created_at}}
+                            {{$data->updated_at}}
                         </small>
                         @endif
                     
