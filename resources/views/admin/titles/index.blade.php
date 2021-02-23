@@ -4,12 +4,12 @@
 <table>
 <thead>
     <tr>
-        <th>Id</th>
-        <th>Title</th>
-        <th>Primary Genre</th>
-        <th>Posted at</th>
-        <th>Updated at</th>
-        <th>Posted by</th>
+        <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'id'])}}">Id</a></th>
+        <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'title'])}}">Title</a></th>
+        <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'genre_id'])}}">Primary Genre</a></th>
+        <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'created_at'])}}">Posted at</a></th>
+        <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'updated_at'])}}">Updated at</a></th>
+        <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'user_id'])}}">Posted by</a></th>
     </tr>
 </thead>
 <tbody>
@@ -26,5 +26,5 @@
 
 </tbody>
 </table>
-<div class="container">{{$titles->links()}}</div>
+<div class="container">{{$titles->appends(['sort' => $sort])->links()}}</div>
 @endsection

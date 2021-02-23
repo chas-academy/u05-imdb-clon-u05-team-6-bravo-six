@@ -14,7 +14,12 @@ class TitleController extends Controller
     //
     public function index()
     {
-        return view('admin.titles.index', ['titles' => Title::paginate(25)]);
+        $sort = request()->get('sort') ? request()->get('sort') : 'created_at';
+        $titles = Title::orderByDesc($sort)->paginate(25);
+        if ($sort === 'title' || $sort === 'id') {
+            $titles = Title::orderBy($sort)->paginate(25);
+        };
+        return view('admin.titles.index', ['titles' => $titles, 'sort' => $sort]);
     }
     public function show(Title $title)
     {
