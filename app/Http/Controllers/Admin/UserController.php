@@ -54,7 +54,6 @@ class UserController extends Controller
     public function destroy(User $user)
     {
         $user->delete();
-        return redirect()->back();
-        // return view('admin.users.index');
+        return redirect()->action([UserController::class, 'index']);
     }
 }

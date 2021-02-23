@@ -17,7 +17,13 @@
         <input class="form-control" name="email" value="{{$user->email}}">
     </div>
     <button class="btn btn-secondary btn-lg" type="submit">Save changes</button>
-
+    <form method="POST" action="{{action([\App\Http\Controllers\Admin\UserController::class, 'destroy'], ['user' => $user->id])}}">
+        @method("DELETE")
+        @csrf
+        <td>
+            <button class="btn btn-danger btn-lg" type="submit" value="Delete">Delete</button>
+        </td>
+    </form>
 
 </form>
 @endsection

@@ -20,13 +20,7 @@
     <td>{{$user->email}}</td>
     <td>{{$user->created_at}}</td>
     <td><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'show'], ['user' => $user->id])}}">View</a></td>
-    <form method="POST" action="{{action([\App\Http\Controllers\Admin\UserController::class, 'destroy'], ['user' => $user->id])}}">
-        @method("DELETE")
-        @csrf
-        <td>
-            <button class="btn btn-danger btn-lg" type="submit" value="Delete">Delete</button>
-        </td>
-    </form>
+
 </tr>
 @endforeach
 
