@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+<a class="btn btn-primary btn-lg" href=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'create'])}} ">Create new title</a>
 <table>
 <thead>
     <tr>

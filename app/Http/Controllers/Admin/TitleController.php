@@ -7,6 +7,7 @@ use App\Models\Genre;
 use App\Models\SecondaryGenre;
 use App\Models\Title;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class TitleController extends Controller
 {
@@ -18,6 +19,26 @@ class TitleController extends Controller
     public function show(Title $title)
     {
         return view('admin.titles.show', ['title' => $title]);
+    }
+    public function create()
+    {
+        return view('admin.titles.create', ['genres' => Genre::all()]);
+    }
+    public function store(Request $request)
+    {
+        $title = new Title;
+        $title->title = $request->title;
+        $title->user_id = Auth::user()->id;
+        $title->genre_id = $request->genre_id;
+        $title->save();
+        foreach ($request->except('title', 'genre_id', '_token', '_method') as $key => $value) {
+            $secondary_genre = new SecondaryGenre;
+            $secondary_genre->name = Genre::where('id', $key)->first()->name;
+            $secondary_genre->title_id = $title->id;
+            $secondary_genre->genre_id = $key;
+            $secondary_genre->save();
+        }
+        return redirect()->action([TitleController::class, 'index']);
     }
     public function update(Request $request, Title $title)
     {
