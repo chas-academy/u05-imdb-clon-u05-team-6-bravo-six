@@ -35,14 +35,18 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Title $title)
+    public function store(Request $request, Title $title)
     {
-        $this->validate(request(),[
-            'body'=>'required|min:5'
-        ]);
+        $this->validate($request),[
+            
+            $review = new Review;
+            $review->rating = $request->rating;
+            $review->comment = $request->comment;
+            $review->title_id = $title->id;
+            $review->save();
 
-        $title->addReview(request('body'));
-        return back();
+            return redirect()->back();
+        ]);
     }
 
     /**
@@ -63,9 +67,14 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Title $title,$id)
     {
-        //
+        $review = Review::find($id);
+
+        return view('title.review.edit', [
+            'title' => $title,
+            'review' => $review, 
+        ]);
     }
 
     /**
