@@ -2,6 +2,8 @@
 
 @extends('layouts.admin')
 @section('content')
+<h4>Viewing title</h4>
+<a href=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'index'])}} ">Go back to titles</a>
 <form method="POST" action="{{action([\App\Http\Controllers\Admin\TitleController::class, 'update'], ['title' => $title->id])}}">
     @csrf
     @method('PUT')

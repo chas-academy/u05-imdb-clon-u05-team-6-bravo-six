@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TitleController as AdminTitleController;
 use App\Http\Controllers\Admin\UserController;
@@ -42,10 +43,14 @@ Auth::routes();
 Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('users', UserController::class);
+    // TITLE ROUTES FOR ADMIN
     Route::get('/titles/{title}/reviews', [AdminTitleController::class, 'reviews']);
     Route::get('/titles/{title}/secondary-genres', [AdminTitleController::class, 'secondary_genres']);
     Route::put('/titles/{title}/secondary-genres', [AdminTitleController::class, 'update_genres']);
     Route::resource('titles', AdminTitleController::class);
+    //
+    //COMMENT ROUTES FOR ADMIN
+    Route::resource('comments', AdminCommentController::class);
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
