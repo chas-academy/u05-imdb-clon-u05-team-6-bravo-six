@@ -39,7 +39,7 @@
                             <div class="card">
                                 
                                 <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
-                                    {{ $review->title()->title }}
+                                    <b>{{ $review->title()->title }}</b>
                                 </a>
                                 
                                 <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
