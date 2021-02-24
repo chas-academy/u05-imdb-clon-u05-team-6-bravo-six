@@ -29,11 +29,9 @@ class ReviewController extends Controller
     {
         //return a view for creating a review (review.create)
         return view('review.create', [
-            'title' => $title, 
-            'rating' => $rating, 
-            'body' => $body,
+            
         ]);
-
+    }
 
     /**
      * Store a newly created resource in storage.
