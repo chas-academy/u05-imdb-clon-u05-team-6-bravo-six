@@ -20,7 +20,7 @@ class CreateCommentsTable extends Migration
             $table->string('body');
             $table->timestamps();
             $table->boolean('approved')->default(true);
-            $table->foreignId('user_id')->constrained();
+            $table->foreignId('user_id')->constrained()->onDelete('cascade');
         });
     }
 
