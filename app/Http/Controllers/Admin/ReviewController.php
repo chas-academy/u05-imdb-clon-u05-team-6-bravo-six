@@ -16,7 +16,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        return view('admin.reviews.index', ['reviews' => Review::all()]);
+        $sort = (request()->get('sort')) ? request()->get('sort') : 'id';
+        $reviews = Review::orderBy($sort)->paginate(25);
+        return view('admin.reviews.index', ['reviews' => $reviews, 'sort' => $sort]);
+        // return view('admin.reviews.index', ['reviews' => Review::all()]);
     }
 
     /**
