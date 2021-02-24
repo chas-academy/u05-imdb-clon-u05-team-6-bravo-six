@@ -13,6 +13,6 @@ class TitleTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Title::factory()->count(25)->create();
+        \App\Models\Title::factory()->count(75)->create();
     }
 }

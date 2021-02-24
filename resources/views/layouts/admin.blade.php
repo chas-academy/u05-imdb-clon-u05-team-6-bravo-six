@@ -33,17 +33,13 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                    @if (Auth::check())
-                    @if (Auth::user()->user_admin === 1)
-                    <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Admin Mode</a></li>
-                    @endif
-                    @endif
-                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
-                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
-                   <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
+                                        <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\DashboardController::class, 'index'])}} ">Admin-Dashboard</a></li>
+                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\UserController::class, 'index'])}}">Users</a></li>
+                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\CommentController::class, 'index'])}}">Comments</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\GenreController::class, 'index'])}}">Genres</a></li>
+                   <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\TitleController::class, 'index'])}}">Titles</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
-                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>
 
                     </ul>
 
@@ -89,39 +85,7 @@
         <main class="py-4">
             <div class="container">
             @yield('content')
-            {{-- 
-            
-             --}}
             </div>
-             <!-- <div class="container">
-                <div class="row">
-                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                        <li>ABC</li>
-                        <li>DEF</li>
-                        <li>GHI</li>
-                        <li>JKL</li>
-                    </div>
-                    
-                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                        <li>ABC</li>
-                        <li>DEF</li>
-                        <li>GHI</li>
-                        <li>JKL</li>
-                    </div>
-                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                        <li>ABC</li>
-                        <li>DEF</li>
-                        <li>GHI</li>
-                        <li>JKL</li>
-                    </div>
-                    <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                        <li>ABC</li>
-                        <li>DEF</li>
-                        <li>GHI</li>
-                        <li>JKL</li>
-                    </div>
-                </div>
-            </div> -->
         </main>
     </div>
 </body>

@@ -21,9 +21,10 @@ class SecondaryGenreFactory extends Factory
      */
     public function definition()
     {
+        $genre = \App\Models\Genre::inRandomOrder()->first();
         return [
-            "name" => $this->faker->name,
-            'genre_id' => \App\Models\Genre::inRandomOrder()->value('id'),
+            "name" => $genre->name,
+            'genre_id' => $genre->id,
             'title_id' => \App\Models\Title::inRandomOrder()->value('id'),
         ];
     }

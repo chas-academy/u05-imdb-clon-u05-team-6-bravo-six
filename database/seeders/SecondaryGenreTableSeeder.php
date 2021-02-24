@@ -13,6 +13,6 @@ class SecondaryGenreTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\SecondaryGenre::factory()->count(25)->create();
+        \App\Models\SecondaryGenre::factory()->count(250)->create();
     }
 }

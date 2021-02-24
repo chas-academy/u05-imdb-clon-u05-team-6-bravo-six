@@ -27,7 +27,7 @@ class Comment extends Model
 
     public function review()
     {
-        return $this->belongsTo('\App\Model\Review')->first();
+        return $this->belongsTo('\App\Models\Review')->first();
     }
 
     public function title()
