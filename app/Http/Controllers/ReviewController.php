@@ -28,9 +28,7 @@ class ReviewController extends Controller
     public function create()
     {
         //return a view for creating a review (review.create)
-        return view('review.create', [
-            
-        ]);
+        return view('review.create');
     }
 
     /**
@@ -39,15 +37,15 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request, Title $title)
+    public function store(Request $request) //, Title $title
     {
         // $this->validate($request, array()),[
-
+        $title_id = $request->title_id;
         $review = new Review;
         $review->rating = $request->rating;
         //save review title somehow
         $review->body = $request->body;
-        $review->title_id = $title->id;
+        $review->title_id = $title_id;
         $review->user_id = Auth::user()->id;
         $review->save();
         return redirect()->back();
