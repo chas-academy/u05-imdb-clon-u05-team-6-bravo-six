@@ -73,9 +73,12 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Review $review)
     {
-        //
+        $review->title = $request->title;
+        $review->body = $request->body;
+        $review->save();
+        return redirect()->back();
     }
 
     /**
@@ -86,6 +89,7 @@ class ReviewController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $review->delete();
+        return redirect(action([ReviewController::class, 'index']));
     }
 }
