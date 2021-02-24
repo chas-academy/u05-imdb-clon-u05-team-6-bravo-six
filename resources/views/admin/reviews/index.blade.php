@@ -10,8 +10,8 @@
             <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'rating'])}}">Rating:</a></th>
             <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'created_at'])}}">Created:</a></th>
             <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'rating'])}}">Updated:</a></th>
-            <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'user_id'])}}">User id:</a></th>
-            <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'title_id'])}}">Title id:</a></th>
+            <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'user_id'])}}">Reviewer:</a></th>
+            <th><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class, 'index'], ['sort' => 'title_id'])}}">Title reviewed:</a></th>
         </tr>
     </thead>
     <tbody>   
@@ -24,8 +24,8 @@
                 <td>{{ $review->rating }}</td>
                 <td>{{ $review->created_at }}</td>
                 <td>{{ $review->updated_at }}</td>
-                <td>{{ $review->user_id }}</td>
-                <td>{{ $review->title_id }}</td>
+                <td>{{ $review->user()->name }}</td>
+                <td>{{ $review->title()->title }}</td>
             </tr>     
     @endforeach 
     </tbody>
