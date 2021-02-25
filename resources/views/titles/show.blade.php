@@ -3,9 +3,16 @@
 @section('content')
 
 <ul>
-    <li>{{$title->id}}<span> with the name: {{$title->title}} </span></li>
-    <a href="{{action([\App\Http\Controllers\TitleController::class, 'reviews'], ['title'=>$title->id])}}">Reviews</a>
-    {{--write code for making column --}}
+    
+        <img class="col-xl-3 col-lg-3" src="https://www.themoviedb.org/t/p/w1280/oHj6guMrLfQcBzo3uxwBJc8Y736.jpg"/>
+    
+    <div class="col-lg-9 col-xl-9 float-right mt-xl-5">
+        <h1>{{$title->title}}</h1>
+        <hr/>
+        <p class="text-muted">{{$title->description}}</p>
+    </div>
+    {{--<a href="{{action([\App\Http\Controllers\TitleController::class, 'reviews'], ['title'=>$title->id])}}">Reviews</a>
+    write code for making column --}}
     <form action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST"> 
                 @csrf
                 <input type="hidden" name="title_id" value="{{$title->id}}">
