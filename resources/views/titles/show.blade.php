@@ -13,7 +13,7 @@
     </div>
     {{--<a href="{{action([\App\Http\Controllers\TitleController::class, 'reviews'], ['title'=>$title->id])}}">Reviews</a>
     write code for making column --}}
-    <form action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST">
+    <form class="col-lg-9 col-xl-9 float-right" action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST">
                 @csrf
                 <input type="hidden" name="title_id" value="{{$title->id}}">
                 @if (Auth::check())
@@ -21,7 +21,7 @@
                 <div class="row">
                     <div class="col-md-12">
                     <label for="rating">Click for rating</label>
-                        <select id="rating" name="rating" size="5">
+                        <select id="rating" name="rating" size="5" required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
@@ -29,9 +29,9 @@
                         <option value="5">5</option>
                         </select>
                         <label for="title">Title</label>
-                        <input name="title" id="title" type="text" >
+                        <input name="title" id="title" type="text" required>
                         <label for="body">Body</label>
-                        <input name="body" id="body" type="text" >
+                        <input name="body" id="body" type="text" required>
                         <button type="Submit">Submit</button>
                     </div>
                 </div>
@@ -44,7 +44,7 @@
             <div class="col-lg-3 col-xl-3 float-left">
                 {{-- <p><b>Rating: {{$review->rating}} </b></p> --}}
                 @for($i=0; $i < $review->rating; $i++)
-                    <img class="float-left" style="width: 15%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
+                    <img class="float-right" style="width: 15%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
                 @endfor
             </div>
             <div class="card col-lg-9 col-xl-9 float-right">

@@ -47,7 +47,7 @@ class TitleController extends Controller
      */
     public function show(Title $title)
     {
-        return view('titles.show', ['title' => $title, 'reviews' => $title->reviews()]);
+        return view('titles.show', ['title' => $title, 'reviews' => collect($title->reviews())->sortByDesc('updated_at')]);
     }
 
     /**
