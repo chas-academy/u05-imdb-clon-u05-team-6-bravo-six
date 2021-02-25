@@ -13,6 +13,6 @@ class ReviewTableSeeder extends Seeder
      */
     public function run()
     {
-        \App\Models\Review::factory()->count(25)->create();
+        \App\Models\Review::factory()->count(75)->create();
     }
 }
