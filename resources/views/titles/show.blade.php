@@ -39,7 +39,18 @@
     @else 
     <p>You need to log in to make a review!</p>
     @endif
-
+    @foreach ($reviews as $review)
+        <div class="card col-lg-3 col-xl-3 float-left">
+            <p><b>{{$review->user()->name}}</b></p>
+        </div>
+        <div class="card col-lg-9 col-xl-9 float-right">
+            <a href=" {{action([App\Http\Controllers\ReviewController::class, 'show'], ['review' => $review->id])}} "><h3>{{$review->title}}</h3></a>
+            <p >{{$review->body}}</p>
+            <span>Rating: {{$review->rating}} </span>
+        </div>
+        <br/>
+    @endforeach
+    
  </ul>
 
 @endsection
