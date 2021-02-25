@@ -15,7 +15,7 @@
         <label>Primary Genre:</label>
         <x-primary-genre-select selected="{{$title->genre_id}}"></x-primary-genre-select>
     </div>
-    
+
     <div class="form-group">
         <label>Created at: </label>
         <input class="form-control" disabled value="{{$title->created_at}}">
@@ -28,7 +28,7 @@
         <label>Created by: </label>
         <input class="form-control" disabled value="{{$title->user()->name}}">
     </div>
-    <button class="btn btn-secondary btn-lg" type="submit">Save changes</button> 
+    <button class="btn btn-secondary btn-lg" type="submit">Save changes</button>
 </form>
 <div class="container">
     <h3>Relationships</h3>

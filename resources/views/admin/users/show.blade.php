@@ -23,7 +23,7 @@
         @method("DELETE")
         @csrf
         <td>
-            <button class="btn btn-danger btn-lg" type="submit" value="Delete">Delete</button>
+            <button class="btn btn-danger btn-lg" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
         </td>
     </form>
 @endsection

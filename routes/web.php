@@ -11,8 +11,12 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
+// image
+use App\Http\Controllers\UploadController;
+// image
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\WatchlistItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -53,6 +57,7 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     //COMMENT ROUTES FOR ADMIN
     Route::resource('comments', AdminCommentController::class);
     Route::resource('genres', AdminGenreController::class);
+
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -67,3 +72,6 @@ Route::resource('watchlistitems', WatchlistItemController::class);
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Image route
+Route::get('/upload', [UploadController::class, 'uploadForm']);
+Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
