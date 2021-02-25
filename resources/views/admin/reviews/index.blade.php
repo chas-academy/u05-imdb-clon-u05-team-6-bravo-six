@@ -24,8 +24,8 @@
                 <td>{{ $review->rating }}</td>
                 <td>{{ $review->created_at }}</td>
                 <td>{{ $review->updated_at }}</td>
-                <td>{{ $review->user()->name }}</td>
-                <td>{{ $review->title()->title }}</td>
+                <td><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'show'], ['user' => $review->user()->id])}}">{{ $review->user()->name }}</a></td>
+                <td><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'show'], ['title' => $review->title()->id])}}">{{ $review->title()->title }}</a></td>
             </tr>     
     @endforeach 
     </tbody>

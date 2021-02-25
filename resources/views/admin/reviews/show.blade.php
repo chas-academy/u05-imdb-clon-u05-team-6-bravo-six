@@ -6,6 +6,10 @@
     @csrf
     @method('PUT')
     <div class="form-group">
+        <label>Review for Title:</label>
+        <input class="form-control" disabled value="{{$review->title()->title}}">
+    </div>
+    <div class="form-group">
         <label>Review Title:</label>
         <input class="form-control" name="title" value="{{$review->title}}">
     </div>
