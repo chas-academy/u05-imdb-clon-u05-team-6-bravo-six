@@ -43,7 +43,7 @@ class ReviewController extends Controller
         $title_id = $request->title_id;
         $review = new Review;
         $review->rating = $request->rating;
-        //save review title somehow
+        $review->title = $request->title;
         $review->body = $request->body;
         $review->title_id = $title_id;
         $review->user_id = Auth::user()->id;
