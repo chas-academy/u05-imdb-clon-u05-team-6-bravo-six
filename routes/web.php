@@ -60,7 +60,10 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('genres', AdminGenreController::class);
 
     //REVIEW ROUTE FOR ADMIN
-    Route::resource('reviews', AdminReviewController::class); //JE
+    Route::resource('reviews', AdminReviewController::class);
+    // UPLOAD IMAGE
+    Route::get('/upload', [UploadController::class, 'uploadForm']);
+    Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -76,5 +79,4 @@ Route::resource('watchlistitems', WatchlistItemController::class);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 //Image route
-Route::get('/upload', [UploadController::class, 'uploadForm']);
-Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
+

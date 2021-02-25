@@ -16,9 +16,8 @@ class UploadController extends Controller
 
     public function uploadFile(Request $request)
     {
-        $request->file->store('public');
+        $path = $request->file->store('public');
         return view('upload');
     }
-
 
 }
