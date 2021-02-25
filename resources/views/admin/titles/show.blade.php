@@ -15,7 +15,9 @@
         <label>Primary Genre:</label>
         <x-primary-genre-select selected="{{$title->genre_id}}"></x-primary-genre-select>
     </div>
-
+    @if ($title->img_url !== null)
+    <img src="/storage/app/{{$title->img_url}} ">
+    @endif
     <div class="form-group">
         <label>Created at: </label>
         <input class="form-control" disabled value="{{$title->created_at}}">

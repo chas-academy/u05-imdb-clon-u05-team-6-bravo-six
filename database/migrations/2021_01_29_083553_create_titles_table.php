@@ -17,6 +17,7 @@ class CreateTitlesTable extends Migration
             $table->id();
             $table->string('title');
             $table->timestamps();
+            $table->longText('img_url')->nullable();
             $table->foreignId('genre_id')->constrained()->onDelete('cascade'); //this is PRIMARY_GENRE
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); //this also?
             // $table->foreignId('title_id')->constrained(); //this is most likely a mistake
