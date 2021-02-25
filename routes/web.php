@@ -65,6 +65,8 @@ Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistitems', WatchlistItemController::class);
+//Search route
+Route::get('/search', [TitleController::class, 'search']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
