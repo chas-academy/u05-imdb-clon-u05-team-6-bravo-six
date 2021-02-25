@@ -1,12 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
+use App\Http\Controllers\Controller;
 use App\Models\Review;
-use App\Models\Title;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 
 class ReviewController extends Controller
 {
@@ -17,7 +16,10 @@ class ReviewController extends Controller
      */
     public function index()
     {
-        return view('reviews.index', ['reviews' => Review::all()]);
+        $sort = (request()->get('sort')) ? request()->get('sort') : 'id';
+        $reviews = Review::orderBy($sort)->paginate(25);
+        return view('admin.reviews.index', ['reviews' => $reviews, 'sort' => $sort]);
+        // return view('admin.reviews.index', ['reviews' => Review::all()]);
     }
 
     /**
@@ -27,8 +29,7 @@ class ReviewController extends Controller
      */
     public function create()
     {
-        //return a view for creating a review (review.create)
-        return view('review.create');
+        //
     }
 
     /**
@@ -37,19 +38,9 @@ class ReviewController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request) //, Title $title
+    public function store(Request $request)
     {
-        // $this->validate($request, array()),[
-        $title_id = $request->title_id;
-        $review = new Review;
-        $review->rating = $request->rating;
-        $review->title = $request->title;
-        $review->body = $request->body;
-        $review->title_id = $title_id;
-        $review->user_id = Auth::user()->id;
-        $review->save();
-        return redirect()->action([ReviewController::class, 'show'], ['review' => $review->id]);
-        // ]);
+        //
     }
 
     /**
@@ -60,7 +51,7 @@ class ReviewController extends Controller
      */
     public function show(Review $review)
     {
-        return view('reviews.show', ['review' => $review]);
+        return view('admin.reviews.show', ['review' => $review]);
         //
     }
 
@@ -70,14 +61,9 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $title, $id)
+    public function edit($id)
     {
-        $review = Review::find($id);
-
-        return view('title.review.edit', [
-            'title' => $title,
-            'review' => $review,
-        ]);
+        //
     }
 
     /**
@@ -87,9 +73,12 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, Review $review)
     {
-        //
+        $review->title = $request->title;
+        $review->body = $request->body;
+        $review->save();
+        return redirect()->back();
     }
 
     /**
@@ -98,8 +87,9 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Review $review)
     {
-        //
+        $review->delete();
+        return redirect(action([ReviewController::class, 'index']));
     }
 }

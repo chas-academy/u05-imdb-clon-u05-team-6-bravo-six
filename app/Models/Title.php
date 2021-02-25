@@ -25,5 +25,11 @@ class Title extends Model
     {
         return $this->hasMany('\App\Models\Review')->get();
     }
+
+    public function addReview()
+    {
+        $this->review()->create(['body'=>$body]);
+    }
+    
     use HasFactory;
 }
