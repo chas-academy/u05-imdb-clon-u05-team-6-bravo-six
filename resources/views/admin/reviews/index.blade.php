@@ -30,5 +30,5 @@
     @endforeach 
     </tbody>
 </table>
-
+<div class="container">{{$reviews->appends(['sort' => $sort])->links()}}</div>
 @endsection
