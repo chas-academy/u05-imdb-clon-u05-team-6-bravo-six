@@ -5,6 +5,7 @@ use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TitleController as AdminTitleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GenreController as AdminGenreController;
+use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
@@ -58,6 +59,8 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('comments', AdminCommentController::class);
     Route::resource('genres', AdminGenreController::class);
 
+    //REVIEW ROUTE FOR ADMIN
+    Route::resource('reviews', AdminReviewController::class); //JE
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
