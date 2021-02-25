@@ -10,6 +10,11 @@
          <div class="card-body">
            <form action="{{route('upload.uploadfile')}}" method="post" enctype="multipart/form-data">
               @csrf
+              <select name="title_id" class="form-control">
+                @foreach (\App\Models\Title::all() as $title)
+                    <option value="{{$title->id}}">{{$title->title}}</option>
+                @endforeach
+              </select>
               <div class="form-group">
                 <label for="file">Choose File</label>
                 <input type="file" class="form-control" name="file" id="file"/>
