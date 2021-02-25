@@ -20,7 +20,7 @@
                 <td>{{ $review->id }}.&nbsp&nbsp</td>
                 <td><a href="{{action([\App\Http\Controllers\Admin\ReviewController::class,
                     'show'], ['review' => $review->id])}}">{{$review->title}}</a>&nbsp&nbsp</td>
-                <td>{{ $review->body }}</td>
+                <td>{{strlen($review->body) > 50 ? substr($review->body,0,50)."...": $review->body}}</td>
                 <td>{{ $review->rating }}</td>
                 <td>{{ $review->created_at }}</td>
                 <td>{{ $review->updated_at }}</td>
