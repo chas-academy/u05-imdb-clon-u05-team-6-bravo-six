@@ -50,12 +50,7 @@
             <div class="card col-lg-9 col-xl-9 float-right">
                 <h3><a class="float-left" href=" {{action([App\Http\Controllers\ReviewController::class, 'show'], ['review' => $review->id])}} ">{{$review->title}}</a>
                     <small class="text-muted float-right">{{$review->user()->name}}</small>
-
-
-
                 </h3>
-
-
             <span>{{$review->body}}</span>
             </div>
         <br/>
