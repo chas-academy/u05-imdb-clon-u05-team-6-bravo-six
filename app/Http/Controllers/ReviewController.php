@@ -48,7 +48,7 @@ class ReviewController extends Controller
         $review->title_id = $title_id;
         $review->user_id = Auth::user()->id;
         $review->save();
-        return redirect()->back();
+        return redirect()->action([ReviewController::class, 'show'], ['review' => $review->id]);
         // ]);
     }
 
