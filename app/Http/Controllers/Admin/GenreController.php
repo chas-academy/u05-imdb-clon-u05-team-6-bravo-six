@@ -16,8 +16,10 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.genres.index', ['genres' => Genre::all()]);
+        $sort = (request()->get('sort')) ? request()->get('sort') : 'id';
+        $genres = Genre::orderBy($sort)->paginate(25);
+        return view('admin.genres.index', ['genres' => $genres, 'sort' => $sort]);
+        // return view('admin.genres.index', ['genres' => Genre::all()]);
     }
 
     /**

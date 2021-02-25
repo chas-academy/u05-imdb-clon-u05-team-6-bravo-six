@@ -4,8 +4,8 @@
 <table>
     <thead>
         <tr>
-            <th>Id:</th>
-            <th>Genre:</th>
+            <th><a href="{{action([\App\Http\Controllers\Admin\GenreController::class, 'index'], ['sort' => 'id'])}}">Id:</a></th>
+            <th><a href="{{action([\App\Http\Controllers\Admin\GenreController::class, 'index'], ['sort' => 'name'])}}">Genre:</a></th>
             <th>Created:</th>
             <th>Updated:</th>
         </tr>
