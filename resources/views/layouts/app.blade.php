@@ -15,6 +15,7 @@
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
+    <link rel="icon" type="image/x-icon" href="../../../../public/favicon.ico?v=2"  />
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
@@ -56,7 +57,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -69,6 +70,10 @@
                                 </a>
 
                                 <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('dashboard') }}">
+                                        {{ __('Dashboard') }}
+                                    </a>
+
                                     <a class="dropdown-item" href="{{ route('logout') }}"
                                        onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -89,8 +94,8 @@
         <main class="py-4">
             <div class="container">
             @yield('content')
-            {{-- 
-            
+            {{--
+
              --}}
             </div>
              <!-- <div class="container">
@@ -101,7 +106,7 @@
                         <li>GHI</li>
                         <li>JKL</li>
                     </div>
-                    
+
                     <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
                         <li>ABC</li>
                         <li>DEF</li>
