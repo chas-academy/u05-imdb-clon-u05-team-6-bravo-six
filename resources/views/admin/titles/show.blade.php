@@ -16,7 +16,9 @@
         <x-primary-genre-select selected="{{$title->genre_id}}"></x-primary-genre-select>
     </div>
     @if ($title->img_url !== null)
-    <img src="public/storage {{$title->img_url}} ">
+    {{-- <img src="public/storage/{{$title->img_url}}" alt="No photo" > --}}
+    <img src="{{ asset('storage/' . $title->img_url) }}" alt="">
+
     @endif
     <div class="form-group">
         <label>Created at: </label>

@@ -27,4 +27,5 @@ class UploadController extends Controller
         $title->save();
         return redirect()->action([TitleController::class, 'show'], ['title' => $title]);
     }
+
 }
