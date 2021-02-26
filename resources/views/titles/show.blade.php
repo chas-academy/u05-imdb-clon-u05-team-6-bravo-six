@@ -16,24 +16,31 @@
                 <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
                 <div class="row">
                     <div class="col-md-12">
-                    <label for="rating">Click for rating</label>
-                        <select id="rating" name="rating" size="5" required>
+                        <div class="form-group">
+                        <label for="rating">Choose a rating</label>
+                        <select class="form-control" id="rating" name="rating"  required>
                         <option value="1">1</option>
                         <option value="2">2</option>
                         <option value="3">3</option>
                         <option value="4">4</option>
                         <option value="5">5</option>
                         </select>
-                        <label for="title">Title</label>
-                        <input name="title" id="title" type="text" required>
-                        <label for="body">Body</label>
-                        <input name="body" id="body" type="text" required>
-                        <button type="Submit">Submit</button>
                     </div>
+                    <div class="form-group">
+                        <label for="title">Title</label>
+                        <input class="form-control" name="title" id="title" type="text" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="body">Write your review here</label>
+                        <textarea class="form-control" name="body" id="body" required>
+                        </textarea>
+                    </div>
+                        <button class="btn btn-primary" type="Submit">Submit</button>
                 </div>
+            </div>
     </form>
     @else
-    <p>You need to log in to make a review!</p>
+    <p>You need to <a href="{{route('login')}}">log in</a> to make a review!</p>
     @endif
     @foreach ($reviews as $review)
     <div class="container float-left">
