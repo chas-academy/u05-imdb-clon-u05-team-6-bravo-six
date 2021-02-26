@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-
+<a class="btn btn-primary btn-lg" href=" {{action([\App\Http\Controllers\Admin\GenreController::class, 'create'])}} ">Create new genre</a>
 <table>
     <thead>
         <tr>
@@ -13,7 +13,7 @@
     <tbody>
     @foreach ($genres as $genre)
         <tr>
-        <td>{{ $genre->id }}</td>
+        <td>{{ $genre->id }}.&nbsp&nbsp</td>
         <td><a href="{{action([\App\Http\Controllers\Admin\GenreController::class, 'show'], ['genre' => $genre->id])}}">{{$genre->name}}</a></td>
          <td>{{$genre->created_at}}</td>
          <td>{{$genre->updated_at}}</td>
