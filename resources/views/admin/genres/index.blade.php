@@ -1,5 +1,6 @@
 @extends('layouts.admin')
 @section('content')
+<h1>Genres</h1>
 <a class="btn btn-primary btn-lg" href=" {{action([\App\Http\Controllers\Admin\GenreController::class, 'create'])}} ">Create new genre</a>
 <table>
     <thead>
@@ -21,5 +22,5 @@
     @endforeach
     </tbody>
 </table>
-
+<div class="container">{{$genres->appends(['sort' => $sort])->links()}}</div>
 @endsection

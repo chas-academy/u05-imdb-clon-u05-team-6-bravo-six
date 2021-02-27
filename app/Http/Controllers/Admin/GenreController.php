@@ -40,7 +40,11 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $genre = new Genre;
+        $genre->name = $request->genre;
+        $genre->save();
+
+        return redirect()->action([GenreController::class, 'index']);
     }
 
     /**
@@ -51,10 +55,9 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //'/genres/4
+
         return view('admin.genres.show', ['genre' => $genre]);
-        // $titles = $genre->titlesSecondary();
-        // return view('admin.genres.show', ['genre' => $genre, 'titles' => $titles]);
+
     }
 
     /**
@@ -77,7 +80,8 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        $genre->name = $request->name;
+        $genre->name = $request->genre;
+        $genre->id = $request->id;
         $genre->save();
         return redirect()->back();
     }
