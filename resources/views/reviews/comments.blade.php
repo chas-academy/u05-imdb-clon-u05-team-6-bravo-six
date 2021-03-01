@@ -26,9 +26,11 @@ $titleTag = htmlspecialchars($review->title); ?>
         </div>
     </div>
 
+
+
     <div class="row">
         <div id="comment-form" class="col-md-8 col-md-offset-2" style="margin-top: 50px;">
-            <form action="" method="post">
+            <form action="{{action([\App\Http\Controllers\CommentController::class, 'store'])}}" method="POST">
                 @csrf
 
             <div class="row">

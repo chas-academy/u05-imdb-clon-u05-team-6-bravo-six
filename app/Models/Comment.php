@@ -20,6 +20,10 @@ class Comment extends Model
      */
     private $approved;
 
+    public static function find(Comment $comment)
+    {
+    }
+
     public function user()
     {
         return $this->belongsTo('\App\Models\User')->first();
