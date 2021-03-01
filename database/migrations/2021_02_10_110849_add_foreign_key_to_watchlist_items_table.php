@@ -15,7 +15,7 @@ class AddForeignKeyToWatchlistItemsTable extends Migration
     {
         Schema::table('watchlist_items', function (Blueprint $table) {
             //
-            $table->foreignId('watchlist_id')->constrained();
+            $table->foreignId('watchlist_id')->constrained()->onDelete('cascade');
         });
     }
 

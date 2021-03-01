@@ -7,6 +7,7 @@ use App\Models\Review;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CommentController extends Controller
 {
@@ -39,13 +40,13 @@ class CommentController extends Controller
      * @return \Illuminate\Http\Response
      * @throws \Illuminate\Validation\ValidationException
      */
-    public function store(Request $request, $review_id)
+    public function store(Request $request)
     {
         $this->validate($request, array(
             'comment'   =>  'required|min:5|max:2000'
         ));
 
-        $review = Post::find($review_id);
+        // $review = Post::find($review_id);
 
         $comment = new Comment();
         $comment->name = Auth::user()->name;
@@ -75,8 +76,8 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        $comment = Comment::find($comment);
-        return view('comments.edit')->withComment($comment);
+
+        return view('comments.edit', ['comment' => $comment]);
     }
 
     /**
@@ -87,16 +88,15 @@ class CommentController extends Controller
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment, $review_id)
+    public function update(Request $request, Comment $comment) //$review_id
     {
-       $this->validate($request, array('comment' => 'required'));
-
-        $comment->comment = $request->comment;
+        $this->validate($request, array('comment' => 'required'));
+        $comment->body = $request->comment;
         $comment->save();
 
         Session::flash('success', 'Comment updated');
 
-        return redirect()->route('reviews.show', $comment->$review_id );
+        return redirect()->route('reviews.show', ['review' => $comment->review_id]);
     }
 
 
@@ -112,12 +112,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $comment = \App\Comment::find($comment);
-        $review_id = $comment->review_id;
         $comment->delete();
-
         Session::flash('success', 'Deleted Comment');
-
-        return redirect()->route('reviews.show', $review_id );
+        return redirect()->route('reviews.show', ['review' => $comment->review_id]);
     }
 }

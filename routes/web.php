@@ -73,8 +73,8 @@ Route::resource('watchlistitems', WatchlistItemController::class);
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Comments
-Route::post('/comments/{$review->id}', [CommentController::class, 'comments.store']);
-Route::get('/comments/{id}/edit', [CommentController::class, 'comments.edit']);
-Route::put('/comments/{id}', [CommentController::class, 'comments.update']);
-Route::delete('/comments/{id}', [CommentController::class, 'comments.destroy']);
-Route::get('/comments/{id}/delete', [CommentController::class, 'comments.delete']);
+// Route::post('/comments/{$review->id}', [CommentController::class, 'comments.store']);
+// Route::get('/comments/{id}/edit', [CommentController::class, 'comments.edit']);
+// Route::put('/comments/{id}', [CommentController::class, 'comments.update']);
+// Route::delete('/comments/{id}', [CommentController::class, 'comments.destroy']);
+// Route::get('/comments/{id}/delete', [CommentController::class, 'comments.delete']);

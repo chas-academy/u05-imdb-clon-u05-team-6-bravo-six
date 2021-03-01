@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Watchlist extends Model
 {
-    public function watchlist()
+    public function watchlistItems()
     {
         return $this->hasMany('\App\Models\WatchlistItem')->get();
     }
