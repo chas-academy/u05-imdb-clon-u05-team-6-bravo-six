@@ -15,4 +15,8 @@ class WatchlistController extends Controller
         $watchlists = Watchlist::orderBy($sort)->paginate(25);
         return view('admin.watchlists.index', ['watchlists' => $watchlists, 'sort' => $sort]);
     }
+    public function show(Watchlist $watchlist)
+    {
+        return view('admin.watchlists.show', ['watchlist' => $watchlist]);
+    }
 }
