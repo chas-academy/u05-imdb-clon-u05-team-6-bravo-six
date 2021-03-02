@@ -12,6 +12,14 @@
         <input class="form-control" name="title" value="{{$title->title}}">
     </div>
     <div class="form-group">
+        <label>Description:</label>
+        <input class="form-control" name="description" value="{{$title->description}}">
+    </div>
+    <div class="form-group">
+        <p>Image:</p>
+        <img src="{{$title->img_url}}">
+    </div>
+    <div class="form-group">
         <label>Primary Genre:</label>
         <x-primary-genre-select selected="{{$title->genre_id}}"></x-primary-genre-select>
     </div>

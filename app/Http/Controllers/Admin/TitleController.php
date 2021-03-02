@@ -33,10 +33,12 @@ class TitleController extends Controller
     {
         $title = new Title;
         $title->title = $request->title;
+        $title->description = $request->description;
         $title->user_id = Auth::user()->id;
         $title->genre_id = $request->genre_id;
+        $title->img_url = $request->src;
         $title->save();
-        foreach ($request->except('title', 'genre_id', '_token', '_method') as $key => $value) {
+        foreach ($request->except('title', 'genre_id', '_token', '_method', 'description', 'src') as $key => $value) {
             $secondary_genre = new SecondaryGenre;
             $secondary_genre->name = Genre::where('id', $key)->first()->name;
             $secondary_genre->title_id = $title->id;
