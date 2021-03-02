@@ -19,4 +19,9 @@ class WatchlistController extends Controller
     {
         return view('admin.watchlists.show', ['watchlist' => $watchlist]);
     }
+    public function destroy(Watchlist $watchlist)
+    {
+        $watchlist->delete();
+        return redirect()->action([WatchlistController::class, 'index']);
+    }
 }

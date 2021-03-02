@@ -25,6 +25,7 @@
                     {{$item->title()->title}}
                 </a> 
                 with id {{$item->title()->id}}
+                <a><b>DELETE ITEM</b></a>
             </li>
         @endforeach
     </ul>
