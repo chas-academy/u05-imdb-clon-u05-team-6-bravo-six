@@ -32,11 +32,46 @@
     </div>
     <script>
         $(()=> {
+
+            //this is meant to be a widget to represent each search result.
+            $.widget('u05.ajaxItem', {
+                options: {
+                    title: "default",
+                    src: "default_src",
+                    imdbID: "0"
+                },
+                _create: function () {
+                    const parent = $('<div class="card"></div>')
+                    const title = $(`<h5></h5>`).text(this.options.title)
+                    const image = $(`<img>`).attr('src', this.options.src)
+
+                    this.element.addClass('ajaxItem').append(parent.append(title, image))
+                },
+                _destroy: function () {
+                    this.element.removeClass('ajaxItem').text("").remove();
+                }
+            })            
+
             const baseUrl = "http://www.omdbapi.com/?apikey={{env('OMDB_API_KEY')}}&";
             async function doRequest(query) {
                 const request = await fetch(`${baseUrl}s=${query}`).then(response => response.json()).then(data => {
-                    console.log(data)
+                    
                     $('#status').text(data.Error ? data.Error : '');
+                    if (data.Search){
+                        console.log('search true')
+                        data.Search.forEach(item => {
+                            if (item.Poster !== "N/A"){
+                            const row = $('<li></li>').ajaxItem({
+                                title: item.Title,
+                                src: item.Poster,
+                                imdbID: item.imdbID
+                            }).appendTo($('#search-results'))
+                            }
+                        })
+                    } else {
+                        console.log('else')
+                        $('#search-results').empty();
+                    }
                 })
             }
             $('#search-input').on('keydown', function () {
