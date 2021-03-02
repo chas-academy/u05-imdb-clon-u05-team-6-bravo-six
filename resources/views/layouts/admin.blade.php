@@ -39,7 +39,7 @@
                     <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\GenreController::class, 'index'])}}">Genres</a></li>
                    <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\TitleController::class, 'index'])}}">Titles</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\ReviewController::class, 'index'])}} "> Reviews</a></li>
-                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
 
                     </ul>
 
