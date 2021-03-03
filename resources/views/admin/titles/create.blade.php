@@ -1,35 +1,5 @@
 @extends('layouts.admin')
 @section('content')
-    <style>
-        .card{
-            display: block;
-            position: relative;
-            cursor: pointer;
-            min-height: 400px;
-            height: auto;
-            width: auto;
-            user-select: none;
-        }
-        .hidden-radio{
-            position: absolute;
-            opacity: 0;
-            cursor: pointer;
-            height: 100%;
-            width: 100%;
-            z-index: 2;
-        }
-        .span-image{
-            position: absolute;
-            top: 0;
-            left: 0;
-            height: 100%;
-            width: 100%;
-            background-repeat: no-repeat;
-        }
-        .row {
-            list-style-type: none;
-        }
-    </style>
     <form method="POST" action=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'store'])}} ">
         @csrf
         <div class="form-group"><label for="">Title (name)</label><input type="text" name="title" class="form-control"></div>
