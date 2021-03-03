@@ -1,26 +1,3 @@
-<h2>Bootstrap</h2>
-<h3>How to add bootstrap template to a view</h3>
-<p><b>Add template:</b></p>
-<p>@extends('layouts.app')</p>
-<p><b>Then add your code between the lines</b></p>
-<p>@section('content')</p>
-<p><b>and</b></p>
-<p>@endsection</p>
-<p>Example:</p>
-<p><i>@extends('layouts.app')</i></p>
-<p><i>@section('content')</i></p>
-
-<p><i>INSERT HACKER CODE SUPER NOVA HERE</i></p>
-
-<p><i>@endsection</i></p>
-
-<h3>How containers work:</h3>
-<a href="https://getbootstrap.com/docs/5.0/layout/containers/">Documentation</a>
-
-<h3>How Bootstrap grid system works:</h3>
-<a href="https://getbootstrap.com/docs/4.0/layout/grid/">Documentation</a>
-
-
 <!--
 *** Thanks for checking out the Best-README-Template. If you have a suggestion
 *** that would make this better, please fork the repo and create a pull request
@@ -155,6 +132,28 @@ NPM is a package handler for JavaScript and dependencies.
 Use this space to show useful examples of how a project can be used. Additional screenshots, code examples and demos work well in this space. You may also link to more resources.
 
 _For more examples, please refer to the [Documentation](https://example.com)_
+
+### Bootstrap
+<h3>How to add bootstrap template to a view</h3>
+<b>Add template:</b>
+<p>@extends('layouts.app')</p>
+<p><b>Then add your code between the lines</b></p>
+<p>@section('content')</p>
+<p><b>and</b></p>
+<p>@endsection</p>
+<p>Example:</p>
+<p><i>@extends('layouts.app')</i></p>
+<p><i>@section('content')</i></p>
+
+<p><i>INSERT HACKER CODE SUPER NOVA HERE</i></p>
+
+<p><i>@endsection</i></p>
+
+<h3>How containers work:</h3>
+<a href="https://getbootstrap.com/docs/5.0/layout/containers/">Documentation</a>
+
+<h3>How Bootstrap grid system works:</h3>
+<a href="https://getbootstrap.com/docs/4.0/layout/grid/">Documentation</a>
 
 
 
