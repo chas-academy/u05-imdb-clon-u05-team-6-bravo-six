@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\admin;
+namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
@@ -24,4 +24,5 @@ class WatchlistController extends Controller
         $watchlist->delete();
         return redirect()->action([WatchlistController::class, 'index']);
     }
+    
 }
