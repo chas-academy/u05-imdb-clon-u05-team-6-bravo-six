@@ -5,7 +5,7 @@
             display: block;
             position: relative;
             cursor: pointer;
-            min-height: 500px;
+            min-height: 400px;
             height: auto;
             width: auto;
             user-select: none;
@@ -26,7 +26,9 @@
             width: 100%;
             background-repeat: no-repeat;
         }
-
+        .row {
+            list-style-type: none;
+        }
     </style>
     <form method="POST" action=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'store'])}} ">
         @csrf
@@ -56,15 +58,19 @@
     <label>Search for titles in the OMDB, for adding a image linked to the title</label>
     
     <input id="search-input" class="form-control">
+    <span id="search-clear" class="btn btn-warning">Clear</span>
     <span  class=" alert-danger" id="status"></span>
+    
     </div>
     
     <div id="search-results">
     </div>
 </form>
     <script>
+        
         $(()=> {
-
+            const baseUrl = "http://www.omdbapi.com/?apikey={{env('OMDB_API_KEY')}}&";
+            const searchResults = $('#search-results')
             //this is meant to be a widget to represent each search result.
             $.widget('u05.ajaxItem', {
                 options: {
@@ -78,12 +84,17 @@
                     const parent = $('<div class="card"></div>')
                     const input = $(`<input type="radio" class="hidden-radio" name="src" value="${this.options.src}">`)
                     const image =  $(`<span class="span-image" style="background-image:url('${this.options.src}'); "></span>`)
-                    this.element.addClass('ajaxItem').append(title, parent.append(image, input))
+                    this.element.addClass('ajaxItem col-md-4').append(title, parent.append(image, input))
    
                     const widget = $(this)
                     this.element.on('click', function () {
                         if ($(this).find('input').is(':checked')){
-                        console.log('checked')
+                          $(this).css('border', '5px solid blue')
+                          searchResults.find('.ajaxItem').each(function (i) {
+                              if (!$(this).find('input').is(':checked')){
+                                  $(this).css('border', 'none')
+                              }
+                          })
                         } else console.log('not')
                     })
                 },
@@ -92,33 +103,42 @@
                 }
             })
 
-            const baseUrl = "http://www.omdbapi.com/?apikey={{env('OMDB_API_KEY')}}&";
+            
             async function doRequest(query) {
                 const request = await fetch(`${baseUrl}s=${query}`).then(response => response.json()).then(data => {
-                    
                     $('#status').text(data.Error ? data.Error : '');
                     if (data.Search){
-                        console.log('search true')
-                        data.Search.forEach(item => {
-                            if (item.Poster !== "N/A"){
-                            const row = $('<li></li>').ajaxItem({
+                        searchResults.empty()
+                        const arr = data.Search.filter(res => res.Poster !== 'N/A')
+                        // console.log('search true')
+                        const chunk = 3;
+                        for (let i = 0; i<=arr.length; i+=chunk){
+                            const tempArr = arr.slice(i, i+chunk)
+                            const row = $('<ul class="row"></ul>')
+                            tempArr.forEach(item => $('<li></li>').ajaxItem({
                                 title: item.Title,
                                 src: item.Poster,
                                 imdbID: item.imdbID
-                            }).appendTo($('#search-results'))
-                            }
-                        })
+                            }).appendTo(row))
+                            row.appendTo(searchResults)
+                        }
                     } else {
-                        console.log('else')
-                        $('#search-results').empty();
+                        // console.log('else')
+                        searchResults.empty();
                     }
                 })
             }
-            $('#search-input').on('keydown', function () {
+            $('#search-input').on('keydown', function (e) {
+                if (e.keyCode === 13){
+                    e.preventDefault();
+                }
                 const query = $(this).val();
                 if (query.length > 1){
                     doRequest(query)
-                }
+                } else searchResults.empty()
+            })
+            $('#search-clear').on('click', function () {
+                searchResults.empty();
             })
         })
     </script>
