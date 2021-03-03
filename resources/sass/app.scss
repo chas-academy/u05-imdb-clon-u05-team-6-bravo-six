@@ -34,3 +34,17 @@
 #search-results .row {
     list-style-type: none;
 }
+#hidden-absolute-container {
+    display: none;
+}
+#hidden-absolute-container.shown {
+    display: block;
+    position: absolute;
+    background-color: rgb(255, 255, 255);
+    padding: 1em;
+    border-radius: 10px;
+    border: 1.5px solid black;
+    left: 25%;
+    top: 25%;
+    width: 50%;
+}

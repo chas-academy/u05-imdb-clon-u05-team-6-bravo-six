@@ -3,6 +3,16 @@ require('./bootstrap');
 require('alpinejs');
 $(() => {
     if ($('#search-results')) {
+        $('.toggles-search').on('click', function (e) {
+            e.preventDefault();
+            $('#hidden-absolute-container').toggleClass('shown')
+        })
+        $('#reset-img').on('click', function (e) {
+            e.preventDefault();
+            $('#title-image-update').attr('src', $('#original-img-address').text())
+            $('#search-results').empty();
+            $('#hidden-absolute-container').removeClass('shown')
+        })
         const baseUrl = "http://www.omdbapi.com/?apikey=3367eb14&";
         const searchResults = $('#search-results')
         //this is meant to be a widget to represent each search result.
@@ -19,8 +29,16 @@ $(() => {
                 const input = $(`<input type="radio" class="hidden-radio" name="src" value="${this.options.src}">`)
                 const image = $(`<span class="span-image" style="background-image:url('${this.options.src}'); "></span>`)
                 this.element.addClass('ajaxItem col-md-4').append(title, parent.append(image, input))
+                const widget = this
                 this.element.on('click', function () {
+
+                    //safeguard, check if radio button has worked
                     if ($(this).find('input').is(':checked')) {
+
+                        //this is only for the update-page. checks if there is an element with title-image
+                        if (undefined !== $('#title-image-update')) {
+                            $('#title-image-update').attr('src', widget.options.src)
+                        }
                         $(this).css('border', '5px solid blue')
                         searchResults.find('.ajaxItem').each(function (i) {
                             if (!$(this).find('input').is(':checked')) {
@@ -68,8 +86,9 @@ $(() => {
                 doRequest(query)
             } else searchResults.empty()
         })
-        $('#search-clear').on('click', function () {
-            searchResults.empty();
-        })
+
+        // $('#search-clear').on('click', function () {
+        //     searchResults.empty();
+        // })
     }
 })

@@ -51,6 +51,7 @@ class TitleController extends Controller
     {
         $title->title = $request->title;
         $title->genre_id = $request->genre_id;
+        $title->img_url = $request->src ? $request->src : $title->img_url;
         $title->save();
         return redirect()->back();
     }
@@ -61,6 +62,11 @@ class TitleController extends Controller
     public function secondary_genres(Title $title)
     {
         return view('admin.titles.secondary_genres', ['all' => Genre::all(), 'genres' => $title->secondary_genre_relationships(), 'title' => $title]);
+    }
+    public function destroy(Title $title)
+    {
+        $title->delete();
+        return redirect()->action([TitleController::class, 'index']);
     }
     public function update_genres(Request $request, Title $title)
     {
