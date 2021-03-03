@@ -24,5 +24,12 @@ class WatchlistController extends Controller
         $watchlist->delete();
         return redirect()->action([WatchlistController::class, 'index']);
     }
+    public function update(Request $request, Watchlist $watchlist)
+    {
+        $watchlist->name = $request->name;
+        
+        $watchlist->save();
+        return redirect()->action([WatchlistController::class, 'index']);
+    }
     
 }
