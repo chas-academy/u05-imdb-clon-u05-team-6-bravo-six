@@ -10,9 +10,13 @@
          <div class="card-body">
            <form action="{{route('upload.uploadfile')}}" method="post" enctype="multipart/form-data">
               @csrf
-              <select name="title_id" class="form-control">
-                @foreach (\App\Models\Title::all() as $title)
-                    <option value="{{$title->id}}">{{$title->title}}</option>
+              <select name="user_id" class="form-control">
+                @foreach (\App\Models\User::all() as $user)
+                @if ($user->id === intval($user_id))
+                  <option selected value="{{$user->id}}">{{$user->name}}</option>
+                @else
+                  <option value="{{$user->id}}">{{$user->name}}</option>
+                @endif
                 @endforeach
               </select>
               <div class="form-group">

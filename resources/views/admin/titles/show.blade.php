@@ -17,8 +17,7 @@
     </div>
     @if ($title->img_url !== null)
     {{-- <img src="public/storage/{{$title->img_url}}" alt="No photo" > --}}
-    <img src="{{ asset('storage/' . $title->img_url) }}" alt="">
-
+    <img src="{{ asset('storage/' . $title->img_url) }}" alt="No photo">
     @endif
     <div class="form-group">
         <label>Created at: </label>
