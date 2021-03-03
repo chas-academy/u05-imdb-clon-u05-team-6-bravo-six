@@ -19,8 +19,6 @@ $(() => {
                 const input = $(`<input type="radio" class="hidden-radio" name="src" value="${this.options.src}">`)
                 const image = $(`<span class="span-image" style="background-image:url('${this.options.src}'); "></span>`)
                 this.element.addClass('ajaxItem col-md-4').append(title, parent.append(image, input))
-
-                const widget = $(this)
                 this.element.on('click', function () {
                     if ($(this).find('input').is(':checked')) {
                         $(this).css('border', '5px solid blue')
@@ -29,7 +27,7 @@ $(() => {
                                 $(this).css('border', 'none')
                             }
                         })
-                    } else console.log('not')
+                    }
                 })
             },
             _destroy: function () {
@@ -57,7 +55,6 @@ $(() => {
                         row.appendTo(searchResults)
                     }
                 } else {
-                    // console.log('else')
                     searchResults.empty();
                 }
             })
