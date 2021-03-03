@@ -65,6 +65,9 @@
     This project aims to be a partial clone of the website IMDB - International Movie DataBase.
     It features multiple resources and modules, and enables user registration.
     
+
+  </p>
+</p>
     <br />
     <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six"><strong>Explore the docs »</strong></a>
     <br />
@@ -74,9 +77,6 @@
     <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six/issues">Report Bug</a>
     ·
     <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six/issues">Request Feature</a>
-  </p>
-</p>
-
 
 
 <!-- TABLE OF CONTENTS -->
