@@ -136,19 +136,26 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 ### Bootstrap
 
 <b>Add template:</b>
-```@extends('layouts.app')
+
+```sh
+@extends('layouts.app')
 
 ```
 <p><b>Then add your code between the lines</b></p>
-```@section('content')
+
+```sh
+@section('content')
 
 ```
 <p><b>and</b></p>
-```@endsection
+
+```
+@endsection
 
 ```
 <p>Example:</p>
-```
+
+```sh
 @extends('layouts.app')
 @section('content')
 
