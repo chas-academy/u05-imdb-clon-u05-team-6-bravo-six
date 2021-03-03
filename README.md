@@ -134,25 +134,26 @@ Use this space to show useful examples of how a project can be used. Additional 
 _For more examples, please refer to the [Documentation](https://example.com)_
 
 ### Bootstrap
-<h3>How to add bootstrap template to a view</h3>
+
 <b>Add template:</b>
-<p>@extends('layouts.app')</p>
+```@extends('layouts.app')```
 <p><b>Then add your code between the lines</b></p>
-<p>@section('content')</p>
+```@section('content')```
 <p><b>and</b></p>
-<p>@endsection</p>
+```@endsection```
 <p>Example:</p>
-<p><i>@extends('layouts.app')</i></p>
-<p><i>@section('content')</i></p>
+```
+@extends('layouts.app')
+@section('content')
 
-<p><i>INSERT HACKER CODE SUPER NOVA HERE</i></p>
+{{"INSERT HACKER CODE SUPER NOVA HERE!"}}
 
-<p><i>@endsection</i></p>
-
-<h3>How containers work:</h3>
+@endsection
+```
+#### How containers work:
 <a href="https://getbootstrap.com/docs/5.0/layout/containers/">Documentation</a>
 
-<h3>How Bootstrap grid system works:</h3>
+#### How Bootstrap grid system works:
 <a href="https://getbootstrap.com/docs/4.0/layout/grid/">Documentation</a>
 
 
