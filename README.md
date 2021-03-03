@@ -28,7 +28,7 @@
 *** Thanks again! Now go create something AMAZING! :D
 ***
 ***
-***
+***IMDB Clone
 *** To avoid retyping too much info. Do a search and replace for the following:
 *** github_username, repo_name, twitter_handle, email, project_title, project_description
 -->
@@ -55,23 +55,25 @@
 <!-- PROJECT LOGO -->
 <br />
 <p align="center">
-  <a href="https://github.com/github_username/repo_name">
+  <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six">
     <img src="images/logo.png" alt="Logo" width="80" height="80">
   </a>
 
-  <h3 align="center">project_title</h3>
+  <h3 align="center">IMDB Clone</h3>
 
   <p align="center">
-    project_description
+    This project aims to be a partial clone of the website IMDB - International Movie DataBase.
+    It features multiple resources and modules, and enables user registration.
+    
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
+    <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six/issues">Report Bug</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
+    <a href="https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six/issues">Request Feature</a>
   </p>
 </p>
 
@@ -108,18 +110,16 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
-
-Here's a blank template to get started:
-**To avoid retyping too much info. Do a search and replace with your text editor for the following:**
-`github_username`, `repo_name`, `twitter_handle`, `email`, `project_title`, `project_description`
-
-
+    We first started this project for a school assignment, but it has since grown and is currently maintained by some of the original crew.
+    It was meant as an introductory look into MVC frameworks, specifically Laravel.
+    We were initially 9 people working on the project.
+    
 ### Built With
 
-* []()
-* []()
-* []()
+- Laravel
+- Vanilla JavaScript
+- Composer
+- MySQL
 
 
 
@@ -129,20 +129,20 @@ Here's a blank template to get started:
 To get a local copy up and running follow these simple steps.
 
 ### Prerequisites
+If you haven't developed in PHP environments before, install PHP and composer here.
+NPM is a package handler for JavaScript and dependencies.
 
-This is an example of how to list things you need to use the software and how to install them.
-* npm
-  ```sh
-  npm install npm@latest -g
-  ```
+<a href="https://www.php.net/manual/en/install.php">PHP</a>
+<a href="https://www.npmjs.com/">NPM</a>
+<a href="https://getcomposer.org/">Composer</a>
 
 ### Installation
 
 1. Clone the repo
    ```sh
-   git clone https://github.com/github_username/repo_name.git
+   git clone https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six.git
    ```
-2. Install NPM packages
+2. Install NPM/Composer packages
    ```sh
    npm install
    ```
@@ -161,7 +161,7 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 <!-- ROADMAP -->
 ## Roadmap
 
-See the [open issues](https://github.com/github_username/repo_name/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six/issues) for a list of proposed features (and known issues).
 
 
 
@@ -188,9 +188,9 @@ Distributed under the MIT License. See `LICENSE` for more information.
 <!-- CONTACT -->
 ## Contact
 
-Your Name - [@twitter_handle](https://twitter.com/twitter_handle) - email
+<a href="mailto:hannesqvarnstrom@gmail.com">Hannes Qvarnström</a>
 
-Project Link: [https://github.com/github_username/repo_name](https://github.com/github_username/repo_name)
+Project Link: [https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six](https://github.com/chas_academy/u05-imdb-clon-u05-team-6-bravo-six)
 
 
 
@@ -207,15 +207,15 @@ Project Link: [https://github.com/github_username/repo_name](https://github.com/
 
 <!-- MARKDOWN LINKS & IMAGES -->
 <!-- https://www.markdownguide.org/basic-syntax/#reference-style-links -->
-[contributors-shield]: https://img.shields.io/github/contributors/github_username/repo.svg?style=for-the-badge
-[contributors-url]: https://github.com/github_username/repo/graphs/contributors
-[forks-shield]: https://img.shields.io/github/forks/github_username/repo.svg?style=for-the-badge
-[forks-url]: https://github.com/github_username/repo/network/members
-[stars-shield]: https://img.shields.io/github/stars/github_username/repo.svg?style=for-the-badge
-[stars-url]: https://github.com/github_username/repo/stargazers
-[issues-shield]: https://img.shields.io/github/issues/github_username/repo.svg?style=for-the-badge
-[issues-url]: https://github.com/github_username/repo/issues
-[license-shield]: https://img.shields.io/github/license/github_username/repo.svg?style=for-the-badge
-[license-url]: https://github.com/github_username/repo/blob/master/LICENSE.txt
+[contributors-shield]: https://img.shields.io/github/contributors/chas_academy/repo.svg?style=for-the-badge
+[contributors-url]: https://github.com/chas_academy/repo/graphs/contributors
+[forks-shield]: https://img.shields.io/github/forks/chas_academy/repo.svg?style=for-the-badge
+[forks-url]: https://github.com/chas_academy/repo/network/members
+[stars-shield]: https://img.shields.io/github/stars/chas_academy/repo.svg?style=for-the-badge
+[stars-url]: https://github.com/chas_academy/repo/stargazers
+[issues-shield]: https://img.shields.io/github/issues/chas_academy/repo.svg?style=for-the-badge
+[issues-url]: https://github.com/chas_academy/repo/issues
+[license-shield]: https://img.shields.io/github/license/chas_academy/repo.svg?style=for-the-badge
+[license-url]: https://github.com/chas_academy/repo/blob/master/LICENSE.txt
 [linkedin-shield]: https://img.shields.io/badge/-LinkedIn-black.svg?style=for-the-badge&logo=linkedin&colorB=555
-[linkedin-url]: https://linkedin.com/in/github_username
+[linkedin-url]: https://linkedin.com/in/chas_academy
