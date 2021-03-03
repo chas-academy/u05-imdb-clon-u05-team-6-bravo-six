@@ -7,6 +7,7 @@ use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GenreController as AdminGenreController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\WatchlistController as AdminWatchlistController;
+use App\Http\Controllers\Admin\WatchlistItemController as AdminWatchlistItemController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
@@ -62,6 +63,9 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
 
     //WATCHLIST ROUTE FOR ADMIN
     Route::resource('watchlists', AdminWatchlistController::class);
+
+    //WATCHLISTITEM ROUTE FOR ADMIN
+    Route::resource('watchlistitems', AdminWatchlistItemController::class);
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);

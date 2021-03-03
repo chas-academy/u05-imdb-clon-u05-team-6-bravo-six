@@ -31,5 +31,17 @@ class WatchlistController extends Controller
         $watchlist->save();
         return redirect()->action([WatchlistController::class, 'index']);
     }
+    public function create()
+    {
+        return view('admin.watchlists.create');
+    }
+    public function store(Request $request)
+    {
+        $watchlist = new Watchlist;
+        $watchlist->name = $request->name;
+        $watchlist->user_id = $request->user_id;
+        $watchlist->save();
+        return redirect()->action([WatchlistController::class, 'index']);
+    }
     
 }

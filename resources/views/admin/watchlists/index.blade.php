@@ -22,8 +22,12 @@
 
 </tr>
 @endforeach
-
+        
+    
 </tbody>
 </table>
+
 <div class="container">{{$watchlists->appends(['sort' => $sort])->links()}}</div>
+<a href="{{action([\App\Http\Controllers\Admin\WatchlistController::class, 'create'])}}">Create watchlist</a>
+
 @endsection
