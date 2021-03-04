@@ -6,20 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\Genre;
 use App\Models\SecondaryGenre;
 use App\Models\Title;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TitleController extends Controller
 {
     //
-    public function index()
+    public function index(User $user)
     {
         $sort = request()->get('sort') ? request()->get('sort') : 'created_at';
         $titles = Title::orderByDesc($sort)->paginate(25);
         if ($sort === 'title' || $sort === 'id') {
             $titles = Title::orderBy($sort)->paginate(25);
         };
-        return view('admin.titles.index', ['titles' => $titles, 'sort' => $sort]);
+        return view('admin.titles.index', ['titles' => $titles, 'sort' => $sort, 'user' => $user]);
     }
     public function show(Title $title)
     {
