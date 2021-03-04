@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\Watchlist;
 use App\Models\WatchlistItem;
+use App\Models\Title;
 
 class WatchlistController extends Controller
 {
@@ -42,6 +43,38 @@ class WatchlistController extends Controller
         $watchlist->user_id = $request->user_id;
         $watchlist->save();
         return redirect()->action([WatchlistController::class, 'index']);
+    }
+    public function addItems(Watchlist $watchlist){
+        $titles = null;
+        if (request('query')){
+                    $key = request('query');
+
+        $titles = Title::query()
+            ->where('title', 'like', "%{$key}%")
+            ->orderBy('created_at', 'desc')->paginate(25);
+        };
+        
+        return view('admin.watchlists.addItems', ['watchlist' => $watchlist, 'titles' => $titles, 'old' => $watchlist->watchlistItems()]);
+    }
+    public function addTitles(Watchlist $watchlist, Request $request){
+        //  $data = $request->except(['_token', '_method']);
+        // $old = $watchlist->watchlistItems();
+        // // dd($haystack);
+        // foreach ($data as $key => $value) {
+        //     if ($old->where('title_id', intval($key))->count() === 0) {
+        //         $watchlistItem = new WatchlistItem;
+        //         $watchlistItem->watchlist_id = $watchlist->id;
+        //         $watchlistItem->title_id = intval($key);
+        //         $watchlistItem->save();
+        //     }
+        // };
+        // foreach ($old as $watchlistItem) {
+        //     if (!array_key_exists($watchlistItem->title_id, $data)) {
+        //         $watchlistItem->delete();
+        //     };
+        // };
+        
+        return redirect()->back();
     }
     
 }

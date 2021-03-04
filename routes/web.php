@@ -65,6 +65,8 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('reviews', AdminReviewController::class); //JE
 
     //WATCHLIST ROUTE FOR ADMIN
+    Route::get('watchlists/{watchlist}/addItems', [AdminWatchlistController::class, 'addItems'])->name('watchlists.addItems');
+    Route::put('watchlists/{watchlist}/addTitles', [AdminWatchlistController::class, 'addTitles'])->name('watchlists.addTitles');
     Route::resource('watchlists', AdminWatchlistController::class);
 
     //WATCHLISTITEM ROUTE FOR ADMIN

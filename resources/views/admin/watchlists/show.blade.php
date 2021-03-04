@@ -42,6 +42,7 @@
             
         @endforeach
     <hr/>
+    <a href=" {{route('watchlists.addItems', ['watchlist' => $watchlist->id])}} ">Add titles</a>
     <form method="POST" action="{{action([\App\Http\Controllers\Admin\WatchlistController::class, 'destroy'], ['watchlist' => $watchlist->id])}}">
         @method("DELETE")
         @csrf
