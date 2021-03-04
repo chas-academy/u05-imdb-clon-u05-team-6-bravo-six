@@ -76,8 +76,11 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-
-        return view('comments.edit', ['comment' => $comment]);
+        if (Auth::id()  !== $comment->user_id){
+            return redirect()->back();
+        } else {
+            return view('comments.edit', ['comment' => $comment]);
+        }
     }
 
     /**
@@ -102,7 +105,11 @@ class CommentController extends Controller
 
     public function delete($comment)
     {
+        if (Auth::id()  !== $comment->user_id){
+        return redirect()->back();
+    } else {
         return view('comments.delete')->withComment($comment);
+    }
     }
     /**
      * Remove the specified resource from storage.
