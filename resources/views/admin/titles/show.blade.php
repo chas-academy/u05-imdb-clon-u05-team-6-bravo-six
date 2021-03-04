@@ -30,7 +30,10 @@
         <label>Primary Genre:</label>
         <x-primary-genre-select selected="{{$title->genre_id}}"></x-primary-genre-select>
     </div>
-    
+    @if ($title->img_url !== null)
+    {{-- <img src="public/storage/{{$title->img_url}}" alt="No photo" > --}}
+    <img src="{{ asset('storage/' . $title->img_url) }}" alt="No photo">
+    @endif
     <div class="form-group">
         <label>Created at: </label>
         <input class="form-control" disabled value="{{$title->created_at}}">
@@ -43,7 +46,7 @@
         <label>Created by: </label>
         <input class="form-control" disabled value="{{$title->user()->name}}">
     </div>
-    <button class="btn btn-secondary btn-lg" type="submit">Save changes</button> 
+    <button class="btn btn-secondary btn-lg" type="submit">Save changes</button>
 </form>
 <form method="POST" action=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'destroy'], ['title' => $title->id])}} ">
     @csrf

@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Review;
+use App\Models\User;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
@@ -14,11 +15,11 @@ class ReviewController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index(User $user)
     {
         $sort = (request()->get('sort')) ? request()->get('sort') : 'id';
         $reviews = Review::orderBy($sort)->paginate(25);
-        return view('admin.reviews.index', ['reviews' => $reviews, 'sort' => $sort]);
+        return view('admin.reviews.index', ['reviews' => $reviews, 'sort' => $sort, 'user' => $user]);
         // return view('admin.reviews.index', ['reviews' => Review::all()]);
     }
 

@@ -44,7 +44,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                                        <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\DashboardController::class, 'index'])}} ">Admin-Dashboard</a></li>
+
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\DashboardController::class, 'index'])}} ">Admin-Dashboard</a></li>
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\UserController::class, 'index'])}}">Users</a></li>
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\CommentController::class, 'index'])}}">Comments</a></li>
                     <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\GenreController::class, 'index'])}}">Genres</a></li>
@@ -63,7 +64,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
