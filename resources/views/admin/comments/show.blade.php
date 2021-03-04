@@ -11,7 +11,7 @@
         <label>Comment:</label>
         <input class="form-control" name="body" value="{{$comment->body}}">
     </div>
-    
+
     <div class="form-group">
         <label>Created at: </label>
         <input class="form-control" disabled value="{{$comment->created_at}}">
@@ -24,7 +24,7 @@
 
 </form>
     <input form="update" class="btn btn-secondary btn-lg" type="submit" value="Save changes">
-    <input form="delete" class="btn btn-danger btn-lg" type="submit" value="Delete comment">
+    <input form="delete" class="btn btn-danger btn-lg" type="submit" value="Delete comment"  onclick="return confirm('Are you sure you want to delete this comment?')">
     <form method="POST" id="delete" action=" {{action([\App\Http\Controllers\Admin\CommentController::class, 'destroy'], ['comment' => $comment->id])}} ">
         @csrf
         @method('DELETE')
@@ -36,7 +36,7 @@
 
         <input class="form-control" disabled value=" {{strlen($comment->review()->body) > 50 ? substr($comment->review()->body,0,50)."...": $comment->review()->body}} ">
                 <a href="#">Go to review</a>
-            
+
     </div>
     <div class="form-group">
         <label>Posted by: </label>

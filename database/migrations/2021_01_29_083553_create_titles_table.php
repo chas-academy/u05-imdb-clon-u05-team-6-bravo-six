@@ -20,7 +20,7 @@ class CreateTitlesTable extends Migration
             $table->timestamps();
             $table->foreignId('genre_id')->constrained()->onDelete('cascade'); //this is PRIMARY_GENRE
             $table->foreignId('user_id')->constrained()->onDelete('cascade'); //this also?
-            
+
         });
     }
 

@@ -12,6 +12,17 @@
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}" defer></script>
 
+    {{-- JQUERY  --}}
+        <script
+  src="https://code.jquery.com/jquery-3.5.1.js"
+  integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc="
+  crossorigin="anonymous"></script>
+  {{-- JQUERY UI --}}
+  <script
+  src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"
+  integrity="sha256-T0Vest3yCU7pafRw9r+settMBX6JkKN06dqBnpQ8d30="
+  crossorigin="anonymous" defer></script>
+
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
@@ -33,7 +44,8 @@
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <!-- Left Side Of Navbar -->
                     <ul class="nav navbar-nav">
-                                        <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\DashboardController::class, 'index'])}} ">Admin-Dashboard</a></li>
+
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\Admin\DashboardController::class, 'index'])}} ">Admin-Dashboard</a></li>
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\UserController::class, 'index'])}}">Users</a></li>
                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\CommentController::class, 'index'])}}">Comments</a></li>
                     <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\Admin\GenreController::class, 'index'])}}">Genres</a></li>
@@ -52,7 +64,7 @@
                                     <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
                                 </li>
                             @endif
-                            
+
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
@@ -88,5 +100,6 @@
             </div>
         </main>
     </div>
+
 </body>
 </html>
