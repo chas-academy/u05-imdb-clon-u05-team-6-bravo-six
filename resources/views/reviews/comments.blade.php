@@ -1,11 +1,7 @@
-@extends('main')
-
-<?php $review = ;
-$titleTag = htmlspecialchars($review->title); ?>
-@section('title', "| $titleTag")
+@extends('layouts.app')
 
 @section('content')
-
+testtesttesttest
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
             <h1>{{ $review->title }}</h1>
