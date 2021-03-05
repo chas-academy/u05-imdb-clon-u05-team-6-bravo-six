@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\Watchlist;
 use App\Models\WatchlistItem;
 use App\Models\Title;
+use Illuminate\Support\Facades\Auth;
 
 class WatchlistController extends Controller
 {
@@ -56,25 +57,11 @@ class WatchlistController extends Controller
         
         return view('admin.watchlists.addItems', ['watchlist' => $watchlist, 'titles' => $titles, 'old' => $watchlist->watchlistItems()]);
     }
-    public function addTitles(Watchlist $watchlist, Request $request){
-        //  $data = $request->except(['_token', '_method']);
-        // $old = $watchlist->watchlistItems();
-        // // dd($haystack);
-        // foreach ($data as $key => $value) {
-        //     if ($old->where('title_id', intval($key))->count() === 0) {
-        //         $watchlistItem = new WatchlistItem;
-        //         $watchlistItem->watchlist_id = $watchlist->id;
-        //         $watchlistItem->title_id = intval($key);
-        //         $watchlistItem->save();
-        //     }
-        // };
-        // foreach ($old as $watchlistItem) {
-        //     if (!array_key_exists($watchlistItem->title_id, $data)) {
-        //         $watchlistItem->delete();
-        //     };
-        // };
-        
+    public function addWatchlistItem(Watchlist $watchlist, Request $request){
+        $item = new WatchlistItem;
+        $item->watchlist_id = $watchlist->id;
+        $item->title_id = $request->title_id;
+        $item->save();
         return redirect()->back();
-    }
-    
+    }    
 }

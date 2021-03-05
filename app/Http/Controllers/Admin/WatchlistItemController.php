@@ -12,9 +12,9 @@ class WatchlistItemController extends Controller
     public function index($watchlistItem){
 
     }
-    public function destroy(WatchlistItem $watchlistitem)
+    public function destroy(WatchlistItem $watchlistItem)
     {
-        $watchlistitem->delete();
+        $watchlistItem->delete();
         return redirect()->back();
     }
 }

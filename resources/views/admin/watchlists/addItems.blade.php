@@ -2,25 +2,26 @@
 @section('content')
     <h2>Add titles to <a href="{{action([\App\Http\Controllers\Admin\WatchlistController::class, 'show'], ['watchlist' => $watchlist->id])}}">{{$watchlist->name}}</a></h2>
     <form method="GET" action="{{route('watchlists.addItems', ['watchlist' => $watchlist->id])}}">
-    <label>Search here</label><input type="search" name="query">
-    <button type="submit">Submit</button>
+    <div class="row"><input placeholder="Search here" class="form-control col-md-4" type="search" name="query"><button aria-label="Search but in a cool way cus germany" type="submit" class="btn btn-primary btn-sm">Sëarch</button></div>
+    
     </form>
-    <form method="POST" action="{{action([\App\Http\Controllers\Admin\WatchlistController::class, 'addTitles'], ['watchlist' => $watchlist->id])}}">
-        @csrf
-        @method('PUT')
-        @if($titles)
-        @foreach($titles as $title)
-            <div class="form-check">
-                @if($old->where('title_id', $title->id)->count() !== 0)
-                    <input class="form-check-input" id="{{$title->id}}" type="checkbox" name="{{$title->id}}" checked>
-                @else 
-                    <input  class="form-check-input" id="{{$title->id}}" type="checkbox" name="{{$title->id}}">
-                @endif
-                <label class="form-check-label" for="{{$title->id}}">{{$title->title}}</label>
-            </div>
-        @endforeach
-        <button class="btn btn-lg btn-secondary" type="submit">Submit changes</button>
-        {{$titles->appends(['query' => $_GET['query']])->links()}}
-           @endif
-    </form>
+    @if($titles)
+      <ul>
+      @foreach($titles as $title)
+        <li class="row">
+          <div class="col-lg-3"><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'show'], ['title' => $title->id])}}" target="_blank">{{$title->title}}</a></div>
+          @if($old->where('title_id', $title->id)->count() === 0)
+            <form method="POST" action="{{action([\App\Http\Controllers\Admin\WatchlistController::class, 'addWatchlistItem'], ['watchlist' => $watchlist->id])}}">
+              @csrf
+              <input type="hidden" name="title_id" value="{{$title->id}}">
+              <button type="submit" class="btn btn-info btn-sm">Add to watchlist</button>
+            </form>
+          @else 
+            <div class="col-lg-3"><button type="submit" disabled class="btn btn-sm btn-secondary">Added!</button></div>
+          @endif
+        </li>
+      @endforeach
+      </ul>
+      {{$titles->appends(['query' => $_GET['query']])->links()}}
+    @endif
 @endsection
