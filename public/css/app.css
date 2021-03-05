@@ -10004,3 +10004,53 @@ h3 {
     border-color: #dee2e6;
   }
 }
+.ajaxItem .card {
+  display: block;
+  position: relative;
+  cursor: pointer;
+  min-height: 400px;
+  height: auto;
+  width: auto;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.hidden-radio {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+  height: 100%;
+  width: 100%;
+  z-index: 2;
+}
+
+.span-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-repeat: no-repeat;
+}
+
+#search-results .row {
+  list-style-type: none;
+}
+
+#hidden-absolute-container {
+  display: none;
+}
+
+#hidden-absolute-container.shown {
+  display: block;
+  position: absolute;
+  background-color: white;
+  padding: 1em;
+  border-radius: 10px;
+  border: 1.5px solid black;
+  left: 25%;
+  top: 25%;
+  width: 50%;
+}

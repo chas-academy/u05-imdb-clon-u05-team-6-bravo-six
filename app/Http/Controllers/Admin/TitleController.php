@@ -6,20 +6,21 @@ use App\Http\Controllers\Controller;
 use App\Models\Genre;
 use App\Models\SecondaryGenre;
 use App\Models\Title;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class TitleController extends Controller
 {
     //
-    public function index()
+    public function index(User $user)
     {
         $sort = request()->get('sort') ? request()->get('sort') : 'created_at';
         $titles = Title::orderByDesc($sort)->paginate(25);
         if ($sort === 'title' || $sort === 'id') {
             $titles = Title::orderBy($sort)->paginate(25);
         };
-        return view('admin.titles.index', ['titles' => $titles, 'sort' => $sort]);
+        return view('admin.titles.index', ['titles' => $titles, 'sort' => $sort, 'user' => $user]);
     }
     public function show(Title $title)
     {
@@ -33,10 +34,12 @@ class TitleController extends Controller
     {
         $title = new Title;
         $title->title = $request->title;
+        $title->description = $request->description;
         $title->user_id = Auth::user()->id;
         $title->genre_id = $request->genre_id;
+        $title->img_url = $request->src;
         $title->save();
-        foreach ($request->except('title', 'genre_id', '_token', '_method') as $key => $value) {
+        foreach ($request->except('title', 'genre_id', '_token', '_method', 'description', 'src') as $key => $value) {
             $secondary_genre = new SecondaryGenre;
             $secondary_genre->name = Genre::where('id', $key)->first()->name;
             $secondary_genre->title_id = $title->id;
@@ -49,6 +52,7 @@ class TitleController extends Controller
     {
         $title->title = $request->title;
         $title->genre_id = $request->genre_id;
+        $title->img_url = $request->src ? $request->src : $title->img_url;
         $title->save();
         return redirect()->back();
     }
@@ -59,6 +63,11 @@ class TitleController extends Controller
     public function secondary_genres(Title $title)
     {
         return view('admin.titles.secondary_genres', ['all' => Genre::all(), 'genres' => $title->secondary_genre_relationships(), 'title' => $title]);
+    }
+    public function destroy(Title $title)
+    {
+        $title->delete();
+        return redirect()->action([TitleController::class, 'index']);
     }
     public function update_genres(Request $request, Title $title)
     {

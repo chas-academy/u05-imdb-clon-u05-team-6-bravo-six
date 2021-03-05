@@ -12,8 +12,12 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
+// image
+use App\Http\Controllers\UploadController;
+// image
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\WatchlistItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -57,6 +61,9 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
 
     //REVIEW ROUTE FOR ADMIN
     Route::resource('reviews', AdminReviewController::class); //JE
+
+    Route::get('/upload', [UploadController::class, 'uploadForm']);
+    Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -65,16 +72,12 @@ Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistitems', WatchlistItemController::class);
+//Search route
+Route::get('/search', [TitleController::class, 'search']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Comments
-// Route::post('/comments/{$review->id}', [CommentController::class, 'comments.store']);
-// Route::get('/comments/{id}/edit', [CommentController::class, 'comments.edit']);
-// Route::put('/comments/{id}', [CommentController::class, 'comments.update']);
-// Route::delete('/comments/{id}', [CommentController::class, 'comments.destroy']);
-// Route::get('/comments/{id}/delete', [CommentController::class, 'comments.delete']);
+//Image route
