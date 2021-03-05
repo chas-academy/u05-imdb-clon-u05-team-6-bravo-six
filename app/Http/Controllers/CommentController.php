@@ -7,6 +7,7 @@ use App\Models\Review;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CommentController extends Controller
 {
@@ -44,6 +45,9 @@ class CommentController extends Controller
         $this->validate($request, array(
             'comment'   =>  'required|min:5|max:2000'
         ));
+
+        // $review = Post::find($review_id);
+
         $comment = new Comment();
         $comment->name = Auth::user()->name;
         $comment->user_id = Auth::user()->id;
@@ -67,26 +71,46 @@ class CommentController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Comment  $comment
+     * @param \App\Models\Comment $comment
      * @return \Illuminate\Http\Response
      */
     public function edit(Comment $comment)
     {
-        //
+        if (Auth::id()  !== $comment->user_id){
+            return redirect()->back();
+        } else {
+            return view('comments.edit', ['comment' => $comment]);
+        }
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
+     * @param  int  $review_id
      * @param  \App\Models\Comment  $comment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Comment $comment)
+    public function update(Request $request, Comment $comment) //$review_id
     {
-        //
+        $this->validate($request, array('comment' => 'required'));
+        $comment->body = $request->comment;
+        $comment->save();
+
+        Session::flash('success', 'Comment updated');
+
+        return redirect()->route('reviews.show', ['review' => $comment->review_id]);
     }
 
+
+    public function delete($comment)
+    {
+        if (Auth::id()  !== $comment->user_id){
+        return redirect()->back();
+    } else {
+        return view('comments.delete')->withComment($comment);
+    }
+    }
     /**
      * Remove the specified resource from storage.
      *
@@ -95,6 +119,8 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        //
+        $comment->delete();
+        Session::flash('success', 'Deleted Comment');
+        return redirect()->route('reviews.show', ['review' => $comment->review_id]);
     }
 }
