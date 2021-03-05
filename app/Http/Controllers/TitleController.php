@@ -28,6 +28,30 @@ class TitleController extends Controller
         //
     }
 
+    //Used for search function on home page
+    public function search(Request $request)
+    {
+        $key = trim($request->get('q'));
+
+        $titles = Title::query()
+            ->where('title', 'like', "%{$key}%")
+            ->orderBy('created_at', 'desc')
+            ->get();
+
+
+        //get the recent 5 titles
+        $recent_titles = Title::query()
+            ->orderBy('created_at', 'desc')
+            ->take(5)
+            ->get();
+
+        return view('search', [
+            'key' => $key,
+            'titles' => $titles,
+            'recent_titles' => $recent_titles
+        ]);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -47,7 +71,7 @@ class TitleController extends Controller
      */
     public function show(Title $title)
     {
-        return view('titles.show', ['title' => $title]);
+        return view('titles.show', ['title' => $title, 'reviews' => collect($title->reviews())->sortByDesc('updated_at')]);
     }
 
     /**

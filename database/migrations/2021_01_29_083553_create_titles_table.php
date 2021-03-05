@@ -16,10 +16,11 @@ class CreateTitlesTable extends Migration
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
+            $table->string('description');
             $table->timestamps();
-            $table->foreignId('genre_id')->constrained(); //this is PRIMARY_GENRE 
-            $table->foreignId('user_id')->constrained(); //this also?
-            // $table->foreignId('title_id')->constrained(); //this is most likely a mistake
+            $table->foreignId('genre_id')->constrained()->onDelete('cascade'); //this is PRIMARY_GENRE
+            $table->foreignId('user_id')->constrained()->onDelete('cascade'); //this also?
+
         });
     }
 

@@ -1,13 +1,23 @@
 <?php
 
+use App\Http\Controllers\Admin\CommentController as AdminCommentController;
+use App\Http\Controllers\Admin\DashboardController;
+use App\Http\Controllers\Admin\TitleController as AdminTitleController;
+use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\GenreController as AdminGenreController;
+use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
+// image
+use App\Http\Controllers\UploadController;
+// image
 use App\Http\Controllers\WatchlistController;
 use App\Http\Controllers\WatchlistItemController;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -36,7 +46,25 @@ Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'inde
 require __DIR__ . '/auth.php';
 
 Auth::routes();
+Route::prefix('admin')->middleware('user_admin')->group(function () {
+    Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
+    Route::resource('users', UserController::class);
+    // TITLE ROUTES FOR ADMIN
+    Route::get('/titles/{title}/reviews', [AdminTitleController::class, 'reviews']);
+    Route::get('/titles/{title}/secondary-genres', [AdminTitleController::class, 'secondary_genres']);
+    Route::put('/titles/{title}/secondary-genres', [AdminTitleController::class, 'update_genres']);
+    Route::resource('titles', AdminTitleController::class);
+    //
+    //COMMENT ROUTES FOR ADMIN
+    Route::resource('comments', AdminCommentController::class);
+    Route::resource('genres', AdminGenreController::class);
 
+    //REVIEW ROUTE FOR ADMIN
+    Route::resource('reviews', AdminReviewController::class); //JE
+
+    Route::get('/upload', [UploadController::class, 'uploadForm']);
+    Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
+});
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
 Route::resource('titles', TitleController::class);
@@ -44,9 +72,12 @@ Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistitems', WatchlistItemController::class);
+//Search route
+Route::get('/search', [TitleController::class, 'search']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
 // Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+//Image route

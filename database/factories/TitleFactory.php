@@ -23,6 +23,7 @@ class TitleFactory extends Factory
     {
         return [
             'title' => $this->faker->streetName,
+            'description' => $this->faker->text($maxNbChars = 200),
             'genre_id' => \App\Models\Genre::inRandomOrder()->value('id'), //PRIMARY GENRE
             'user_id' => \App\Models\User::inRandomOrder()->value('id'), //is this needed?
         ];

@@ -7,9 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 
 class WatchlistItem extends Model
 {
-    public function WatchlistItem()
+    public function watchlist()
     {
         return $this->belongsTo('\App\Models\Watchlist')->first();
+    }
+    public function title()
+    {
+        return $this->belongsTo('\App\Models\Title')->first();
     }
     use HasFactory;
 }

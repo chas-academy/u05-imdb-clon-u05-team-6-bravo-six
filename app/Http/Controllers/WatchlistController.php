@@ -11,4 +11,10 @@ class WatchlistController extends Controller
     {
         return view('watchlists.index', ['watchlists' => Watchlist::all()]);
     }
+
+    public function show(Watchlist $watchlist)
+    {
+        return view('watchlists.show', ['watchlist' => $watchlist, 'watchlistItems' => $watchlist->watchlistItems()]);
+        //
+    }
 }

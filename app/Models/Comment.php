@@ -20,6 +20,10 @@ class Comment extends Model
      */
     private $approved;
 
+    public static function find(Comment $comment)
+    {
+    }
+
     public function user()
     {
         return $this->belongsTo('\App\Models\User')->first();
@@ -27,7 +31,7 @@ class Comment extends Model
 
     public function review()
     {
-        return $this->belongsTo('\App\Model\Review')->first();
+        return $this->belongsTo('\App\Models\Review')->first();
     }
 
     public function title()
