@@ -70,10 +70,9 @@ class TitleController extends Controller
         return redirect()->action([TitleController::class, 'index']);
     }
     public function update_genres(Request $request, Title $title)
-    {
+    { 
         $data = $request->except(['_token', '_method']);
         $haystack = $title->secondary_genre_relationships();
-        // dd($haystack);
         foreach ($data as $key => $value) {
             if ($haystack->where('genre_id', intval($key))->count() === 0) {
                 $genre = new SecondaryGenre;
@@ -89,5 +88,6 @@ class TitleController extends Controller
             };
         };
         return redirect()->back();
-    }
+    } 
+    
 }

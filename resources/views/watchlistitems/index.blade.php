@@ -2,8 +2,8 @@
 @section('content')
 
 <ul>
-@foreach ($watchlistitems as $watchlistitem)
-<li>{{$watchlistitem->title_id}}<span> belongs to: {{$watchlistitem->watchlist_id}} </span></li>
+@foreach ($watchlistItems as $watchlistItem)
+<li>{{$watchlistItem->title_id}}<span> belongs to: {{$watchlistItem->watchlist_id}} </span></li>
 @endforeach
 </ul>
 
