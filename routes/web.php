@@ -73,7 +73,6 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('watchlistItems', AdminWatchlistItemController::class);
     Route::get('/upload', [UploadController::class, 'uploadForm']);
     Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
-
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
