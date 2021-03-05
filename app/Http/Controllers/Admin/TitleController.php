@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Genre;
+use App\Models\Review;
 use App\Models\SecondaryGenre;
 use App\Models\Title;
 use App\Models\User;
@@ -58,7 +59,12 @@ class TitleController extends Controller
     }
     public function reviews(Title $title)
     {
-        return view('admin.titles.reviews', ['reviews' => $title->reviews(), 'title' => $title]);
+        $sort = request('sort') ? request('sort') : 'updated_at';
+        $reviews = Review::where('title_id', $title->id)->orderByDesc($sort)->paginate(25);
+        if ($sort === 'title' || $sort === 'id') {
+            $reviews = Review::where('title_id', $title->id)->orderBy($sort)->paginate(25);
+        };
+        return view('admin.titles.reviews', ['reviews' => $reviews, 'title' => $title]);
     }
     public function secondary_genres(Title $title)
     {
