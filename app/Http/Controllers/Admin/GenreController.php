@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Genre;
+use App\Models\SecondaryGenre;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
@@ -57,7 +58,6 @@ class GenreController extends Controller
     {
 
         return view('admin.genres.show', ['genre' => $genre]);
-
     }
 
     /**
@@ -80,8 +80,8 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        $genre->name = $request->genre;
-        $genre->id = $request->id;
+        $genre->name = $request->name;
+        $genre->hasMany('App\Models\SecondaryGenre')->update(['name' => $request->name]);
         $genre->save();
         return redirect()->back();
     }
