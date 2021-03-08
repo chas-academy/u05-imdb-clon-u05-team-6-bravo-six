@@ -29,7 +29,7 @@ class WatchlistController extends Controller
     public function update(Request $request, Watchlist $watchlist)
     {
         $watchlist->name = $request->name;
-        
+        $watchlist->public = $request->public ? true : false;
         $watchlist->save();
         return redirect()->action([WatchlistController::class, 'index']);
     }
@@ -41,27 +41,31 @@ class WatchlistController extends Controller
     {
         $watchlist = new Watchlist;
         $watchlist->name = $request->name;
+        $watchlist->public
+            = $request->public ? true : false;
         $watchlist->user_id = $request->user_id;
         $watchlist->save();
         return redirect()->action([WatchlistController::class, 'index']);
     }
-    public function addItems(Watchlist $watchlist){
+    public function addItems(Watchlist $watchlist)
+    {
         $titles = null;
-        if (request('query')){
-                    $key = request('query');
+        if (request('query')) {
+            $key = request('query');
 
-        $titles = Title::query()
-            ->where('title', 'like', "%{$key}%")
-            ->orderBy('created_at', 'desc')->paginate(25);
+            $titles = Title::query()
+                ->where('title', 'like', "%{$key}%")
+                ->orderBy('created_at', 'desc')->paginate(25);
         };
-        
+
         return view('admin.watchlists.addItems', ['watchlist' => $watchlist, 'titles' => $titles, 'old' => $watchlist->watchlistItems()]);
     }
-    public function addWatchlistItem(Watchlist $watchlist, Request $request){
+    public function addWatchlistItem(Watchlist $watchlist, Request $request)
+    {
         $item = new WatchlistItem;
         $item->watchlist_id = $watchlist->id;
         $item->title_id = $request->title_id;
         $item->save();
         return redirect()->back();
-    }    
+    }
 }

@@ -11,8 +11,8 @@
         <label>User ID: </label>
         <input class="form-control" name="user_id">
     </div>
-    
-    
+    <label for="name">Make it public?</label>
+    <input class="form-control" type="checkbox" class="form-control" name="public">
     <button class="btn btn-secondary btn-lg" type="submit" value="Update">Create watchlist</button>
 </form>
 @endsection

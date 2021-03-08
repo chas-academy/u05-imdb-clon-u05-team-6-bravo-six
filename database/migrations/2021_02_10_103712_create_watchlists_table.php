@@ -17,6 +17,7 @@ class CreateWatchlistsTable extends Migration
             $table->id();
             $table->foreignId('user_id')->constrained()->onDelete('cascade');
             $table->string("name");
+            $table->boolean("public");
             $table->timestamps();
         });
     }
