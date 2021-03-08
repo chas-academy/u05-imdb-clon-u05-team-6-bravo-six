@@ -1,4 +1,5 @@
 <div class="mx-2">
+
     <div class="card title-card">
    <h5>{{$title->title}}</h5>
    <img src="{{$title->img_url}}">
@@ -7,11 +8,12 @@
    <div class="dropdown_watchlists">
         <ul>
         @foreach (Auth::user()->watchlists() as $watchlist)
+        
         <li class="watchlist_listitem 
-        @if($watchlist->watchlistItems()->contains($title->id))
+        @if($watchlist->watchlistItems()->contains('title_id', $title->id))
         added
         @endif
-        ">{{$watchlist->name}}</li>
+        " data-id="{{$watchlist->id}}" data-title="{{$title->id}}">{{$watchlist->name}}</li>
         @endforeach
         </ul>
    </div>

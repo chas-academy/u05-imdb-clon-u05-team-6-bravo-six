@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Watchlist;
-
+use App\Models\WatchlistItem;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -39,5 +39,19 @@ class WatchlistController extends Controller
         $newWatchlist->save();
         return redirect()->action([WatchlistController::class, 'show'], ['watchlist' => $newWatchlist->id]);
         // ]);
+    }
+    public function add_title_to_watchlist(Watchlist $watchlist, \App\Models\Title $title)
+    {
+        if ($watchlist->watchlistItems()->contains('title_id', $title->id)) {
+            $watchlist->watchlistItems()->toQuery()->where('title_id', $title->id)->delete();
+            return json_encode(['status' => 205]);
+        }
+        $title_id = $title->id;
+        $watchlist_id = $watchlist->id;
+        $watchlistItem = new WatchlistItem;
+        $watchlistItem->title_id = $title_id;
+        $watchlistItem->watchlist_id = $watchlist_id;
+        $watchlistItem->save();
+        return json_encode(['status' => 203]);
     }
 }
