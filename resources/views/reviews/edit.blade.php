@@ -14,12 +14,13 @@
             <br>
             <div class="form-group">
             <label for="rating">Choose a rating</label>
+            
             <select class="form-control" id="rating" name="rating" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
+                <?php
+            $num = 6;
+            for ($i = 1; $i<$num; $i++){
+                echo $i === $review->rating ? "<option value='$i' selected>$i</selected>" :"<option value='$i'>$i</option>"; 
+            };?>
             </select>
         </div>
         <div class="form-group">
@@ -31,13 +32,12 @@
             <textarea class="form-control" name="body" id="body" required>{{$review->body}}</textarea>
         </div>
         <button class="glyphicon glyphicon-trash" onsubmit="" class="btn">Update review</button>
-        <form action="{{route('reviews.destroy', $review->id)}}" method="POST">
-            @method('DELETE')
-            @csrf
-            <button type="submit" class="glyphicon glyphicon-trash" class="btn">Delete</button>
-        </form>
     </div>
 </div>
+</form>
+<form action="{{route('reviews.delete', $review->id)}}" method="GET">
+    @csrf
+    <button type="submit" class="glyphicon glyphicon-trash" class="btn">Delete</button>
 </form>
 @else
 <p>You need to <a href="{{route('login')}}">log in</a> to make a review!</p>

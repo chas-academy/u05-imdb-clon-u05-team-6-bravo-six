@@ -57,7 +57,7 @@
                     <td>{{ $comment->body }}</td>
                     <td>
                         @if(!Auth::guest())
-                            @if (Auth::id()  == $review->user_id)
+                            @if (Auth::id()  == $comment->user_id)
                                 <a href="{{ route('comments.edit', $comment->id) }}" class="btn primary">Edit<span class="glyphicon glyphicon-pencil"></span></a>
                                 <form method="POST" action="{{route('comments.destroy', $comment->id)}}">
                                     @method('DELETE')

@@ -1,4 +1,4 @@
-@extends('main')
+@extends('layouts.app')
 
 @section('title', '| DELETE REVIEW?')
 
@@ -9,11 +9,12 @@
             <h1>DELETE THIS REVIEW?</h1>
             <p>
                 <strong>Title:</strong> {{ $review->title }}<br>
-                <strong>Review:</strong> {{ $review->review }}
+                <strong>Review:</strong> {{ $review->body }}
             </p>
-            <form action="{{action(['route' => ['reviews.destroy', $review->review], 'method' => 'DELETE'])}}" >
+            <form action="{{route('reviews.destroy', ['review' => $review->id])}}" method="POST">
                 @csrf
-                <button onsubmit="" class="btn">Delete review</button>
+                @method('DELETE')
+                <button type="submit" class="btn btn-danger">Delete review</button>
             </form>
         </div>
     </div>
