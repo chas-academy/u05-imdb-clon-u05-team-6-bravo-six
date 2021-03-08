@@ -28,7 +28,7 @@
                     </div>
                     <div class="form-group">
                         <label for="title">Title</label>
-                        <input class="form-control" name="title" id="title" type="text" required>
+                        <input class="form-control" placeholder="Title" name="title" id="title" type="text" required>
                     </div>
                     <div class="form-group">
                         <label for="body">Write your review here</label>

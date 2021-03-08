@@ -7,6 +7,7 @@ use App\Models\Title;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ReviewController extends Controller
 {
@@ -70,14 +71,13 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit(Title $title, $id)
+    public function edit(Review $review)
     {
-        $review = Review::find($id);
-
-        return view('title.review.edit', [
-            'title' => $title,
-            'review' => $review,
-        ]);
+        if (Auth::id()  !== $review->user_id) {
+            return redirect()->back();
+        } else {
+            return view('reviews.edit', ['review' => $review]);
+        }
     }
 
     /**
@@ -87,9 +87,38 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+
+    public function update(Request $request, Review $review)
     {
-        //
+
+        // $title_id = $request->title_id;
+        // $review = new Review;
+        // $review->rating = $request->rating;
+        // $review->title = $request->title;
+        // $review->body = $request->body;
+        // $review->title_id = $title_id;
+        // $review->user_id = Auth::user()->id;
+        // $review->save();
+        // return redirect()->action([ReviewController::class, 'show'], ['review' => $review->id]);
+
+
+
+        $this->validate($request, array('review' => 'required'));
+        $review->body = $request->review;
+        $review->save();
+
+        Session::flash('success', 'Review updated');
+
+        return redirect()->route('reviews.show', ['review' => $review->review_id]);
+    }
+
+    public function delete($review)
+    {
+        if (Auth::id()  !== $review->user_id) {
+            return redirect()->back();
+        } else {
+            return view('reviews.delete')->withReview($review);
+        }
     }
 
     /**
@@ -98,8 +127,10 @@ class ReviewController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Review $review)
     {
-        //
+        $review->delete();
+        Session::flash('success', 'Review removed!');
+        return redirect()->route('reviews.show', ['review' => $review->review_id]);
     }
 }
