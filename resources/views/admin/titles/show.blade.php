@@ -4,7 +4,7 @@
 @section('content')
 <h4>Viewing title</h4>
 <a href=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'index'])}} ">Go back to titles</a>
-<form method="POST" action="{{action([\App\Http\Controllers\Admin\TitleController::class, 'update'], ['title' => $title->id])}}">
+<form method="POST" id="update" action="{{action([\App\Http\Controllers\Admin\TitleController::class, 'update'], ['title' => $title->id])}}">
     @csrf
     @method('PUT')
     <div class="form-group">
@@ -17,7 +17,7 @@
     </div>
     <div class="form-group">
         <p>Image:</p>
-        <img id="title-image-update" src="{{$title->img_url}}">
+        <img id="title-image-update" src="{{$title->img_url}}" alt="No image">
         <span id="original-img-address" style="display: none">{{$title->img_url}}</span>
     </div>
     <button  class="btn btn-primary toggles-search">Select a new image</button>
@@ -30,10 +30,6 @@
         <label>Primary Genre:</label>
         <x-primary-genre-select selected="{{$title->genre_id}}"></x-primary-genre-select>
     </div>
-    @if ($title->img_url !== null)
-    {{-- <img src="public/storage/{{$title->img_url}}" alt="No photo" > --}}
-    <img src="{{ asset('storage/' . $title->img_url) }}" alt="No photo">
-    @endif
     <div class="form-group">
         <label>Created at: </label>
         <input class="form-control" disabled value="{{$title->created_at}}">
@@ -46,16 +42,23 @@
         <label>Created by: </label>
         <input class="form-control" disabled value="{{$title->user()->name}}">
     </div>
-    <button class="btn btn-secondary btn-lg" type="submit">Save changes</button>
+
 </form>
-<form method="POST" action=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'destroy'], ['title' => $title->id])}} ">
+<form method="POST" id="delete" action=" {{action([\App\Http\Controllers\Admin\TitleController::class, 'destroy'], ['title' => $title->id])}} ">
     @csrf
     @method('DELETE')
-<button type="submit" class="btn btn-danger btn-lg">Delete title</button>
+
 </form>
-<div class="container">
+<div class="row">
+    <button form="update" class="btn btn-primary btn-lg" type="submit">Save changes</button>
+    <button form="delete" type="submit" class="btn btn-danger btn-lg">Delete title</button>
+</div>
+<div class="">
     <h3>Relationships</h3>
-    <div><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'secondary_genres'], ['title' => $title->id])}}">Secondary Genres</a></div>
-    <div><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'reviews'], ['title' => $title->id])}}">Reviews</a>
+    <div>
+    <a class="btn btn-info" href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'secondary_genres'], ['title' => $title->id])}}">Secondary Genres</a>
+    @if ($title->reviews()->count() > 0)
+    <a class="btn btn-info" href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'reviews'], ['title' => $title->id])}}">Reviews</a></div>
+    @endif
 </div>
 @endsection

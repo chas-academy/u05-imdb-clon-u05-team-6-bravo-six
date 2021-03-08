@@ -53,7 +53,7 @@
                 <h3><a class="float-left" href=" {{action([App\Http\Controllers\ReviewController::class, 'show'], ['review' => $review->id])}} ">{{$review->title}}</a>
                     <small class="text-muted float-right">{{$review->user()->name}}</small>
                 </h3>
-            <span>{{$review->body}}</span>
+            <span>{{strlen($review->body) > 50 ? substr($review->body,0,50)."...": $review->body}}</span>
             </div>
         <br/>
         </div>
