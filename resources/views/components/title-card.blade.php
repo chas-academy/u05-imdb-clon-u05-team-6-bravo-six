@@ -1,5 +1,4 @@
 <div class="mx-2">
-
     <div class="card title-card">
    <h5>{{$title->title}}</h5>
    <img src="{{$title->img_url}}">
@@ -17,6 +16,5 @@
         @endforeach
         </ul>
    </div>
-</div>
-
+  </div>
 </div>
