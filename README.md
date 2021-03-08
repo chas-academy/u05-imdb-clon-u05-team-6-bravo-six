@@ -169,7 +169,14 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 #### How Bootstrap grid system works:
 <a href="https://getbootstrap.com/docs/4.0/layout/grid/">Documentation</a>
 
+<!-- ADD PROFILE PICTURES -->
+## Upload profile pictures
 
+You have to create a storage link to be able to see and upload profile pictures.
+    
+```sh
+php artisan storage:link
+```
 
 <!-- ROADMAP -->
 ## Roadmap

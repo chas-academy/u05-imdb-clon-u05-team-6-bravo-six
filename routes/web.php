@@ -6,6 +6,8 @@ use App\Http\Controllers\Admin\TitleController as AdminTitleController;
 use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers\Admin\GenreController as AdminGenreController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
+use App\Http\Controllers\Admin\WatchlistController as AdminWatchlistController;
+use App\Http\Controllers\Admin\WatchlistItemController as AdminWatchlistItemController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
@@ -62,9 +64,15 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     //REVIEW ROUTE FOR ADMIN
     Route::resource('reviews', AdminReviewController::class); //JE
 
+    //WATCHLIST ROUTE FOR ADMIN
+    Route::get('watchlists/{watchlist}/addItems', [AdminWatchlistController::class, 'addItems'])->name('watchlists.addItems');
+    Route::post('watchlists/{watchlist}/addWatchlistItem', [AdminWatchlistController::class, 'addWatchlistItem'])->name('watchlists.addWatchlistItem');
+    Route::resource('watchlists', AdminWatchlistController::class);
+
+    //WATCHLISTITEM ROUTE FOR ADMIN
+    Route::resource('watchlistItems', AdminWatchlistItemController::class);
     Route::get('/upload', [UploadController::class, 'uploadForm']);
     Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
-
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -72,7 +80,7 @@ Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
-Route::resource('watchlistitems', WatchlistItemController::class);
+Route::resource('watchlistItems', WatchlistItemController::class);
 //Search route
 Route::get('/search', [TitleController::class, 'search']);
 
