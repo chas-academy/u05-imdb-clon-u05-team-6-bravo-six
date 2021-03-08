@@ -14,6 +14,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
+use App\Http\Controllers\UserProfileController;
 // image
 use App\Http\Controllers\UploadController;
 // image
@@ -81,6 +82,7 @@ Route::resource('comments', CommentController::class);
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
+Route::resource('user-profile', UserProfileController::class);
 //Search route
 Route::get('/search', [TitleController::class, 'search']);
 
