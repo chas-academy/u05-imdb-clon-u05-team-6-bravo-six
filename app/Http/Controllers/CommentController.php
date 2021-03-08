@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Comment;
 use App\Models\Review;
+use Illuminate\Support\Facades\Gate;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -76,7 +77,7 @@ class CommentController extends Controller
      */
     public function edit(Comment $comment)
     {
-        if (Auth::id()  !== $comment->user_id){
+        if (!Gate::allows('handle-comment', $comment)) {
             return redirect()->back();
         } else {
             return view('comments.edit', ['comment' => $comment]);
@@ -93,23 +94,27 @@ class CommentController extends Controller
      */
     public function update(Request $request, Comment $comment) //$review_id
     {
-        $this->validate($request, array('comment' => 'required'));
-        $comment->body = $request->comment;
-        $comment->save();
+        if (!Gate::allows('handle-comment', $comment)) {
+            return redirect()->back();
+        } else {
+            $this->validate($request, array('comment' => 'required'));
+            $comment->body = $request->comment;
+            $comment->save();
 
-        Session::flash('success', 'Comment updated');
+            Session::flash('success', 'Comment updated');
 
-        return redirect()->route('reviews.show', ['review' => $comment->review_id]);
+            return redirect()->route('reviews.show', ['review' => $comment->review_id]);
+        }
     }
 
 
     public function delete($comment)
     {
-        if (Auth::id()  !== $comment->user_id){
-        return redirect()->back();
-    } else {
-        return view('comments.delete')->withComment($comment);
-    }
+        if (!Gate::allows('handle-comment', $comment)) {
+            return redirect()->back();
+        } else {
+            return view('comments.delete')->withComment($comment);
+        }
     }
     /**
      * Remove the specified resource from storage.
@@ -119,8 +124,12 @@ class CommentController extends Controller
      */
     public function destroy(Comment $comment)
     {
-        $comment->delete();
-        Session::flash('success', 'Deleted Comment');
-        return redirect()->route('reviews.show', ['review' => $comment->review_id]);
+        if (!Gate::allows('handle-comment', $comment)) {
+            return redirect()->back();
+        } else {
+            $comment->delete();
+            Session::flash('success', 'Deleted Comment');
+            return redirect()->route('reviews.show', ['review' => $comment->review_id]);
+        }
     }
 }
