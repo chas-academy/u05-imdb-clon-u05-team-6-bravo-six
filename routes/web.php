@@ -79,6 +79,7 @@ Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
 Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
+Route::get('/reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
