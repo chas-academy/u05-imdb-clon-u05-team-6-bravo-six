@@ -1,9 +1,30 @@
 @extends('layouts.app')
 @section('content')
             <div class="container">
-                <h1 class="text-center">Welcome <x-image-layout :user="Auth::user()"></x-image-layout> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </h1>
-                <div class="row">
-                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12" >
+                <div class="row justify-content-center">
+                    <h1 class="text-center mr-3">Welcome </h1>  
+                    <x-image-layout :user="Auth::user()"></x-image-layout>
+                    <h1 class="ml-3"> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </h1>
+                </div>
+                <hr/>
+                <h3 class="text-center">Your watchlists:</h3>
+                    <div class="jumbotron">
+                    
+                    <div class= "d-flex flex-row justify-content-around">
+                        
+                        @foreach ($watchlists as $watchlist)
+                        <div class="card text-center col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                            <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}">{{$watchlist->name}}</a>
+                            <small class="text-muted">
+                                {{$watchlist->created_at}}
+                            </small>
+                        </div>
+                        
+                        @endforeach
+                        </div>
+                    </div>
+                    <div class="row">
+                    <div class= "card col-xl-4 col-lg-6 col-md-12 col-sm-12" >
                     <h3 class="text-center">Recent activity:</h3>
                     @foreach ($sortedData as $data)
                     <li>
@@ -27,7 +48,7 @@
                     </li>
                     @endforeach
                     </div>
-                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class= "card col-xl-4 col-lg-6 col-md-12 col-sm-12">
                         <h3 class="text-center">Your Reviews:</h3>
                         @foreach ($reviews as $review)
                             <div class="card">
@@ -49,7 +70,7 @@
                         <br/>
                         @endforeach
                     </div>
-                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class= "card col-xl-4 col-lg-6 col-md-12 col-sm-12">
                     <h3 class="text-center">Your comments:</h3>
                         @foreach ($comments as $comment)
                         <div class="card">
@@ -63,18 +84,7 @@
                         <br/>
                         @endforeach
                     </div>
-                    <div class= "card col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                    <h3 class="text-center">Your watchlists:</h3>
-                    @foreach ($watchlists as $watchlist)
-                    <div class="card">
-                        <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}">{{$watchlist->name}}</a>
-                        <small class="text-muted">
-                            {{$watchlist->created_at}}
-                        </small>
-                    </div>
-                    <br/>
-                    @endforeach
-                    </div>
+                    
                 </div>
             </div>
             @endsection
