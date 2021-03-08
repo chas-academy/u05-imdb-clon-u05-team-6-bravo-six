@@ -10,7 +10,7 @@
                 <h3 class="text-center">Your watchlists:</h3>
                     <div class="jumbotron">
                     
-                    <div class= "d-flex flex-row justify-content-around">
+                    <div class= "d-flex flex-row justify-content-evenly flex-wrap">
                         
                         @foreach ($watchlists as $watchlist)
                         <div class="card text-center col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -23,33 +23,52 @@
                         @endforeach
                         </div>
                     </div>
-                    <div class="row">
-                    <div class= "card col-xl-4 col-lg-6 col-md-12 col-sm-12" >
                     <h3 class="text-center">Recent activity:</h3>
+                    <div class= "col-xl-12 col-lg-12 col-md-12 col-sm-12">
+                    <hr/>
+                    <div class="d-flex flex-row justify-content-evenly flex-wrap">
                     @foreach ($sortedData as $data)
-                    <li>
+                    <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12">
                         @if ($data->getTable() === "reviews")
+                        <p><b>Review Movie titled:
+                            <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ["title" => $data->title_id])}}">
+                                {{$data->title()->title}}
+                            </a>
+                        </b></p>
+                        <p>Review title:
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->id])}}">
                             {{$data->title}}
                         </a>
-                        <br/>
+                    </p>
                         <small class="text-muted">
                             {{$data->updated_at}}
                         </small>
                         @else
+                        <p><b>Commented review on:
+                            <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ["title" => $data->review()->title_id])}}">
+                                {{$data->review()->title()->title}}
+                            </a>
+                        </b></p>
+                        
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->review_id])}}">
-                            {{$data->body}}
+                            {{strlen($data->body)>50 ? substr($data->body,0,50) . "...": $data->body}}
                         </a>
-                        <br/>
+                        
                         <small class="text-muted">
                             {{$data->updated_at}}
                         </small>
                         @endif
-                    </li>
+                    </div>
                     @endforeach
                     </div>
-                    <div class= "card col-xl-4 col-lg-6 col-md-12 col-sm-12">
-                        <h3 class="text-center">Your Reviews:</h3>
+                    </div>
+                    <br/>
+                    <div class="d-flex flex-row justify-content-around flex-wrap">
+                        
+                        
+                        <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <h3 class="text-center">Your reviews:</h3>
+                            <hr/>
                         @foreach ($reviews as $review)
                             <div class="card">
                                 <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
@@ -60,7 +79,7 @@
                                 </a>
                                 <div>
                                 @for($i=0; $i < $review->rating; $i++)
-                                    <img class="float-left" style="width: 10%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
+                                    <img class="float-left" style="width: 5%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
                                 @endfor
                                 </div>
                                 <small class="text-muted">
@@ -70,8 +89,9 @@
                         <br/>
                         @endforeach
                     </div>
-                    <div class= "card col-xl-4 col-lg-6 col-md-12 col-sm-12">
-                    <h3 class="text-center">Your comments:</h3>
+                    <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                        <h3 class="text-center ">Your comments:</h3>
+                        <hr/>
                         @foreach ($comments as $comment)
                         <div class="card">
                             <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
