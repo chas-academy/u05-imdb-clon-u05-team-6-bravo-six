@@ -32,7 +32,15 @@
 
     <div id="backend-comments" style="margin-top: 50px;">
         <h3>Comments <small>{{ $review->comments()->count() }} total</small></h3>
-
+        @if($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
         <table class="table">
             <thead>
             <tr>

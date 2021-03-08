@@ -104,12 +104,11 @@ class ReviewController extends Controller
 
 
         $this->validate($request, array('review' => 'required'));
+        $review->rating = $request->rating;
         $review->body = $request->review;
         $review->save();
 
-        Session::flash('success', 'Review updated');
-
-        return redirect()->route('reviews.show', ['review' => $review->review_id]);
+        return redirect()->route('reviews.show', ['review' => $review->id]);
     }
 
     public function delete($review)

@@ -24,15 +24,11 @@
         </div>
         <div class="form-group">
             <label for="title">Title</label>
-            <textarea class="form-control" placeholder="Title" name="title" id="title" type="text" required>
-                {{$review->title}}
-            </textarea>
+            <textarea class="form-control" placeholder="Title" name="title" id="title" type="text" required>{{$review->title}}</textarea>
         </div>
         <div class="form-group">
             <label for="body">Edit your review here</label>
-            <textarea class="form-control" name="body" id="body" required>
-                {{$review->body}}
-            </textarea>
+            <textarea class="form-control" name="body" id="body" required>{{$review->body}}</textarea>
         </div>
         <button class="glyphicon glyphicon-trash" onsubmit="" class="btn">Update review</button>
         <form action="{{route('reviews.destroy', $review->id)}}" method="POST">
