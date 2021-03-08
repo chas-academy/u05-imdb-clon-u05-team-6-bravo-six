@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Genre;
+use App\Models\SecondaryGenre;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 
@@ -16,8 +17,10 @@ class GenreController extends Controller
      */
     public function index()
     {
-        //
-        return view('admin.genres.index', ['genres' => Genre::all()]);
+        $sort = (request()->get('sort')) ? request()->get('sort') : 'id';
+        $genres = Genre::orderBy($sort)->paginate(25);
+        return view('admin.genres.index', ['genres' => $genres, 'sort' => $sort]);
+        // return view('admin.genres.index', ['genres' => Genre::all()]);
     }
 
     /**
@@ -27,7 +30,7 @@ class GenreController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.genres.create');
     }
 
     /**
@@ -38,7 +41,11 @@ class GenreController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $genre = new Genre;
+        $genre->name = $request->genre;
+        $genre->save();
+
+        return redirect()->action([GenreController::class, 'index']);
     }
 
     /**
@@ -49,9 +56,8 @@ class GenreController extends Controller
      */
     public function show(Genre $genre)
     {
-        //'/genres/4
-        $titles = $genre->titlesSecondary();
-        return view('genres.show', ['genre' => $genre, 'titles' => $titles]);
+
+        return view('admin.genres.show', ['genre' => $genre]);
     }
 
     /**
@@ -74,7 +80,10 @@ class GenreController extends Controller
      */
     public function update(Request $request, Genre $genre)
     {
-        //
+        $genre->name = $request->name;
+        $genre->hasMany('App\Models\SecondaryGenre')->update(['name' => $request->name]);
+        $genre->save();
+        return redirect()->back();
     }
 
     /**
@@ -85,6 +94,7 @@ class GenreController extends Controller
      */
     public function destroy(Genre $genre)
     {
-        //
+        $genre->delete();
+        return redirect(action([GenreController::class, 'index']));
     }
 }
