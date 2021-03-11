@@ -26,5 +26,12 @@
   <a class="btn btn-success btn-lg" href="{{action([App\Http\Controllers\UploadController::class, 'uploadForm'], ['user_id' => $user->id])}}">Upload profile picture</a>
   <button class="btn btn-secondary btn-lg" type="submit" value="Update">Save changes</button>
 </form>
+<form method="POST" action="{{action([\App\Http\Controllers\UserController::class, 'destroy'], ['user' => $user->id])}}">
+    @method("DELETE")
+    @csrf
+    <td>
+        <button class="btn btn-danger btn-lg" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+    </td>
+</form>
 
 @endsection
