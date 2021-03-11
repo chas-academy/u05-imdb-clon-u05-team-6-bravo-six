@@ -3,7 +3,7 @@
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TitleController as AdminTitleController;
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserControllern as AdminUserController;
 use App\Http\Controllers\Admin\GenreController as AdminGenreController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\WatchlistController as AdminWatchlistController;
@@ -14,7 +14,7 @@ use App\Http\Controllers\GenreController;
 use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
-use App\Http\Controllers\UserProfileController;
+use App\Http\Controllers\UserController;
 // image
 use App\Http\Controllers\UploadController;
 // image
@@ -83,9 +83,10 @@ Route::get('/reviews/{review}/delete', [ReviewController::class, 'delete'])->nam
 Route::resource('reviews', ReviewController::class);
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
-Route::resource('user-profile', UserProfileController::class);
+Route::resource('user', UserController::class);
 //Search route
 Route::get('/search', [TitleController::class, 'search']);
+
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Controllers\Controller;
+use App\Models\User;
 use Illuminate\Http\Request;
 
-class UserProfileController extends Controller
+
+class UserController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -13,7 +16,9 @@ class UserProfileController extends Controller
      */
     public function index()
     {
-        return view('user-profile.index');
+
+
+
     }
 
     /**
@@ -43,9 +48,9 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(User $user)
     {
-        return view('user-profile.show');
+        return view('user.show', ['user' => $user]);
     }
 
     /**
@@ -66,9 +71,12 @@ class UserProfileController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, User $user)
     {
-        //
+        $user->name = $request->name;
+        $user->email = $request->email;
+        $user->save();
+        return redirect()->back();
     }
 
     /**

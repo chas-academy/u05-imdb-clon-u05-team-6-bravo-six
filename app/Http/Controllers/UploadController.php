@@ -2,7 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Controllers\Admin\UserController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
+use App\Http\Controllers\UserController;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -20,7 +21,6 @@ class UploadController extends Controller
 
     public function uploadFile(Request $request)
     {
-        // Image::make($request->file)->save('storage.jpg');
         $path = $request->file->store('storage');
         // save path in DB
         $user = User::find($request->user_id);
