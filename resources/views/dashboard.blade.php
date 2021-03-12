@@ -8,7 +8,7 @@
                 </div>
                 <hr/>
                 <h3 class="text-center">Your watchlists:</h3>
-                    <div class="jumbotron">
+                    <div class="jumbotron col-xl-12 col-lg-12 col-md-12 col-sm-12">
                     
                     <div class= "d-flex flex-row justify-content-evenly flex-wrap">
                         
