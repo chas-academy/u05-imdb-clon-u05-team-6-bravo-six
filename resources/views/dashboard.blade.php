@@ -7,10 +7,10 @@
                     <h1 class="ml-3"> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </h1>
                 </div>
                 <hr/>
-                <h3 class="text-center">Your watchlists:</h3>
-                    <div class="jumbotron col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    
-                    <div class= "d-flex flex-row justify-content-evenly flex-wrap">
+                <div class="d-flex flex-row flex-wrap">
+                    <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
+                        <h3 class="text-center">Your watchlists:</h3>
+                    <div class= "jumbotron d-flex flex-row justify-content-evenly flex-wrap">
                         
                         @foreach ($watchlists as $watchlist)
                         <div class="card text-center col-xl-3 col-lg-4 col-md-6 col-sm-12">
@@ -23,19 +23,21 @@
                         @endforeach
                         </div>
                     </div>
-                    <h3 class="text-center">Recent activity:</h3>
-                    <div class= "col-xl-12 col-lg-12 col-md-12 col-sm-12">
-                    <hr/>
+                    
+                    <div class= "col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        <h3 class="text-center">Recent activity:</h3>
+                    
                     <div class="d-flex flex-row justify-content-evenly flex-wrap">
                     @foreach ($sortedData as $data)
-                    <div class="card col-xl-3 col-lg-4 col-md-6 col-sm-12">
+                    <div class="card col-xl-12 col-lg-12 col-md-6 col-sm-12">
                         @if ($data->getTable() === "reviews")
-                        <p><b>Review Movie titled:
+                        <p class="card-text"><b>Review Movie titled:
                             <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ["title" => $data->title_id])}}">
                                 {{$data->title()->title}}
                             </a>
                         </b></p>
-                        <p>Review title:
+                        
+                        <p class="card-text">Review title:
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->id])}}">
                             {{$data->title}}
                         </a>
@@ -44,7 +46,7 @@
                             {{$data->updated_at}}
                         </small>
                         @else
-                        <p><b>Commented review on:
+                        <p class="card-text"><b>Commented review on:
                             <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ["title" => $data->review()->title_id])}}">
                                 {{$data->review()->title()->title}}
                             </a>
@@ -62,19 +64,21 @@
                     @endforeach
                     </div>
                     </div>
+                
                     <br/>
-                    <div class="d-flex flex-row justify-content-around flex-wrap">
+                    <div class="d-flex flex-row justify-content-around flex-wrap col-xl-8">
                         
                         
                         <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
                             <h3 class="text-center">Your reviews:</h3>
                             <hr/>
                         @foreach ($reviews as $review)
-                            <div class="card">
-                                <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
+                            <div class="card text-center">
+                                <a class="card-text" href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
                                     <b>{{ $review->title()->title }}</b>
                                 </a>
-                                <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
+                                <div class="card-body">
+                                <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
                                     {{$review->body}}
                                 </a>
                                 <div>
@@ -86,6 +90,7 @@
                                     {{$review->created_at}}
                                 </small>
                             </div>
+                            </div>
                         <br/>
                         @endforeach
                     </div>
@@ -94,18 +99,21 @@
                         <hr/>
                         @foreach ($comments as $comment)
                         <div class="card">
-                            <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
+                            <div class="card-body">
+                            <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
                                 {{$comment->body}}
                             </a>
                             <small class="text-muted">
                                 {{$comment->created_at}}
                             </small>
                         </div>
+                    </div>
                         <br/>
                         @endforeach
                     </div>
                     
                 </div>
+            </div>
             </div>
             @endsection
 
