@@ -5,9 +5,9 @@
     <img class="col-xl-3 col-lg-3" src="https://www.themoviedb.org/t/p/w1280/oHj6guMrLfQcBzo3uxwBJc8Y736.jpg"/>
     <div class="col-lg-9 col-xl-9 float-right mt-xl-5">
         <div class="col-md-8 col-md-offset-2">
-            <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
-                <h1>{{ $review->title()->title }}</h1>
-            </a>
+            <small>Review</small>
+                <h1>{{ $review->title }}</h1>
+            
             <p>{{ $review->body }}</p>
             @if(!Auth::guest())
                 @if (Auth::id() == $review->user_id)
@@ -15,10 +15,9 @@
                 @endif
             @endif
             <hr>
-            <p>Posted In: {{ $review->title()->genre()->name }}</p>
+            <p>Posted on:<a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}"> {{ $review->title()->title}}</a></p>
         </div>
     </div>
-
     <div id="backend-comments" style="margin-top: 50px;">
         <h3>Comments: <small>{{ $review->comments()->count() }} total</small></h3>
         @if($errors->any())
