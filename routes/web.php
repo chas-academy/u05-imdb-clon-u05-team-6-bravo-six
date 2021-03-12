@@ -3,11 +3,13 @@
 use App\Http\Controllers\Admin\CommentController as AdminCommentController;
 use App\Http\Controllers\Admin\DashboardController;
 use App\Http\Controllers\Admin\TitleController as AdminTitleController;
-use App\Http\Controllers\Admin\UserControllern as AdminUserController;
+use App\Http\Controllers\Admin\UserController as AdminUserController;
 use App\Http\Controllers\Admin\GenreController as AdminGenreController;
 use App\Http\Controllers\Admin\ReviewController as AdminReviewController;
 use App\Http\Controllers\Admin\WatchlistController as AdminWatchlistController;
 use App\Http\Controllers\Admin\WatchlistItemController as AdminWatchlistItemController;
+use App\Http\Controllers\Admin\UploadController as AdminUploadController;
+
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\GenreController;
@@ -51,7 +53,7 @@ require __DIR__ . '/auth.php';
 Auth::routes();
 Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
-    Route::resource('users', UserController::class);
+    Route::resource('users', AdminUserController::class);
     // TITLE ROUTES FOR ADMIN
     Route::get('/titles/{title}/reviews', [AdminTitleController::class, 'reviews']);
     Route::get('/titles/{title}/secondary-genres', [AdminTitleController::class, 'secondary_genres']);
@@ -72,8 +74,8 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
 
     //WATCHLISTITEM ROUTE FOR ADMIN
     Route::resource('watchlistItems', AdminWatchlistItemController::class);
-    Route::get('/upload', [UploadController::class, 'uploadForm']);
-    Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
+    Route::get('/upload', [AdminUploadController::class, 'uploadForm']);
+    Route::post('/upload', [AdminUploadController::class, 'uploadFile'])->name('upload.uploadfile');
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -87,6 +89,8 @@ Route::resource('user', UserController::class);
 //Search route
 Route::get('/search', [TitleController::class, 'search']);
 
+Route::get('/upload', [UploadController::class, 'uploadForm']);
+Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
