@@ -6,17 +6,20 @@
 
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
-            <h1>Edit Comment</h1>
-            {{-- Correct action address? --}}
-            <form method="POST" action=" {{action([\App\Http\Controllers\CommentController::class, 'update'], ['comment' => $comment->id])}} ">
+            <h2>Edit Comment</h2>
+             <form method="POST" action=" {{action([\App\Http\Controllers\CommentController::class, 'update'], ['comment' => $comment->id])}} ">
                 @method('PUT')
                 @csrf
 
             <label for=""></label>
-            <textarea name="comment" id="" cols="30" rows="10">
+                 <div class="form-group">
+            <textarea name="comment" id="" cols="50" rows="10">
                 {{$comment->body}}
             </textarea>
-            <button onsubmit="" class="btn">Update comment</button>
+                 </div>
+                <div>
+            <button class="btn btn-primary" type="Submit">Update comment</button>
+                </div>
             </form>
         </div>
     </div>
