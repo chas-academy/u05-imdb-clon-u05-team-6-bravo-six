@@ -22,7 +22,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Group 6') }}
@@ -140,22 +140,19 @@
                />
             <section class="mb-4">
                 <!-- Facebook -->
-                <a class="btn btn-outline-light btn-floating m-2" href="#" role="button">
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
                     <i class="fab fa-facebook-f"></i></a>
                 <!-- Twitter -->
-                <a class="btn btn-outline-light btn-floating m-2" href="#" role="button">
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
                     <i class="fab fa-twitter"></i></a>
                 <!-- Google -->
-                <a class="btn btn-outline-light btn-floating m-2" href="#" role="button">
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
                     <i class="fab fa-google"></i></a>
                 <!-- Instagram -->
-                <a class="btn btn-outline-light btn-floating m-2" href="#" role="button">
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
                     <i class="fab fa-instagram"></i></a>
-                <!-- Linkedin -->
-                <a class="btn btn-outline-light btn-floating m-2" href="#" role="button">
-                    <i class="fab fa-linkedin-in"></i></a>
                 <!-- Youtube -->
-                <a class="btn btn-outline-light btn-floating m-2" href="#" role="button">
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
                     <i class="fab fa-youtube"></i></a>
             </section>
 
