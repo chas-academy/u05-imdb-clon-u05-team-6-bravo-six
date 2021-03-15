@@ -39,13 +39,14 @@
                     <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Admin Mode</a></li>
                     @endif
                     @endif
-                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
+                   <!-- <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
                     <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
                    <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>
                     <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>
-                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>
+                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li> -->
                     </ul>
+                    
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
