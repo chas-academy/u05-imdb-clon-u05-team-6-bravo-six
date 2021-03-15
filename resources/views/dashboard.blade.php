@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-            <div class="container">
+            <div class="container-fluid">
                 <div class="row justify-content-center">
                     <h1 class="text-center mr-3">Welcome </h1>  
                     <x-image-layout :user="Auth::user()"></x-image-layout>
@@ -8,6 +8,7 @@
                 </div>
                 <hr/>
                 <div class="d-flex flex-row flex-wrap">
+                    
                     <div class="col-xl-8 col-lg-8 col-md-12 col-sm-12">
                         <h3 class="text-center">Your watchlists:</h3>
                     <div class= "jumbotron d-flex flex-row justify-content-evenly flex-wrap">
@@ -22,6 +23,53 @@
                         
                         @endforeach
                         </div>
+                        <div class="d-flex flex-row justify-content-around flex-wrap" >
+                        
+                        
+                            <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                <h3 class="text-center">Your reviews:</h3>
+                                <hr/>
+                            @foreach ($reviews as $review)
+                                <div class="card text-center">
+                                    <a class="card-text" href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
+                                        <b>{{ $review->title()->title }}</b>
+                                    </a>
+                                    <div class="card-body">
+                                    <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
+                                        {{$review->body}}
+                                    </a>
+                                    <div>
+                                    @for($i=0; $i < $review->rating; $i++)
+                                        <img class="float-left" style="width: 5%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
+                                    @endfor
+                                    </div>
+                                    <small class="text-muted">
+                                        {{$review->created_at}}
+                                    </small>
+                                </div>
+                                </div>
+                            <br/>
+                            @endforeach
+                        </div>
+                        <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            <h3 class="text-center ">Your comments:</h3>
+                            <hr/>
+                            @foreach ($comments as $comment)
+                            <div class="card">
+                                <div class="card-body">
+                                <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
+                                    {{$comment->body}}
+                                </a>
+                                <small class="text-muted">
+                                    {{$comment->created_at}}
+                                </small>
+                            </div>
+                        </div>
+                            <br/>
+                            @endforeach
+                        </div>
+                        
+                    </div>
                     </div>
                     
                     <div class= "col-xl-4 col-lg-4 col-md-12 col-sm-12">
@@ -66,53 +114,7 @@
                     </div>
                 
                     <br/>
-                    <div class="d-flex flex-row justify-content-around flex-wrap col-xl-8">
-                        
-                        
-                        <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                            <h3 class="text-center">Your reviews:</h3>
-                            <hr/>
-                        @foreach ($reviews as $review)
-                            <div class="card text-center">
-                                <a class="card-text" href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
-                                    <b>{{ $review->title()->title }}</b>
-                                </a>
-                                <div class="card-body">
-                                <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
-                                    {{$review->body}}
-                                </a>
-                                <div>
-                                @for($i=0; $i < $review->rating; $i++)
-                                    <img class="float-left" style="width: 5%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
-                                @endfor
-                                </div>
-                                <small class="text-muted">
-                                    {{$review->created_at}}
-                                </small>
-                            </div>
-                            </div>
-                        <br/>
-                        @endforeach
-                    </div>
-                    <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
-                        <h3 class="text-center ">Your comments:</h3>
-                        <hr/>
-                        @foreach ($comments as $comment)
-                        <div class="card">
-                            <div class="card-body">
-                            <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
-                                {{$comment->body}}
-                            </a>
-                            <small class="text-muted">
-                                {{$comment->created_at}}
-                            </small>
-                        </div>
-                    </div>
-                        <br/>
-                        @endforeach
-                    </div>
                     
-                </div>
             </div>
             </div>
             @endsection
