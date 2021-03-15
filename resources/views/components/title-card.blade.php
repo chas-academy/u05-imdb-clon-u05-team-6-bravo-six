@@ -1,14 +1,25 @@
 <div class="mx-2 title-card-wrapper">
      <div class="card title-card">
           <div class="row">
-          <div class="col-md-6" >
-               <h5>{{$title->title}}</h5>
-               <img src="{{$title->img_url}}">
-               <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$title->id])}}">{{$title->title}}</a>
+          <div class="col-md-3" >
+                <img src="
+               @if($title->img_url !== null)
+               {{  $title->img_url}}
+               @else
+               https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
+               @endif
+               " class="img-fluid img-thumbnail ">
+
           </div>
           {{-- <span class="dropdown_activator"></span> --}}
+          <div class=" col-md-6">
 
-          <div class="dropdown col-md-6">
+          <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$title->id])}}"><h5>{{$title->title}}</h5></a>
+          <p>
+{{  $title->description}}
+          </p>
+          </div>
+          <div class="dropdown col-md-3">
                @auth
                <button class="btn btn-secondary dropdown-toggle fas fa-plus" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                </button>
@@ -32,6 +43,6 @@ fas fa-check
                </div>
                @endauth
           </div>
+     </div>
           </div>
      </div>
-</div>
