@@ -1,6 +1,6 @@
 @extends('layouts.app')
 @section('content')
-            <div class="container-fluid">
+            <div class="container">
                 <div class="row justify-content-center">
                     <h1 class="text-center mr-3">Welcome </h1>  
                     <x-image-layout :user="Auth::user()"></x-image-layout>
@@ -14,11 +14,17 @@
                     <div class= "jumbotron d-flex flex-row justify-content-evenly flex-wrap">
                         
                         @foreach ($watchlists as $watchlist)
-                        <div class="card text-center col-xl-3 col-lg-4 col-md-6 col-sm-12">
-                            <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}">{{$watchlist->name}}</a>
+                        <div class="card text-center col-xl-4 col-lg-6 col-md-6 col-sm-12">
+                            <div class="card-body"> 
+                            <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}">
+                                {{strlen($watchlist->name)>20 ? substr($watchlist->name,0,17) . "...": $watchlist->name}}
+                                
+                            </a>
+                            <br/>
                             <small class="text-muted">
                                 {{$watchlist->created_at}}
                             </small>
+                        </div>
                         </div>
                         
                         @endforeach
@@ -30,22 +36,26 @@
                                 <h3 class="text-center">Your reviews:</h3>
                                 <hr/>
                             @foreach ($reviews as $review)
-                                <div class="card text-center">
-                                    <a class="card-text" href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
+                                <div class="card">
+                                    <div class="card-body">
+                                    <a class="card-title" href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$review->title_id])}}">
                                         <b>{{ $review->title()->title }}</b>
                                     </a>
-                                    <div class="card-body">
+                                    
+                                    <br/>
                                     <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
-                                        {{$review->body}}
+                                        
+                                        {{strlen($review->body)>100 ? substr($review->body,0,100) . "...": $review->body}}
                                     </a>
-                                    <div>
+                                    <div class="mt-1">
                                     @for($i=0; $i < $review->rating; $i++)
-                                        <img class="float-left" style="width: 5%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
+                                        <img class="float-right" style="width: 5%; margin-right: 2%"src="https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
                                     @endfor
-                                    </div>
-                                    <small class="text-muted">
+                                    
+                                    <small class="text-muted float-left">
                                         {{$review->created_at}}
                                     </small>
+                                </div>
                                 </div>
                                 </div>
                             <br/>
@@ -58,8 +68,10 @@
                             <div class="card">
                                 <div class="card-body">
                                 <a class="card-text" href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$comment->review_id])}}">
-                                    {{$comment->body}}
+                                    
+                                    {{strlen($comment->body)>100 ? substr($comment->body,0,100) . "...": $comment->body}}
                                 </a>
+                                <br/>
                                 <small class="text-muted">
                                     {{$comment->created_at}}
                                 </small>
@@ -72,20 +84,22 @@
                     </div>
                     </div>
                     
-                    <div class= "col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                    <aside class= "col-xl-4 col-lg-4 col-md-12 col-sm-12">
                         <h3 class="text-center">Recent activity:</h3>
                     
                     <div class="d-flex flex-row justify-content-evenly flex-wrap">
                     @foreach ($sortedData as $data)
                     <div class="card col-xl-12 col-lg-12 col-md-6 col-sm-12">
+                        <div class="card-body">
                         @if ($data->getTable() === "reviews")
-                        <p class="card-text"><b>Review Movie titled:
+                        
+                        <p class="card-title"><b>Reviewed Movie:
                             <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ["title" => $data->title_id])}}">
                                 {{$data->title()->title}}
                             </a>
                         </b></p>
                         
-                        <p class="card-text">Review title:
+                        <p class="card-text">Review title: <br/>
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->id])}}">
                             {{$data->title}}
                         </a>
@@ -103,15 +117,16 @@
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->review_id])}}">
                             {{strlen($data->body)>50 ? substr($data->body,0,50) . "...": $data->body}}
                         </a>
-                        
+                        <br/>
                         <small class="text-muted">
                             {{$data->updated_at}}
                         </small>
                         @endif
                     </div>
+                    </div>
                     @endforeach
                     </div>
-                    </div>
+                </aside>
                 
                     <br/>
                     
