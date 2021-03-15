@@ -15,14 +15,14 @@ class UploadController extends Controller
 
     public function uploadForm()
     {
-        return view('upload', ['user_id' => request('user_id')]);
+        return view('upload', ['id' => request('id')]);
     }
 
     public function uploadFile(Request $request)
     {
         $path = $request->file->store('storage');
         // save path in DB
-        $user = User::find($request->user_id);
+        $user = User::find($request->id);
         $user->img_url = $path;
         $user->save();
         return redirect()->action([UserController::class, 'show'], ['user' => $user]);

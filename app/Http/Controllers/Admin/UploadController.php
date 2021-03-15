@@ -13,12 +13,12 @@ use Intervention\Image\Facades\Image;
 class UploadController extends Controller
 {
 
-    public function uploadForm()
+    public function uploadFormAdmin()
     {
-        return view('upload', ['user_id' => request('user_id')]);
+        return view('admin.upload', ['user_id' => request('user_id')]);
     }
 
-    public function uploadFile(Request $request)
+    public function uploadFileAdmin(Request $request)
     {
         $path = $request->file->store('storage');
         // save path in DB

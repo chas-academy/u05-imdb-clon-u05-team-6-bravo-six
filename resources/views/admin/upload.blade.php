@@ -8,7 +8,7 @@
            File Upload
          </div>
          <div class="card-body">
-           <form action="{{route('upload.uploadfile')}}" method="post" enctype="multipart/form-data">
+           <form action="{{route('upload.uploadfileadmin')}}" method="post" enctype="multipart/form-data">
               @csrf
               <select name="user_id" class="form-control">
                 @foreach (\App\Models\User::all() as $user)

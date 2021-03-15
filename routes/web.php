@@ -74,8 +74,8 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
 
     //WATCHLISTITEM ROUTE FOR ADMIN
     Route::resource('watchlistItems', AdminWatchlistItemController::class);
-    Route::get('/upload', [AdminUploadController::class, 'uploadForm']);
-    Route::post('/upload', [AdminUploadController::class, 'uploadFile'])->name('upload.uploadfile');
+    Route::get('/upload', [AdminUploadController::class, 'uploadFormAdmin']);
+    Route::post('/upload', [AdminUploadController::class, 'uploadFileAdmin'])->name('upload.uploadfileadmin');
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);

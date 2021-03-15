@@ -24,7 +24,7 @@
     <img src="https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg" alt="No profile picture" class="rounded-circle" style="max-width: 200px">
     @endif
     </div>
-    <a class="btn btn-success btn-lg" href="{{action([App\Http\Controllers\Admin\UploadController::class, 'uploadForm'], ['user_id' => $user->id])}}">Upload profile picture</a>
+    <a class="btn btn-success btn-lg" href="{{action([App\Http\Controllers\Admin\UploadController::class, 'uploadFormAdmin'], ['user_id' => $user->id])}}">Upload profile picture</a>
     <button class="btn btn-secondary btn-lg" type="submit" value="Update">Save changes</button>
 </form>
     <form method="POST" action="{{action([\App\Http\Controllers\Admin\UserController::class, 'destroy'], ['user' => $user->id])}}">
