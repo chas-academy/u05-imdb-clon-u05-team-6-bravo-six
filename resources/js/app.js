@@ -91,4 +91,33 @@ $(() => {
         //     searchResults.empty();
         // })
     }
+
+    if ($('.watchlist_listitem')) {
+        $('.watchlist_listitem').on('click', function (e) {
+            e.stopPropagation();
+
+            //begin animation
+            $(this).toggleClass('pending').find('i').removeClass('fas fa-check').addClass('fas fa-spinner fa-spin')
+            //
+            const watchlistId = this.dataset.id;
+            const titleId = this.dataset.title;
+            fetch('/watchlists/add_title_to_watchlist/' + watchlistId + "/" + titleId, {
+                method: 'GET',
+                headers: {
+                    'X-CSRF-TOKEN': $('[name="_token"]').attr('content'),
+                }
+            }).then(response => response.json()).then(text => {
+                console.log(text.status)
+                if (text.status === 203) {
+                    $(this).addClass('added').removeClass('error').find('i').addClass('fas fa-check').removeClass(' fa-spinner fa-spin')
+                } else if (text.status === 205) {
+                    $(this).removeClass('added', 'error').find('i').removeClass(' fa-check fa-spinner fa-spin')
+                } else {
+                    $(this).addClass('error').removeClass('added').find('i').removeClass(' fa-check fa-spinner fa-spin')
+                }
+                $(this).toggleClass('pending')
+
+            }).catch(err => console.log(error))
+        })
+    }
 })
