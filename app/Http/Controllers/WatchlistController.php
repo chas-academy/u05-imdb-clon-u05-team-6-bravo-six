@@ -11,7 +11,9 @@ class WatchlistController extends Controller
 {
     public function index()
     {
-        return view('watchlists.index', ['watchlists' => Watchlist::all()]);
+        $sort = (request()->get('sort')) ? request()->get('sort') : 'id';
+        $watchlists = Watchlist::orderBy($sort)->paginate(25);
+        return view('watchlists.index', ['watchlists' => $watchlists, 'sort' => $sort]);
     }
 
     public function show(Watchlist $watchlist)

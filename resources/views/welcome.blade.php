@@ -7,7 +7,7 @@ Welcome to the site!
         <form class="card-body" action="/search" method="GET" role="search">
             {{ csrf_field() }}
             <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." name="q">
+                <input type="text" class="form-control" placeholder="Search for..." name="key">
                 <span class="input-group-btn">
             <button class="btn btn-secondary" type="submit">Go!</button>
           </span>

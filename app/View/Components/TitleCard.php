@@ -13,9 +13,11 @@ class TitleCard extends Component
      */
     public $title;
     public $watchlists;
-    public function __construct($title, $watchlists)
+    public $moddable;
+    public function __construct($title,  $moddable, $watchlists = null)
     {
         $this->title = $title;
+        $this->moddable = $moddable;
         $this->watchlists = $watchlists;
         //
     }
