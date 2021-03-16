@@ -108,16 +108,16 @@
                             {{$data->updated_at}}
                         </small>
                         @else
-                        <p class="card-text"><b>Commented review on:
-                            <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ["title" => $data->review()->title_id])}}">
-                                {{$data->review()->title()->title}}
+                        <p class="card-text"><b>Commented review:
+                            <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->review()->id])}}">
+                                {{$data->review()->title}}
                             </a>
                         </b></p>
-                        
+                        <p class="card-text">
                         <a href="{{action([\App\Http\Controllers\ReviewController::class, 'show'], ["review" => $data->review_id])}}">
                             {{strlen($data->body)>50 ? substr($data->body,0,50) . "...": $data->body}}
                         </a>
-                        <br/>
+                    </p>
                         <small class="text-muted">
                             {{$data->updated_at}}
                         </small>
