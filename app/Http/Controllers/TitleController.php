@@ -31,12 +31,12 @@ class TitleController extends Controller
     //Used for search function on home page
     public function search(Request $request)
     {
-        $key = trim($request->get('q'));
+        $key = trim($request->get('key'));
 
         $titles = Title::query()
             ->where('title', 'like', "%{$key}%")
             ->orderBy('created_at', 'desc')
-            ->get();
+            ->paginate(5);
 
 
         //get the recent 5 titles

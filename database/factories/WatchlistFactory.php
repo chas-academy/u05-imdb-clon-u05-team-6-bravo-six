@@ -23,6 +23,7 @@ class WatchlistFactory extends Factory
     {
         return [
             'name' => $this->faker->name,
+            'public' => $this->faker->boolean,
             'user_id' => \App\Models\User::inRandomOrder()->value('id')
         ];
     }

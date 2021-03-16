@@ -10059,3 +10059,51 @@ td,
 th {
   padding-right: 1em;
 }
+
+.title-card {
+  padding: 1em;
+}
+
+#dropdownMenuButton {
+  float: right;
+  font-weight: 900;
+}
+
+.watchlist_listitem {
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.watchlist_listitem.added {
+  background-color: rgba(136, 194, 136, 0.589);
+}
+
+.watchlist_listitem.error {
+  background-color: red;
+}
+
+.title-card .col-6 {
+  padding: 0;
+  margin: 0;
+}
+
+.dropdown-menu .list-unstyled {
+  padding: 0.5em;
+}
+
+.dropdown-menu .list-unstyled li {
+  margin-bottom: 5px;
+  padding: 0.3em 0.5em;
+}
+
+.dropdown-menu .list-unstyled li.added:hover {
+  background-color: rgba(136, 194, 136, 0.377);
+}
+
+.dropdown-menu .list-unstyled li:hover:not(.added) {
+  background-color: rgba(179, 179, 179, 0.377);
+}
+
+.title-card-wrapper {
+  margin: 0.5em 0;
+}

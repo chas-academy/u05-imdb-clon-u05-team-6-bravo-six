@@ -17,6 +17,14 @@
         <label>User ID: </label>
         <input class="form-control" name="user_id" disabled value="{{$watchlist->user_id}}">
     </div>
+    <div class="form-group">
+        <label>Public</label>
+        <input class="form-control" name="public" type="checkbox"
+        @if ($watchlist->public)
+        checked
+        @endif
+        >
+    </div>
     
     <ul>
         

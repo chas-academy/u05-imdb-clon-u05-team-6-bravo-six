@@ -80,6 +80,7 @@ Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::get('/reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
 Route::resource('reviews', ReviewController::class);
+Route::get('/watchlists/add_title_to_watchlist/{watchlist}/{title}', [WatchlistController::class, 'add_title_to_watchlist']); //this method is basically api
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
 //Search route
