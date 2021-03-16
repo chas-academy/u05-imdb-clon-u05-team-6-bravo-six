@@ -68,8 +68,7 @@
                 <input type="hidden" name="review_id" value="{{$review->id}}">
                <div class="form-group">
                    <label for="comment">Write your comment here</label>
-                   <textarea class="form-control" name="comment" id="comment" required>
-                        </textarea>
+                   <textarea class="form-control" name="comment" id="comment" required></textarea>
                </div>
                 <div>
                         <button class="btn btn-primary" type="Submit">Submit</button>
