@@ -33,12 +33,12 @@
                             @csrf
                             <div class="col-lg-12 col-xl-12 m-0 d-flex row form-group ">
                             <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
-                                <div class="form-row col-8">
-                                    <p class="col-4 align-middle">New watchlist</p>
-                                    <input class="form-control col-8" placeholder="watchlist name"type="text" class="form-control" name="name" required>
+                                <div class="form-row col-md-8 col-sm-12">
+                                    <p class="col-sm-4 col-xs-12 align-middle mt-1">New watchlist</p>
+                                    <input class="form-control col-sm-8 col-xs-12" placeholder="watchlist name"type="text" class="form-control" name="name" required>
                                 </div>
-                                <div class="form-row col-4 text-center">
-                                    <div class="col-xl-6 form-check">
+                                <div class="form-row col-md-4 col-sm-12 text-center">
+                                    <div class="col-xl-6 form-check mt-1">
                                         <input class="form-check-input" type="checkbox" class="form-control" name="public">
                                         <label class="form-check-label"  for="name">Public</label>
                                     </div>
