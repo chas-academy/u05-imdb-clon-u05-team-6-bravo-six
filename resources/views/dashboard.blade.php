@@ -28,6 +28,26 @@
                         </div>
                         
                         @endforeach
+                        <hr/>
+                        <form class="w-100 mt-3" action="{{action([\App\Http\Controllers\WatchlistController::class, 'store'])}}" method="POST">
+                            @csrf
+                            <div class="col-lg-12 col-xl-12 m-0 d-flex row form-group ">
+                            <input type="hidden" name="user_id" value="{{Auth::user()->id}}">
+                                <div class="form-row col-8">
+                                    <p class="col-4 align-middle">New watchlist</p>
+                                    <input class="form-control col-8" placeholder="watchlist name"type="text" class="form-control" name="name" required>
+                                </div>
+                                <div class="form-row col-4 text-center">
+                                    <div class="col-xl-6 form-check">
+                                        <input class="form-check-input" type="checkbox" class="form-control" name="public">
+                                        <label class="form-check-label"  for="name">Public</label>
+                                    </div>
+                                    
+                                    
+                                    <button class="btn btn-primary col-xl-6" type="Submit">Submit</button>
+                                </div>
+                            </div>
+                        </form>
                         </div>
                         <div class="d-flex flex-row justify-content-around flex-wrap" >
                         
@@ -89,7 +109,7 @@
                     
                     <div class="d-flex flex-row justify-content-evenly flex-wrap">
                     @foreach ($sortedData as $data)
-                    <div class="card col-xl-12 col-lg-12 col-md-6 col-sm-12">
+                    <div class="card col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
                         <div class="card-body">
                         @if ($data->getTable() === "reviews")
                         
