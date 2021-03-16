@@ -11,8 +11,6 @@
             <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                 <a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a>
                 <a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\WatchlistController::class, 'index'])}}">Watchlists</a>
-                <a class="dropdown-item" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a>
                 <a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a>
                 <a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a>
             </div>
@@ -77,24 +75,85 @@
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
-      <img class="d-block w-100" src="https://via.placeholder.com/800x250" alt="First slide">
+      <img class="d-block w-100" src="http://placeimg.com/1000/360/any" alt="First slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://via.placeholder.com/800x250" alt="Second slide">
+      <img class="d-block w-100" src="https://placebeard.it/1000/360" alt="Second slide">
     </div>
     <div class="carousel-item">
-      <img class="d-block w-100" src="https://via.placeholder.com/800x250" alt="Third slide">
+      <img class="d-block w-100" src="https://www.fillmurray.com/1000/360" alt="Third slide">
     </div>
   </div>
-</div>
-<div class="justify-content-space-between">
-    <div class="btn-group leftBtn d-flex justify-content-start" role="group" > 
-        <li class="leftBtn"><a href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
-        <li class="leftBtn"><a href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
+<!-- New movies column -->
+<div class="new-movies-container row">
+    <div class="movie border border-secondary col-md-4 col-sm-12">
+        {{-- <div class="img-box "> --}}
+            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
+        {{-- </div> --}}
+        <div class="description p-2">
+            <h2>Movie Title</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
+            <p>Last updated...</p>
+        </div>
     </div>
-    <div class="btn-group rightBtn d-flex justify-content-end" role="group" >
-        <li class="rightBtn"><a href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
-        <li class="rightBtn"><a href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
+    <div class="movie border border-secondary col-md-4 col-sm-12">
+        {{-- <div class="img-box"> --}}
+            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
+        {{-- </div> --}}
+        <div class="description p-2">
+            <h2>Movie Two</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
+            <p>Last updated...</p>
+        </div>
     </div>
-</div>
+    <div class="movie border border-secondary col-md-4 col-sm-12">
+        {{-- <div class="img-box"> --}}
+            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
+        {{-- </div> --}}
+        <div class="description p-2">
+            <h2>Movie Three</h2>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
+            <p>Last updated...</p>
+        </div>
+    </div>
+</div >
+<!-- recommended movies column -->
+<div class="card-group">
+  <div class="card">
+    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Movie nr.1</h5>
+      <p class="card-text">Lorem ipsum dolor sit amet.</p>
+    </div>
+  </div>
+  <div class="card">
+    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Movie nr.2</h5>
+      <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut cumque tempore animi veniam odio laboriosam?</p>
+    </div>
+    </div>
+    <div class="card">
+    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">Movie nr.3</h5>
+      <p class="card-text">Lorem ipsum dolor sit amet.</p>
+    </div>
+ </div>
+ <!-- review card -->
+ <div class="card reviewcard" style="width: 18em;">
+        <div class="card-header">
+            Top Reviews
+        </div>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item">Review #1</li>
+                <li class="list-group-item">Review #2</li>
+                <li class="list-group-item">Review #3</li>
+                <li class="list-group-item">Review #4</li>
+                <li class="list-group-item">Review #5</li>
+                <li class="list-group-item">Review #6</li>
+               
+            </ul>
+    </div>
+</div> 
 @endsection
