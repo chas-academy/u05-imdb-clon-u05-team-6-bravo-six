@@ -56,4 +56,8 @@ class WatchlistController extends Controller
         $watchlistItem->save();
         return json_encode(['status' => 203]);
     }
+    public function destroyByTitle(Watchlist $watchlist, Request $request)
+    {
+        dd($request);
+    }
 }

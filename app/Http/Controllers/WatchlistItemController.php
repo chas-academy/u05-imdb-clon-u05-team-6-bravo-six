@@ -11,4 +11,9 @@ class WatchlistItemController extends Controller
     {
         return view('watchlistItems.index', ['watchlistItems' => WatchlistItem::all()]);
     }
+    public function destroy(WatchlistItem $watchlistItem)
+    {
+        $watchlistItem->delete();
+        return redirect()->back();
+    }
 }
