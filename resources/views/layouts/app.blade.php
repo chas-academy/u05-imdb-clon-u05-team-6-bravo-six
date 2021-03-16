@@ -34,7 +34,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('/') }}">
                     {{ config('app.name', 'Group 6') }}
@@ -141,5 +141,91 @@
             </div> -->
         </main>
     </div>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-center text-white">
+           <div class="container p-4">
+            <!-- Section: Social media -->
+               <!-- Font Awesome -->
+{{--               <link--}}
+{{--                   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"--}}
+{{--                   rel="stylesheet"--}}
+{{--               />--}}
+            <section class="mb-4">
+                <!-- Facebook -->
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
+                    <i class="fab fa-facebook-f"></i></a>
+                <!-- Twitter -->
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
+                    <i class="fab fa-twitter"></i></a>
+                <!-- Google -->
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
+                    <i class="fab fa-google"></i></a>
+                <!-- Instagram -->
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
+                    <i class="fab fa-instagram"></i></a>
+                <!-- Youtube -->
+                <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
+                    <i class="fab fa-youtube"></i></a>
+            </section>
+
+            <!-- Section: Form -->
+            <section class="">
+                <form action="">
+                    <div class="row d-flex justify-content-center">
+                        <div class="col-auto">
+                            <p class="pt-2">
+                                <strong>Sign up for our newsletter</strong>
+                            </p>
+                        </div>
+                        <div class="col-md-5 col-12">
+                            <div class="form-outline form-white mb-4">
+                                <input type="email" id="formEmail" class="form-control" />
+                                <label class="form-label" for="formEmail">Email address</label>
+                            </div>
+                        </div>
+
+                        <div class="col-auto">
+                            <button type="submit" class="btn btn-outline-light mb-4">
+                                Subscribe
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+               <section class="mb-4">
+                <p>
+                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Sunt distinctio earum
+                    repellat quaerat voluptatibus placeat nam, commodi optio pariatur est quia magnam
+                    eum harum corrupti dicta, aliquam sequi voluptate quas.
+                </p>
+            </section>
+
+            <!-- Section: Links -->
+            <section class="">
+                <div class="row">
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <a class="text-white" href=""> <h5 class="text-uppercase">News</h5> </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <a class="text-white" href=""> <h5 class="text-uppercase">About us</h5> </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <a class="text-white" href=""> <h5 class="text-uppercase">Contacts</h5> </a>
+                    </div>
+                    <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                        <a class="text-white" href=""> <h5 class="text-uppercase">Help</h5> </a>
+                    </div>
+                </div>
+            </section>
+           </div>
+
+        <div class="text-center p-3" style="background-color: rgba(0, 0, 0, 0.2);">
+            © 2021 Copyright:
+            <a class="text-white" href="">IMDb:Fake.com</a>
+        </div>
+    </footer>
+
 </body>
 </html>
