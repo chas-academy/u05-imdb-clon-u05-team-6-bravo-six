@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
-use App\Http\Controllers\UserController;
+use App\Http\Controllers\Admin\UserController;
 use App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
@@ -13,16 +13,16 @@ use Intervention\Image\Facades\Image;
 class UploadController extends Controller
 {
 
-    public function uploadForm()
+    public function uploadFormAdmin()
     {
-        return view('upload', ['id' => request('id')]);
+        return view('admin.upload', ['user_id' => request('user_id')]);
     }
 
-    public function uploadFile(Request $request)
+    public function uploadFileAdmin(Request $request)
     {
         $path = $request->file->store('storage');
         // save path in DB
-        $user = User::find($request->id);
+        $user = User::find($request->user_id);
         $user->img_url = $path;
         $user->save();
         return redirect()->action([UserController::class, 'show'], ['user' => $user]);

@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('layouts.admin')
 @section('content')
  <div class="container">
    <div class="row">
@@ -8,11 +8,11 @@
            File Upload
          </div>
          <div class="card-body">
-           <form action="{{route('upload.uploadfile')}}" method="post" enctype="multipart/form-data">
+           <form action="{{route('upload.uploadfileadmin')}}" method="post" enctype="multipart/form-data">
               @csrf
-              <select name="id" class="form-control">
+              <select name="user_id" class="form-control">
                 @foreach (\App\Models\User::all() as $user)
-                @if ($user->id === intval($id))
+                @if ($user->id === intval($user_id))
                   <option selected value="{{$user->id}}">{{$user->name}}</option>
                 @else
                   <option value="{{$user->id}}">{{$user->name}}</option>

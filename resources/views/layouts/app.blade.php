@@ -49,6 +49,10 @@
                     @if (Auth::check())
                     @if (Auth::user()->user_admin === 1)
                     <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Admin Mode</a></li>
+                    @else
+
+                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">Profile</a></li>
+
                     @endif
                     @endif
                    <!-- <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
