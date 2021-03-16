@@ -3,6 +3,9 @@
 namespace App\Providers;
 
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
+use App\Models\Comment;
+use App\Models\Review;
+use App\Models\User;
 use Illuminate\Support\Facades\Gate;
 
 class AuthServiceProvider extends ServiceProvider
@@ -24,6 +27,13 @@ class AuthServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->registerPolicies();
+
+        Gate::define('handle-comment', function (User $user, Comment $comment) {
+            return $user->id === $comment->user_id;
+        });
+        Gate::define('handle-review', function (User $user, Review $review) {
+            return $user->id === $review->user_id;
+        });
 
         //
     }

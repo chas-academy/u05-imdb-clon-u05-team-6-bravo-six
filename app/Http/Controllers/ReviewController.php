@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Comment;
 use App\Models\Review;
 use App\Models\Title;
 use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Gate;
 use Illuminate\Support\Facades\Session;
 
 class ReviewController extends Controller
@@ -73,7 +75,7 @@ class ReviewController extends Controller
      */
     public function edit(Review $review)
     {
-        if (Auth::id()  !== $review->user_id) {
+        if (!Gate::allows('handle-review', $review)) {
             return redirect()->back();
         } else {
             return view('reviews.edit', ['review' => $review]);
@@ -90,17 +92,21 @@ class ReviewController extends Controller
 
     public function update(Request $request, Review $review)
     {
-        $this->validate($request, array('body' => 'required'));
-        $review->rating = $request->rating;
-        $review->title = $request->title;
-        $review->body = $request->body;
-        $review->save();
-        return redirect()->route('reviews.show', ['review' => $review->id]);
+        if (!Gate::allows('handle-review', $review)) {
+            return redirect()->back();
+        } else {
+            $this->validate($request, array('body' => 'required'));
+            $review->rating = $request->rating;
+            $review->title = $request->title;
+            $review->body = $request->body;
+            $review->save();
+            return redirect()->route('reviews.show', ['review' => $review->id]);
+        }
     }
 
     public function delete(Review $review)
     {
-        if (Auth::id()  !== $review->user_id) {
+        if (!Gate::allows('handle-review', $review)) {
             return redirect()->back();
         } else {
             return view('reviews.delete', ['review' => $review]);
@@ -115,8 +121,12 @@ class ReviewController extends Controller
      */
     public function destroy(Review $review)
     {
-        $review->delete();
-        Session::flash('success', 'Review removed!');
-        return redirect()->route('reviews.index');
+        if (!Gate::allows('handle-review', $review)) {
+            return redirect()->back();
+        } else {
+            $review->delete();
+            Session::flash('success', 'Review removed!');
+            return redirect()->route('reviews.index');
+        }
     }
 }
