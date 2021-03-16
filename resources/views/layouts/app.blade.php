@@ -134,10 +134,10 @@
            <div class="container p-4">
             <!-- Section: Social media -->
                <!-- Font Awesome -->
-               <link
-                   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"
-                   rel="stylesheet"
-               />
+{{--               <link--}}
+{{--                   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"--}}
+{{--                   rel="stylesheet"--}}
+{{--               />--}}
             <section class="mb-4">
                 <!-- Facebook -->
                 <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">
