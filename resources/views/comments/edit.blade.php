@@ -13,9 +13,7 @@
 
             <label for=""></label>
                  <div class="form-group">
-            <textarea name="comment" id="" cols="50" rows="10">
-                {{$comment->body}}
-            </textarea>
+            <textarea name="comment" id="" cols="50" rows="10">{{$comment->body}}</textarea>
                  </div>
                 <div>
             <button class="btn btn-primary" type="Submit">Update comment</button>

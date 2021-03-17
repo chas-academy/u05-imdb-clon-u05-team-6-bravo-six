@@ -69,8 +69,7 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
                     </div>
                     <div class="form-group">
                         <label for="body">Write your review here</label>
-                        <textarea class="form-control" name="body" id="body" required>
-                        </textarea>
+                        <textarea class="form-control" name="body" id="body" required></textarea>
                     </div>
                         <button class="btn btn-primary" type="Submit">Submit</button>
                 </div>
