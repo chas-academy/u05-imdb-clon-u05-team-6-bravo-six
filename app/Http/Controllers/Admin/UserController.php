@@ -46,7 +46,7 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->email = $request->email;
-        $user->user_admin = $request->user_admin;
+        $user->user_admin = $request->user('web')->user_admin ? 1 : 0;
         $user->save();
         return redirect()->back();
     }
