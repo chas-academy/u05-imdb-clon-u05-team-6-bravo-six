@@ -37,16 +37,19 @@
     <form method="POST" action="{{action([\App\Http\Controllers\Admin\UserController::class, 'update'], ['user' => $user->id])}}">
         @csrf
         @method('PUT')
-        @if ($user->user_admin === 1)
+        @if ($user->user_admin):
         <div class="form-check">
-            <input type="hidden">
-            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="1" checked>
+            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value=""
+            @if($user->user_admin)
+            checked
+            @endif
+            >
             <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
         </div>
-        @else
+        @else:
         <div class="form-check">
             <input type="hidden">
-            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="0">
+            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="">
             <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
         </div>
         @endif
