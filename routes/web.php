@@ -88,7 +88,7 @@ Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
 Route::resource('user', UserController::class);
 //Search route
-Route::get('/search', [TitleController::class, 'search']);
+Route::get('/search', [TitleController::class, 'search'])->name('search');
 
 Route::get('/upload', [UploadController::class, 'uploadForm']);
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');

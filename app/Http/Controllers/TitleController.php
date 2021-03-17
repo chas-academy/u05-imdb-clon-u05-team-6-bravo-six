@@ -2,8 +2,10 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SecondaryGenre;
 use App\Models\Title;
 use Facade\FlareClient\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
 
 class TitleController extends Controller
@@ -31,8 +33,8 @@ class TitleController extends Controller
     //Used for search function on home page
     public function search(Request $request)
     {
-        $key = trim($request->get('key'));
-
+        // the search function for getting a title based on query
+        $key = trim($request->get('q'));
         $titles = Title::query()
             ->where('title', 'like', "%{$key}%")
             ->orderBy('created_at', 'desc')
@@ -52,6 +54,37 @@ class TitleController extends Controller
         ]);
     }
 
+    public function searchByGenre(Request $request)
+    {
+        // aggregate all of the checkboxes checked into an array
+        // $genre_ids = $request->except(['_token', 'q']);
+        // $data = [];
+        // foreach ($genre_ids as $key => $value) {
+        //     array_push($data, $key);
+        // };
+        // $secondaryGenreRels = SecondaryGenre::where('genre_id', $data[0]);
+        // foreach ($data as $value) {
+        //     $secondaryGenreRels->orWhere('genre_id', $value);
+        // };
+        // dd($secondaryGenreRels->get());
+        // $key = trim($request->get('q'));
+        // $titles = Title::query()->where('title', 'like', "%{$key}%")->genres();
+
+
+
+        // use the array to format a query, based on secondary_genre_relationships()
+        // chain that query on the regular search-function
+
+
+        // request has genre_id and query
+        // do regular search and limit results by genre_id?
+        // alternatively, sort in client?
+        // most likely not
+
+
+
+
+    }
     /**
      * Store a newly created resource in storage.
      *
