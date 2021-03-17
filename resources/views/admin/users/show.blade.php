@@ -34,4 +34,20 @@
             <button class="btn btn-danger btn-lg" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
         </td>
     </form>
+    <form method="POST" action="{{action([\App\Http\Controllers\Admin\UserController::class, 'update'], ['user' => $user->id])}}">
+        @csrf
+        @method('PUT')
+        @if ($user->user_admin === 0)
+        <div class="form-check">
+            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="0">
+            <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
+        </div>
+        @else
+        <div class="form-check">
+            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="1" checked>
+            <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
+        </div>
+        @endif
+    </form>
+
 @endsection

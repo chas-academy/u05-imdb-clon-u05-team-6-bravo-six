@@ -38,7 +38,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+
     }
 
 
@@ -46,6 +46,7 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->email = $request->email;
+        $user->user_admin = $request->user_admin;
         $user->save();
         return redirect()->back();
     }
