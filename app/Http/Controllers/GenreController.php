@@ -51,8 +51,25 @@ class GenreController extends Controller
         //'/genres/4
         // if there is a q-key, do search and populate titles
         if (request('q')) {
+
+            // one solution to this is{
+            // rebuild database to let all genre relationships be represented in one relationship.
+            // maybe add column to pivot table that has the 'role' associated with the genre - e.g. primary or secondary.
+
+            // }
+
+            // next solution {
+            // show a static result of all main movies. maybe link to a specific page for it? 
+            // show a paginated result of all movies that have it secondarily
+            // }
+
             $key = request('q');
-            $titles = $genre->titlesSecondary()->where('title', 'like', "%$key%")->paginate(10)->onEachSide(1);
+            $titlesSub = $genre->titlesSecondary()->where('title', 'like', "%$key%")->get();
+            $titlesMain = $genre->hasMany(\App\Models\Title::class)->where('title', 'like', "%$key%")->get();
+            $titles = (collect($titlesSub->merge($titlesMain))->paginate(10));
+            // ->paginate(10)->onEachSide(1);
+
+            //             ->paginate(10)->onEachSide(1);
             // propagate this titles collection with one from secondaries somehow
         } else {
             $titles = $genre->titlesSecondary()->paginate(10)->onEachSide(1);
