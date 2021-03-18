@@ -32,12 +32,15 @@
         <div class="row">
             <?php $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
         @foreach($titles as $title)
+        <div class="col-12">
             <x-title-card :title="$title" :watchlists="$watchlists" :moddable="true"></x-title-card>
-        @endforeach
+        </div>
+            @endforeach
         </div>
         </div>
         <x-navigation-aside :currentPage="$genre->id"></x-navigation-aside>
         @if(!request('q'))
         <div class="container">{{$titles->appends(['q' => request('q')])->links()}}</div>
         @endif
+    </div>
 @endsection
