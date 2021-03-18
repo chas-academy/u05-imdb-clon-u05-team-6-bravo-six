@@ -16,9 +16,12 @@
 
 {{--            </div>--}}
 {{--        </div>--}}
+<p class="container">
+    <nav class="navbar navbar navbar-light bg-light">
 
  <!-- Search Widget -->
-        <div class="navbar-nav ml-auto justify-content-end">
+        <section class="navbar-nav ml-auto justify-content-end">
+        <p>
                 <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
                     {{ csrf_field() }}
                     <div class="input-group">
@@ -28,7 +31,8 @@
                 </span>
                     </div>
                 </form>
-        </div>
+        </p>
+        </section>
 {{-- <!-- Right Side Of Navbar -->--}}
 {{--        <ul class="navbar-nav ml-auto">--}}
 {{--            <!-- Authentication Links -->--}}
@@ -73,7 +77,7 @@
 {{--</div>--}}
 
 <!-- slider -->
-
+<p>
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -86,8 +90,11 @@
       <img class="d-block w-100" src="https://www.fillmurray.com/1000/360" alt="Third slide">
     </div>
   </div>
+</p>
 <!-- New movies column -->
-<div class="new-movies-container row">
+<p>
+    <section class="new-movies-container row">
+
     <div class="movie border border-secondary col-md-4 col-sm-12">
         {{-- <div class="img-box "> --}}
             <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
@@ -118,8 +125,11 @@
             <p>Last updated...</p>
         </div>
     </div>
-</div >
+
+</section>
+
 <!-- recommended movies column -->
+<p>
 <div class="card-group">
   <div class="card">
     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
@@ -142,8 +152,9 @@
       <p class="card-text">Lorem ipsum dolor sit amet.</p>
     </div>
  </div>
+</p>
  <!-- review card -->
- <div class="card reviewcard" style="width: 18em;">
+ <section class="card reviewcard" style="width: 18em;">
         <div class="card-header">
             Top Reviews
         </div>
@@ -156,6 +167,6 @@
                 <li class="list-group-item">Review #6</li>
 
             </ul>
-    </div>
+    </section>
 </div>
 @endsection

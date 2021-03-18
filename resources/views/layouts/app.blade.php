@@ -61,36 +61,37 @@
                     @endif
 
                 @endif
-                {{--                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>--}}
-                {{--                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>--}}
-                {{--                   <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>--}}
-                {{--                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>--}}
-                {{--                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>--}}
-                {{--                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>--}}
-                {{--                    </ul>--}}
-                <!-- Dropdown menu -->
-                    <nav class="navbar navbar navbar-dark bg-dark">
-                        <div class="dropdown">
-                            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
-                                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Choose category
-                            </button>
-                            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <a class="dropdown-item"
-                                   href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a>
-                                <a class="dropdown-item"
-                                   href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
-                                <a class="dropdown-item"
-                                   href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a>
-                                <a class="dropdown-item"
-                                   href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a>
+{{--                                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>--}}
+{{--                                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>--}}
+{{--                                   <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>--}}
+{{--                                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>--}}
+{{--                                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>--}}
+{{--                                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>--}}
+                    <!-- Dropdown menu -->
+                        <nav class="navbar navbar navbar-dark bg-dark">
+                            <div class="dropdown">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    Choose category
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    <a class="dropdown-item"
+                                       href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a>
+                                    <a class="dropdown-item"
+                                       href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
+                                    <a class="dropdown-item"
+                                       href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a>
+                                    <a class="dropdown-item"
+                                       href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a>
 
+                                </div>
                             </div>
-                        </div>
+                                    </ul>
+
 
 
                         <!-- Right Side Of Navbar -->
-                        <ul class="navbar-nav dropdown-menu-lg-right">
+                        <ul class="navbar-nav ml-auto">
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))
