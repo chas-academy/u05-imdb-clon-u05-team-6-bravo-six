@@ -1,6 +1,7 @@
 @if ($paginator->hasPages())
 <style>
-
+    nav{
+    }
     @media only screen and (max-width: 500px){
     .page-link{
         display: none;

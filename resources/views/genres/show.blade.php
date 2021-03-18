@@ -1,6 +1,11 @@
 @extends('layouts.app')
 @section('content')
-<a class="breadcrumb" href="{{action([\App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
+<nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+<a class="breadcrumb-item" href="{{action([\App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
+<a class="breadcrumb-item active" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $genre->id])}}">{{$genre->name}}</a>
+    </ol>
+</nav>
     <div class="row">
         <div class="col-md-9 col-xs-12">
             @if(request('q'))
@@ -31,6 +36,6 @@
         @endforeach
         </div>
         </div>
-        <x-navigation-aside></x-navigation-aside>
+        <x-navigation-aside :currentPage="$genre->id"></x-navigation-aside>
         <div class="container">{{$titles->appends(['q' => request('q')])->links()}}</div>
 @endsection
