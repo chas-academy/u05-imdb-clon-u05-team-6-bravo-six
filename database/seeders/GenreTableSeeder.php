@@ -19,7 +19,6 @@ class GenreTableSeeder extends Seeder
             'Romance',
             'Fantasy',
             'Drama',
-            'Science Fiction',
             'Indie',
             'Thriller',
             'Horror',
