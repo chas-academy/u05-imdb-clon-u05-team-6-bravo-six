@@ -79,6 +79,9 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     @else
     <p>You need to <a href="{{route('login')}}">log in</a> to make a review!</p>
     @endif
+
+    <p>avgRating: {{$title->avgRating()}}</p>
+
     @foreach ($reviews as $review)
     <div class="container float-left">
             <div class="col-lg-3 col-xl-3 float-left">

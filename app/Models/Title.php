@@ -30,6 +30,11 @@ class Title extends Model
     {
         $this->review()->create(['body'=>$body]);
     }
+    public function avgRating()
+    {
+        
+        return $this->hasMany('App\Models\Review')->where('title_id', $this->id)->avg('rating');
+    }
     
     use HasFactory;
 }
