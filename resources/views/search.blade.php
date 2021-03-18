@@ -1,6 +1,21 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="navbar-nav ml-auto justify-content-end">
+            <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                        <input type="text" class="form-control mr-sm-2" placeholder="Search for..." 
+                        @if(request('q'))
+                        value="{{request('q')}}"
+                        @endif
+                        name="q">
+                        <span class="input-group-btn">
+                    <button class="btn btn-secondary" type="submit">Go!</button>
+                </span>
+                    </div>
+                </form>
+            </div>
 @csrf
 <?php
 $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
@@ -15,5 +30,5 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
         </div>
         <x-navigation-aside></x-navigation-aside>
     </div>
-        <div class="container">{{$titles->appends(['key' => $key])->links()}}</div>
+        <div class="container">{{$titles->appends(['q' => request('q')])->links()}}</div>
 @endsection

@@ -3,12 +3,19 @@
 <a class="breadcrumb" href="{{action([\App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
     <div class="row">
         <div class="col-md-9 col-xs-12">
+            @if(request('q'))
+            <span>Searching through...</span>
+            @endif
             <h1>{{$genre->name}}</h1>
         <div class="navbar-nav ml-auto justify-content-end">
-                <form class="form-inline my-2 my-lg-0" action="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $genre->id])}}" method="GET" role="search">
+            <form class="form-inline my-2 my-lg-0" action="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $genre->id])}}" method="GET" role="search">
                     {{ csrf_field() }}
                     <div class="input-group">
-                        <input type="text" class="form-control mr-sm-2" placeholder="Search for..." name="q">
+                        <input type="text" class="form-control mr-sm-2" placeholder="Search for..." 
+                        @if(request('q'))
+                        value="{{request('q')}}"
+                        @endif
+                        name="q">
                         <span class="input-group-btn">
                     <button class="btn btn-secondary" type="submit">Go!</button>
                 </span>
