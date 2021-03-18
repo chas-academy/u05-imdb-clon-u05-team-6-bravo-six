@@ -49,7 +49,11 @@ class GenreController extends Controller
     public function show(Genre $genre)
     {
         //'/genres/4
-        $titles = $genre->titlesSecondary();
+        // if there is a q-key, do search and populate titles
+        if (request('q')) {
+            dd(request());
+        }
+        $titles = $genre->titlesSecondary()->paginate(25);
         return view('genres.show', ['genre' => $genre, 'titles' => $titles]);
     }
 

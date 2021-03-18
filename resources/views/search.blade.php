@@ -13,6 +13,7 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
                 <x-title-card :title="$title" :watchlists="$watchlists" :moddable="true"></x-title-card>
             @endforeach
         </div>
+        <x-navigation-aside></x-navigation-aside>
     </div>
         <div class="container">{{$titles->appends(['key' => $key])->links()}}</div>
 @endsection

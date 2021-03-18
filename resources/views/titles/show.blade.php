@@ -10,6 +10,13 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     "/>
     <div class="col-lg-9 col-xl-9 float-right mt-xl-5">
         <h1>{{$title->title}}</h1>
+        <span class="row"><a class="mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $title->genre()->id])}}">{{$title->genre()->name}}</a></span>
+        <ul class="list-unstyled row">
+            @foreach($title->genres()->get() as $genre)
+                <li><a class="text-muted mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $genre->id])}}">{{$genre->name}}</a></li>
+                
+            @endforeach
+        </ul>
         {{-- this is copied from the title-card component --}}
         @auth
         <div class="dropdown col-md-3 float-right">
