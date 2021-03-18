@@ -1,17 +1,29 @@
 @if ($paginator->hasPages())
+<style>
+
+    @media only screen and (max-width: 500px){
+    .page-link{
+        display: none;
+    }
+    .page-item.active > .page-link, .page-link.previous, .page-link.next, .page-item.disabled, .page-item.disabled > .page-link{
+        display: inline-block;
+    }
+}
+    
+    </style>
     <nav>
+
         <ul class="pagination">
             {{-- Previous Page Link --}}
             @if ($paginator->onFirstPage())
                 <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.previous')">
-                    <span class="page-link" aria-hidden="true">&lsaquo;</span>
+                    <span class="page-link previous" aria-hidden="true">&lsaquo;</span>
                 </li>
             @else
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
+                    <a class="page-link previous" href="{{ $paginator->previousPageUrl() }}" rel="prev" aria-label="@lang('pagination.previous')">&lsaquo;</a>
                 </li>
             @endif
-
             {{-- Pagination Elements --}}
             @foreach ($elements as $element)
                 {{-- "Three Dots" Separator --}}
@@ -34,11 +46,11 @@
             {{-- Next Page Link --}}
             @if ($paginator->hasMorePages())
                 <li class="page-item">
-                    <a class="page-link" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
+                    <a class="page-link next" href="{{ $paginator->nextPageUrl() }}" rel="next" aria-label="@lang('pagination.next')">&rsaquo;</a>
                 </li>
             @else
                 <li class="page-item disabled" aria-disabled="true" aria-label="@lang('pagination.next')">
-                    <span class="page-link" aria-hidden="true">&rsaquo;</span>
+                    <span class="page-link next" aria-hidden="true">&rsaquo;</span>
                 </li>
             @endif
         </ul>

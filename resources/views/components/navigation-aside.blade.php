@@ -1,4 +1,4 @@
-<aside class=" card col-2">
+<aside class=" card col-md-2 col-xs-12">
     <ul class="list-unstyled">
         <li><a href="{{action([\App\Http\Controllers\GenreController::class, 'index'])}}">Movies</a></li>
         @auth

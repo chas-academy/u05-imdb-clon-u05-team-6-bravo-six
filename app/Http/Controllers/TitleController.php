@@ -38,7 +38,7 @@ class TitleController extends Controller
         $titles = Title::query()
             ->where('title', 'like', "%{$key}%")
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->paginate(5)->onEachSide(1);
 
 
         //get the recent 5 titles

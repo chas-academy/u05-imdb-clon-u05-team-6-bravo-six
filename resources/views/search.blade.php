@@ -30,5 +30,5 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
         </div>
         <x-navigation-aside></x-navigation-aside>
     </div>
-        <div class="container">{{$titles->appends(['q' => request('q')])->links()}}</div>
+        <div class="row">{{$titles->appends(['q' => request('q')])->links()}}</div>
 @endsection
