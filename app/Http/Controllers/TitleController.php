@@ -35,6 +35,7 @@ class TitleController extends Controller
     public function search(Request $request)
     {
 
+
         // the search function for getting a title based on query
         $key = trim($request->get('q'));
         $titles = Title::query()
