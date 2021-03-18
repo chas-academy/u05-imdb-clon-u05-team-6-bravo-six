@@ -31,39 +31,6 @@ class TitleController extends Controller
         //
     }
 
-
-    public function searchTemp(Request $request)
-    {
-
-        // notes
-        // to get this to work as best as possible, we need:
-        /* 1. create column on secondary_genres that's called roughly 'role', set boolean?
-            2. in seeding, lets make a few role-1 for each title. maybe a random amount?
-            3. when displaying a title, in card or in .show, show all genre rels, but depending on role status, show special card or something idk
-
-            maybe we can order the genre-relationships-instances in the search method BY ROLE ACCURACY! like, all instances that have role 1 first. WAIT
-
-
-
-            we're outputting relationships. not object instances
-            that doesn't work. we can't show duplicates?
-            we need to find which unique title-ids are in the resulting genres collection and get those
-            */
-
-        // TEST
-        $genres = $request->except('q', '_token'); //genre_ids
-        $key = $request->get('q');
-        $titles = Title::where('title', 'like', "%$key%")->get()->toArray();
-        // dd($titles);
-        $data = array_map(function ($i) use ($titles) {
-            return $i['id'];
-        }, $titles);
-
-        $genres = SecondaryGenre::whereIn('title_id', $data)->whereIn('genre_id', $genres)->groupBy('title_id')->get();
-        // $genres = SecondaryGenre::where('genre_id', [1, 2, 3])->groupBy('title_id')->get();
-        dd($genres);
-        // we send genres to the view, paginate. we actually pick out the title in the view itself, since paginate works best that way.
-    }
     //Used for search function on home page
     public function search(Request $request)
     {

@@ -35,6 +35,6 @@ class Title extends Model
     {
         return $this->belongsToMany(Genre::class, 'secondary_genres');
     } //i realize now this is the way we should've done it from the start... doh
-
     use HasFactory;
 }
+//  array_filter($genres->toArray(), function($genre) { return $genre['id'] > 10; } );

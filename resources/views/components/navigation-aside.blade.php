@@ -4,7 +4,7 @@
         <li><a href="{{action([\App\Http\Controllers\GenreController::class, 'index'])}}">Movies</a></li>
         @auth
         <li>
-            <a href="">Dashboard</a>
+            <a href="{{route('dashboard')}}">Dashboard</a>
         </li>
         @endauth
         <h5 class="border-bottom mt-2">Genres</h5>
