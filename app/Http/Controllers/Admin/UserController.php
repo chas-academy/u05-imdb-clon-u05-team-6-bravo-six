@@ -7,6 +7,7 @@ use App\Models\User;
 use Illuminate\Http\Request;
 
 
+
 class UserController extends Controller
 {
 
@@ -43,10 +44,9 @@ class UserController extends Controller
     }
 
 
-    public function edit(Request $request, User $user)
+    public function edit($id)
     {
-        $user->user_admin = $request->user_admin;
-        $user->save();
+
     }
 
 
@@ -54,6 +54,11 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->email = $request->email;
+        if ($user->user_admin == false) {
+            $user->user_admin = $request->user()->user_admin ? 1 : 0;
+        } else {
+            $user->user_admin = $request->user_admin ? 1 : 0;
+        }
         $user->save();
         return redirect()->back();
     }

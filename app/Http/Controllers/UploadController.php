@@ -20,7 +20,11 @@ class UploadController extends Controller
 
     public function uploadFile(Request $request)
     {
+        if(Storage::exists($path)){
+            Storage::delete($path);
+        }
         $path = $request->file->store('storage');
+
         // save path in DB
         $user = User::find($request->id);
         $user->img_url = $path;

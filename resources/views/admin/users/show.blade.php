@@ -39,20 +39,21 @@
         @method('PUT')
         @if ($user->user_admin)
         <div class="form-check">
-            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value=""
+            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="Update"
             @if($user->user_admin)
             checked
+
             @endif
             >
             <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
         </div>
         @else
         <div class="form-check">
-            <input type="hidden">
-            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="">
+            <input class="form-check-input" id="flexCheckDefault" name="user_admin" type="checkbox" value="Update">
             <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
         </div>
         @endif
+
     </form>
 
 @endsection
