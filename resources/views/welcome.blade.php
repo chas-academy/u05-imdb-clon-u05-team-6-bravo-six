@@ -1,21 +1,21 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- Dropdown menu -->
-<div class="container">
-  <nav class="navbar navbar navbar-dark bg-dark">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a>
+{{--<!-- Dropdown menu -->--}}
+{{--<div class="container">--}}
+{{--  <nav class="navbar navbar navbar-dark bg-dark">--}}
+{{--        <div class="dropdown">--}}
+{{--            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">--}}
+{{--                Dropdown button--}}
+{{--            </button>--}}
+{{--            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">--}}
+{{--                <a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a>--}}
+{{--                <a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>--}}
+{{--                <a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a>--}}
+{{--                <a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a>--}}
 
-            </div>
-        </div>
+{{--            </div>--}}
+{{--        </div>--}}
 
  <!-- Search Widget -->
         <div class="navbar-nav ml-auto justify-content-end">
@@ -29,50 +29,51 @@
                     </div>
                 </form>
         </div>
- <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->
-            @guest
-                @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                @endif
+{{-- <!-- Right Side Of Navbar -->--}}
+{{--        <ul class="navbar-nav ml-auto">--}}
+{{--            <!-- Authentication Links -->--}}
+{{--            @guest--}}
+{{--                @if (Route::has('login'))--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
 
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-            @else
-            <x-image-layout :user="Auth::user()"></x-image-layout>
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
+{{--                @if (Route::has('register'))--}}
+{{--                    <li class="nav-item">--}}
+{{--                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>--}}
+{{--                    </li>--}}
+{{--                @endif--}}
+{{--            @else--}}
+{{--            <x-image-layout :user="Auth::user()"></x-image-layout>--}}
+{{--                <li class="nav-item dropdown">--}}
+{{--                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>--}}
+{{--                        {{ Auth::user()->name }}--}}
+{{--                    </a>--}}
 
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('dashboard') }}">
-                            {{ __('Dashboard') }}
-                        </a>
+{{--                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">--}}
+{{--                        <a class="dropdown-item" href="{{ route('dashboard') }}">--}}
+{{--                            {{ __('Dashboard') }}--}}
+{{--                        </a>--}}
 
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
+{{--                        <a class="dropdown-item" href="{{ route('logout') }}"--}}
+{{--                            onclick="event.preventDefault();--}}
+{{--                                            document.getElementById('logout-form').submit();">--}}
+{{--                            {{ __('Logout') }}--}}
+{{--                        </a>--}}
 
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
-        </ul>
-    </nav>
-</div>
+{{--                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">--}}
+{{--                            @csrf--}}
+{{--                        </form>--}}
+{{--                    </div>--}}
+{{--                </li>--}}
+{{--            @endguest--}}
+{{--        </ul>--}}
+{{--    </nav>--}}
+{{--</div>--}}
 
 <!-- slider -->
+
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -153,8 +154,8 @@
                 <li class="list-group-item">Review #4</li>
                 <li class="list-group-item">Review #5</li>
                 <li class="list-group-item">Review #6</li>
-               
+
             </ul>
     </div>
-</div> 
+</div>
 @endsection
