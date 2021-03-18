@@ -52,6 +52,23 @@ class GenreController extends Controller
         // if there is a q-key, do search and populate titles
         if (request('q')) {
 
+
+            //     // i made a solution for searching through pivot table!
+
+            //     $key = $request->get('q');
+            //     $genreIds = [1];
+            //     $titles = Title::where('title', 'like', "%$key%")->get()->toArray();
+            //     // dd($titles);
+            //     $data = array_map(function ($i) use ($titles) {
+            //         return $i['id'];
+            //     }, $titles);
+            //     // dd($data);
+            //     $genres = SecondaryGenre::whereIn('title_id', $data)->whereIn('genre_id', $genreIds)->paginate(10);
+            //     // $genres = SecondaryGenre::where('genre_id', [1, 2, 3])->groupBy('title_id')->get();
+            //     dd($genres);
+            //     // you can loop through genres and get their title easy.
+
+
             // one solution to this is{
             // rebuild database to let all genre relationships be represented in one relationship.
             // maybe add column to pivot table that has the 'role' associated with the genre - e.g. primary or secondary.
@@ -66,9 +83,8 @@ class GenreController extends Controller
             $key = request('q');
             $titlesSub = $genre->titlesSecondary()->where('title', 'like', "%$key%")->get();
             $titlesMain = $genre->hasMany(\App\Models\Title::class)->where('title', 'like', "%$key%")->get();
-            $titles = (collect($titlesSub->merge($titlesMain))->paginate(10));
+            $titles = (collect($titlesSub->merge($titlesMain)));
             // ->paginate(10)->onEachSide(1);
-
             //             ->paginate(10)->onEachSide(1);
             // propagate this titles collection with one from secondaries somehow
         } else {

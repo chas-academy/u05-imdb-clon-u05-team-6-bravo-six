@@ -37,5 +37,7 @@
         </div>
         </div>
         <x-navigation-aside :currentPage="$genre->id"></x-navigation-aside>
+        @if(!request('q'))
         <div class="container">{{$titles->appends(['q' => request('q')])->links()}}</div>
+        @endif
 @endsection

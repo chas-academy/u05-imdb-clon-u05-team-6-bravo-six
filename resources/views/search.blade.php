@@ -1,6 +1,11 @@
 @extends('layouts.app')
 
 @section('content')
+    <div class="row">
+    @foreach (\App\Models\Genre::all() as $genre)
+        <button class="btn btn-secondary btn-sm m-1 filter" data-id="{{$genre->id}}">{{$genre->name}}</button>
+    @endforeach
+    </div>
 <div class="navbar-nav ml-auto justify-content-end">
             <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
                     {{ csrf_field() }}
@@ -25,11 +30,36 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
                 <small>{{$key}}</small>
             </h1>
             @foreach ($titles as $title)
+            <div class="@foreach($title->genres()->get() as $genre) {{$genre->id}} @endforeach movie">
                 <x-title-card :title="$title" :watchlists="$watchlists" :moddable="true"></x-title-card>
-            @endforeach
+            </div>
+                @endforeach
         </div>
         <x-navigation-aside></x-navigation-aside>
-        <div class="row">{{$titles->appends(['q' => request('q')])->links()}}</div>
-    </div>
         
+        {{-- <div class="row">{{$titles->appends(['q' => request('q')])->links()}}</div> --}}
+    </div>
+
+        <script>
+const arr = [];
+            $(() => {
+                // 
+                $('.filter').on('click', function (){
+                    $(this).toggleClass('.btn-sm')
+                    const id = this.dataset.id;
+                    $('.movie').removeClass('hidden')
+                    if (arr.indexOf(id) !== -1){
+                        arr.splice(arr.indexOf(id), 1); 
+                    } else {
+                        arr.push(id);
+                    }
+                    if (arr.length > 0) $('.movie:not(.'+arr.join('.')+')').addClass('hidden')
+                })
+            })
+        </script>
+        <style>
+            .hidden{
+                display: none;
+            }
+        </style>
 @endsection
