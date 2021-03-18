@@ -20,13 +20,20 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
 
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->user;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        $user->save();
+
+        return redirect()->action([UserController::class, 'index']);
     }
 
 
