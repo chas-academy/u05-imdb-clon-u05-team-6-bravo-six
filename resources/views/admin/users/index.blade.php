@@ -1,6 +1,6 @@
 @extends('layouts.admin')
 @section('content')
-<a class="btn btn-primary" href="{{action([\App\Http\Controllers\Admin\UserController::class, 'create'])}}">Create new user</a>
+
 <table>
 <thead>
     <tr>
