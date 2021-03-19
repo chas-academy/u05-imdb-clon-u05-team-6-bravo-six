@@ -2,8 +2,10 @@
 
 @section('content')
     <div class="row">
+        {{-- class filter must remain on button for jquery to work --}}
     @foreach (\App\Models\Genre::all() as $genre)
         <button class="btn btn-sm m-1 filter" data-id="{{$genre->id}}">{{$genre->name}}</button>
+        
     @endforeach
     </div>
 <div class="navbar-nav ml-auto justify-content-end">
@@ -39,36 +41,4 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
         
         {{-- <div class="row">{{$titles->appends(['q' => request('q')])->links()}}</div> --}}
     </div>
-
-        <script>
-const arr = [];
-            $(() => {
-                if($('.filter') && $('.movie')){
-                // 
-                $('.filter').on('click', function (){
-                    $(this).toggleClass('selected-filter')
-                    const id = this.dataset.id;
-                    $('.movie').removeClass('hidden')
-                    if (arr.indexOf(id) !== -1){
-                        arr.splice(arr.indexOf(id), 1); 
-                    } else {
-                        arr.push(id);
-                    }
-                    if (arr.length > 0) $('.movie:not(.'+arr.join('.')+')').addClass('hidden')
-                })
-                }
-            })
-        </script>
-        <style>
-            .hidden{
-                display: none;
-            }
-            button.filter{
-                border: 1.5px solid black;
-            }
-            button.selected-filter{
-                
-                background-color: rgb(151, 152, 223) !important;
-            }
-        </style>
 @endsection

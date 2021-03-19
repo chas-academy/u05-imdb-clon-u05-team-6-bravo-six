@@ -18,7 +18,7 @@ class TitleController extends Controller
      */
     public function index()
     {
-        return view('titles.index', ['titles' => Title::all()]);
+        return redirect('/search');
     }
 
     /**

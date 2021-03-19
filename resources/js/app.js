@@ -2,6 +2,26 @@ require('./bootstrap');
 
 require('alpinejs');
 $(() => {
+
+
+    // this is the code for filtering genres on search results
+    if ($('.filter') && $('.movie')) {
+        const arrGenres = [];
+        // 
+        $('.filter').on('click', function () {
+            $(this).toggleClass('selected-filter')
+            const id = this.dataset.id;
+            $('.movie').removeClass('hidden')
+            if (arrGenres.indexOf(id) !== -1) {
+                arrGenres.splice(arrGenres.indexOf(id), 1);
+            } else {
+                arrGenres.push(id);
+            }
+            if (arrGenres.length > 0) $('.movie:not(.' + arrGenres.join('.') + ')').addClass('hidden')
+        })
+    }
+
+    // this has to do with ADMIN PANEL! it allows for searching OMDB for images
     if ($('#search-results')) {
         $('.toggles-search').on('click', function (e) {
             e.preventDefault();
@@ -92,6 +112,8 @@ $(() => {
         // })
     }
 
+
+    // this code enables adding watchlist items on titlecard
     if ($('.watchlist_listitem')) {
         $('.watchlist_listitem').on('click', function (e) {
             e.stopPropagation();

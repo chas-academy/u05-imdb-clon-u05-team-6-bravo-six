@@ -21,6 +21,7 @@
                @foreach($title->genres()->get() as $genre)
                     <li><a class="text-muted mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $genre->id])}}">{{$genre->name}}</a></li>
                @endforeach
+           
                </ul>
           {{-- </div> --}}
           <p>{{$title->description}}</p>
@@ -46,6 +47,7 @@
                                    @endif
                                    "></i></span></li>
                               @endforeach
+                                  <li><a href="{{route('dashboard')}}">Add watchlist</a></li>
                               </ul>
                          </div>
                     @endauth
