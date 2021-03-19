@@ -53,6 +53,13 @@
             <label class="form-check-label" for="flexCheckDefault">Assign user as admin</label>
         </div>
         @endif
+        {{-- <form method="POST" action="{{action([\App\Http\Controllers\Admin\UploadController::class, 'destroy'], ['user' => $user->img_url])}}">
+            @method("DELETE")
+            @csrf
+            <td>
+                <button class="btn btn-dark btn-lg" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this profile picture?')">Delete Profile Picture</button>
+            </td>
+        </form> --}}
 
     </form>
 
