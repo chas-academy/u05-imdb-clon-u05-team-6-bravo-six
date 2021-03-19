@@ -28,8 +28,13 @@ class Title extends Model
 
     public function addReview()
     {
-        $this->review()->create(['body'=>$body]);
+        $this->review()->create(['body' => $body]);
     }
-    
+
+    public function genres() //this is to be used in the search method of title-controller
+    {
+        return $this->belongsToMany(Genre::class, 'secondary_genres');
+    } //i realize now this is the way we should've done it from the start... doh
     use HasFactory;
 }
+//  array_filter($genres->toArray(), function($genre) { return $genre['id'] > 10; } );

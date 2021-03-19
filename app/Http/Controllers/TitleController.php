@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\SecondaryGenre;
 use App\Models\Title;
 use Facade\FlareClient\View;
+use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TitleController extends Controller
 {
@@ -15,7 +18,7 @@ class TitleController extends Controller
      */
     public function index()
     {
-        return view('titles.index', ['titles' => Title::all()]);
+        return redirect('/search');
     }
 
     /**
@@ -31,12 +34,14 @@ class TitleController extends Controller
     //Used for search function on home page
     public function search(Request $request)
     {
-        $key = trim($request->get('key'));
 
+
+        // the search function for getting a title based on query
+        $key = trim($request->get('q'));
         $titles = Title::query()
             ->where('title', 'like', "%{$key}%")
             ->orderBy('created_at', 'desc')
-            ->paginate(5);
+            ->get(); //paginate(10)->onBothSides(1);
 
 
         //get the recent 5 titles
