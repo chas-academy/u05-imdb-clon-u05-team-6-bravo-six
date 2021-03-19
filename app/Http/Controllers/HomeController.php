@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Title;
 
 class HomeController extends Controller
 {
@@ -23,6 +24,28 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+    
+        $movies = Title::all();
+        
+        $topMovies = array(0, 0, 0);
+        $mov1 = null;
+        $mov2 = null;
+        $mov3 = null;
+        foreach($movies as $movie){
+            if( $topMovies[2] < $movie->avgRating() && $topMovies[1] < $movie->avgRating() && $topMovies[0] < $movie->avgRating()){
+                $topMovies[0] = $movie->avgRating();
+                $mov1=$movie;
+            }elseif($movie->avgRating() > $topMovies[2] && $movie->avgRating() > $topMovies[1]){
+                $topMovies[1] = $movie->avgRating();
+                $mov2=$movie;
+            }elseif($movie->avgRating() > $topMovies[2]){
+                $topMovies[2] = $movie->avgRating();
+                $mov3=$movie;
+            }
+        }
+        
+        
+        
+        return view('welcome' ,['mov1'=> $mov1, 'mov2'=> $mov2, 'mov3'=> $mov3]);
     }
 }

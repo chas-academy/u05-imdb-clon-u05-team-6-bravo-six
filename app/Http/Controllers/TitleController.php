@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\SecondaryGenre;
 use App\Models\Title;
+use App\Models\Review;
 use Facade\FlareClient\View;
 use Illuminate\Database\Eloquent\Collection;
 use Illuminate\Http\Request;
@@ -76,6 +77,11 @@ class TitleController extends Controller
      */
     public function show(Title $title)
     {
+        
+        // $avgRating = Review::query('reviews')
+        // ->where('title_id', $title->id)
+        // ->groupBy('title_id')
+        // ->avg('rating');
         return view('titles.show', ['title' => $title, 'reviews' => collect($title->reviews())->sortByDesc('updated_at')]);
     }
 
