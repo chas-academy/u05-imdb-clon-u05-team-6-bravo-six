@@ -5,6 +5,8 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 
 
@@ -59,6 +61,7 @@ class UserController extends Controller
         } else {
             $user->user_admin = $request->user_admin ? 1 : 0;
         }
+        // $user->user_admin = $request->user_admin;
         $user->save();
         return redirect()->back();
     }
@@ -69,4 +72,6 @@ class UserController extends Controller
         $user->delete();
         return redirect()->action([UserController::class, 'index']);
     }
+
+
 }

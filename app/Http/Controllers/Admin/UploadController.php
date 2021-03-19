@@ -25,7 +25,6 @@ class UploadController extends Controller
         $path = $request->img_url;
         if($path !== null) {
             Storage::delete($path);
-
         }
         $path = $request->file->store('storage');
 
@@ -37,10 +36,15 @@ class UploadController extends Controller
 
     }
 
-    // public function destroy(User $user) {
-    //     $user->img_url->delete();
+    public function destroy(User $user) {
+        // $basic_pic = 'https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg';
+        // $user->img_url = $basic_pic;
+        // dd($user);
 
-    // }
+        $user->delete($user->img_url);
+
+        return redirect()->action([UserController::class, 'index']);
+    }
 
 }
 
