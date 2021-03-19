@@ -10,6 +10,7 @@ use App\Models\User;
 use Illuminate\Support\Facades\Storage;
 use Intervention\Image\Facades\Image;
 
+
 class UploadController extends Controller
 {
 
@@ -21,9 +22,10 @@ class UploadController extends Controller
     public function uploadFileAdmin(Request $request, User $user)
     {
 
-        $path = $user->img_url;
-        if(Storage::exists($path)) {
+        $path = $request->img_url;
+        if($path !== null) {
             Storage::delete($path);
+
         }
         $path = $request->file->store('storage');
 
