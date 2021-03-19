@@ -10107,3 +10107,15 @@ th {
 .title-card-wrapper {
   margin: 0.5em 0;
 }
+
+.hidden {
+  display: none;
+}
+
+button.filter {
+  border: 1.5px solid black;
+}
+
+button.selected-filter {
+  background-color: #9798df !important;
+}

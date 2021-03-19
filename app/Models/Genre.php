@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Genre extends Model
 {
+    protected $fillable = ['name'];
     public function titles()
     {
         return $this->hasMany('\App\Models\Title')->get();
@@ -19,12 +20,13 @@ class Genre extends Model
 
     public function titlesSecondary()
     {
-        $rels = $this->secondary_genre_relationships();
-        $titles = [];
-        foreach ($rels as $rel) {
-            array_push($titles, $rel->title());
-        };
-        return $titles;
+        // $rels = $this->secondary_genre_relationships();
+        // $titles = [];
+        // foreach ($rels as $rel) {
+        //     array_push($titles, $rel->title());
+        // };
+        // return $titles;
+        return $this->belongsToMany(Title::class, 'secondary_genres');
     }
     use HasFactory;
 }
