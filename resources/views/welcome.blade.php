@@ -130,8 +130,10 @@
     @endif
     " class="card-img-top" alt="..."/>
     <div class="card-body">
-      <h5 class="card-title">{{$mov1->title}}</h5>
-      <p class="card-text">Avarage rating: {{$mov1->avgRating()}}/5.0000</p>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
+            <h5 class="card-title">{{$mov1->title}}</h5>
+        </a>
+      <p class="card-text">Avarage rating: {{round($mov1->avgRating(), 2)}} / 5</p>
     </div>
   </div>
   <div class="card">
@@ -143,8 +145,10 @@
     @endif
     " class="card-img-top" alt="..."/>
     <div class="card-body">
-      <h5 class="card-title">{{$mov2->title}}</h5>
-      <p class="card-text">Avarage rating: {{$mov2->avgRating()}}/5.0000</p>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
+            <h5 class="card-title">{{$mov2->title}}</h5>
+        </a>
+      <p class="card-text">Avarage rating: {{round($mov2->avgRating(), 2)}} / 5</p>
     </div>
   </div>
   <div class="card">
@@ -156,8 +160,10 @@
     @endif
     " class="card-img-top" alt="..."/>
     <div class="card-body">
-      <h5 class="card-title">{{$mov3->title}}</h5>
-      <p class="card-text">Avarage rating: {{$mov3->avgRating()}}/5.0000</p>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
+            <h5 class="card-title">{{$mov3->title}}</h5>
+        </a>
+      <p class="card-text">Avarage rating: {{round($mov3->avgRating(), 2)}} / 5</p>
     </div>
   </div>
  <!-- review card -->
