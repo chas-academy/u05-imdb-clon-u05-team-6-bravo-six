@@ -54,9 +54,9 @@
                                     Mode</a></li>
                         @else
 
-                            <li class="nav-item"><a class="nav-link"
-                                                    href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">Profile</a>
-                            </li>
+{{--                            <li class="nav-item"><a class="nav-link"--}}
+{{--                                                    href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">Profile</a>--}}
+{{--                            </li>--}}
 
                     @endif
 
@@ -117,6 +117,10 @@
                                         <a class="dropdown-item" href="{{ route('dashboard') }}">
                                             {{ __('Dashboard') }}
                                         </a>
+
+                                   <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}} }}">
+                                        {{ __('Profile') }}
+                                    </a>
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
