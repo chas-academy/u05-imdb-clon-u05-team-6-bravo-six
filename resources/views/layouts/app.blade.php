@@ -44,7 +44,6 @@
                     aria-label="{{ __('Toggle navigation') }}">
                 <span class="navbar-toggler-icon"></span>
             </button>
-
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
@@ -53,24 +52,21 @@
                             <li class="nav-item"><a class="nav-link" href=" {{route('admin.dashboard')}} ">Admin
                                     Mode</a></li>
                         @else
-
-{{--                            <li class="nav-item"><a class="nav-link"--}}
-{{--                                                    href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">Profile</a>--}}
-{{--                            </li>--}}
-
+{{--                        <li class="nav-item"><a class="nav-link"--}}
+{{--                        href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">Profile</a>--}}
+{{--                        </li>--}}
+                        @endif
                     @endif
-
-                @endif
-{{--                                   <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>--}}
-{{--                                    <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>--}}
-{{--                                   <li class = "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>--}}
-{{--                                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>--}}
-{{--                                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>--}}
-{{--                                    <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>--}}
+{{--                        <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>--}}
+{{--                        <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>--}}
+{{--                        <li class= "nav-item"> <a class="nav-link" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>--}}
+{{--                        <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\ReviewController::class, 'index'])}} "> Reviews</a></li>--}}
+{{--                        <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistController::class, 'index'])}} ">Watchlists</a></li>--}}
+{{--                        <li class= "nav-item"> <a class="nav-link" href=" {{action([App\Http\Controllers\WatchlistItemController::class, 'index'])}} ">Watchlists items</a></li>--}}
                     <!-- Dropdown menu -->
                         <nav class="navbar navbar navbar-dark bg-dark">
-                            <div class="dropdown">
-                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
+                            <div class="dropdown"> 
+                                <button class="btn btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton"
                                         data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     Choose category
                                 </button>
@@ -86,12 +82,23 @@
 
                                 </div>
                             </div>
-                                    </ul>
-
+                    </ul>
 
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
+
+                        <!-- Search Widget -->
+                        <form class="form-inline my-2 my-lg-0 mr-2" action="/search" method="GET" role="search">
+                                {{ csrf_field() }}
+                                <div class="input-group">
+                                <input type="text" class="form-control mr-sm-2" placeholder="Search for..." name="q">
+                                <span class="input-group-btn">
+                                <button class="btn btn-secondary" type="submit">Go!</button>
+                                </span>
+                                </div>
+                        </form>
+
                             <!-- Authentication Links -->
                             @guest
                                 @if (Route::has('login'))

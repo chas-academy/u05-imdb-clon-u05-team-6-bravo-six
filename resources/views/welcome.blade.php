@@ -20,7 +20,7 @@
     <nav class="navbar navbar navbar-light bg-light">
 
  <!-- Search Widget -->
-        <section class="navbar-nav ml-auto justify-content-end">
+        <!-- <section class="navbar-nav ml-auto justify-content-end">
         <p>
                 <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
                     {{ csrf_field() }}
@@ -32,7 +32,7 @@
                     </div>
                 </form>
         </p>
-        </section>
+        </section> -->
 {{-- <!-- Right Side Of Navbar -->--}}
 {{--        <ul class="navbar-nav ml-auto">--}}
 {{--            <!-- Authentication Links -->--}}
