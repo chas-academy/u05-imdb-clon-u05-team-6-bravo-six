@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Title;
+use App\Models\Review;
+use App\Models\Comment;
+use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Collection;
 
 class HomeController extends Controller
 {
@@ -24,7 +28,6 @@ class HomeController extends Controller
      */
     public function index()
     {
-    
         $movies = Title::all();
         
         $topMovies = array(0, 0, 0);
@@ -43,7 +46,13 @@ class HomeController extends Controller
                 $mov3=$movie;
             }
         }
-        
+        // $reviews = Review::with('comments')->orderBy(function($review){
+        //     return $review->comments->count();
+        // });
+        // $reviews = Review::all()->withCount('comments');
+        $reviews = Review::withCount('comments')->get();
+        $topReviews = $reviews.orderBy('comments_count', 'desc'); 
+         dd($topReviews);
         
         
         return view('welcome' ,['mov1'=> $mov1, 'mov2'=> $mov2, 'mov3'=> $mov3]);
