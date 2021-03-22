@@ -21,6 +21,24 @@ class WatchlistController extends Controller
         return view('watchlists.show', ['watchlist' => $watchlist, 'watchlistItems' => $watchlist->watchlistItems()]);
         //
     }
+    //Used for search function on watchlist page
+    public function search(Request $request)
+    {
+
+
+        // the search function for getting a title based on query
+        $key = trim($request->get('q'));
+        $watchlists = Watchlist::query()
+            ->where('name', 'like', "%{$key}%")
+            ->where('public', 'like', 1)
+            ->orderBy('created_at',)
+            ->get(); //paginate(10)->onBothSides(1);
+
+        return view('wsearch', [
+            'key' => $key,
+            'watchlists' => $watchlists,
+        ]);
+    }
     public function create()
     {
         //return a view for creating a review (review.create)
