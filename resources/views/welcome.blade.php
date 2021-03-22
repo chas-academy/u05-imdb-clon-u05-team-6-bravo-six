@@ -71,39 +71,6 @@
         </ul>
     </nav>
 </div>
-<style>
-    .carousel-item img{
-        object-fit: contain;
-        /* margin: 0 auto; */
-    }
-    .img-carousel-wrapper{
-        position: relative;
-        height: 380px;
-        width: 100%;
-        display: flex;
-        /* clip-path: circle(50%); */
-        border-radius: 20px;
-        overflow: hidden;
-        justify-content: center;
-    }
-    .carousel-control-prev-icon, .carousel-control-next-icon{
-        font-size: 3rem;
-    }
-    #carouselExampleSlides {
-        height: 430px;
-    }
-    .carousel-indicators {
-                /* background-color: rgba(155, 142, 142, 0.404); */
-            /* height: 30%; */
-            
-    }
-    .carousel-indicators > * {
-        width: 50px !important;
-        height: 7px !important;
-        background-color: rgb(90, 73, 73) !important;
-
-    }
-</style>
 <!-- slider -->
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
   <ol class="carousel-indicators">
@@ -122,27 +89,8 @@
       <img class="img-fluid"  src="{{$movie->img_url}}" alt="First slide"></a>
     </div>
     @endforeach
-     {{-- <a class="carousel-control-prev" href="#carouselExampleSlides" role="button" data-slide="prev">
-    <span class="carousel-control-prev-icon text-dark" aria-hidden="true"><i  class="fas fa-arrow-left"></i></span>
-    <span class="sr-only"></span>
-  </a>
-  <a class="carousel-control-next" href="#carouselExampleSlides" role="button" data-slide="next">
-    <span class="carousel-control-next-icon text-dark" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
-    <span class="sr-only"></span>
-  </a> --}}
   </div>
 </div>
-  <script>
-      $(() => {
-        $('#carouselExampleSlides').carousel();
-        // $('.carousel-control-next').on('click', () => {
-        //     $('#carouselExampleSlides').carousel('next')
-        // })
-        // $('.carousel-control-prev').on('click', () => {
-        //     $('#carouselExampleSlides').carousel('prev')
-        // })
-      })
-      </script>
 <!-- New movies column -->
 <div class="container">
 <h2>Recently updated movies</h2>
@@ -157,8 +105,8 @@
             <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
                 <h2>{{$movie->title}}</h2>
             </a>
-            <p>{{$movie->description}}</p>
-            <p>{{$movie->updated_at}}</p>
+            <p> Updated at: {{$movie->description}}</p>
+            <p>Updated at: {{$movie->updated_at}}</p>
         </div>
     </div>
     @endforeach
