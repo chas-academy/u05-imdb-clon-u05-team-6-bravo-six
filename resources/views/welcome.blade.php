@@ -86,49 +86,35 @@
     </div>
   </div>
 <!-- New movies column -->
-
+<h2>Recently updated movies</h2>
 <div class="new-movies-container row">
+    @foreach ($recentMovies as $movie)
     <div class="movie border border-secondary col-md-4 col-sm-12">
         {{-- <div class="img-box "> --}}
-            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
+            <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+            <img class="img-fluid" src="{{$movie->img_url}}" alt=""></a>
         {{-- </div> --}}
         <div class="description p-2">
-            <h2>Movie Title</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
-            <p>Last updated...</p>
+            <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+                <h2>{{$movie->title}}</h2>
+            </a>
+            <p>{{$movie->description}}</p>
+            <p>{{$movie->updated_at}}</p>
         </div>
     </div>
-    <div class="movie border border-secondary col-md-4 col-sm-12">
-        {{-- <div class="img-box"> --}}
-            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
-        {{-- </div> --}}
-        <div class="description p-2">
-            <h2>Movie Two</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
-            <p>Last updated...</p>
-        </div>
-    </div>
-    <div class="movie border border-secondary col-md-4 col-sm-12">
-        {{-- <div class="img-box"> --}}
-            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
-        {{-- </div> --}}
-        <div class="description p-2">
-            <h2>Movie Three</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
-            <p>Last updated...</p>
-        </div>
-    </div>
+    @endforeach
 </div >
 <!-- recommended movies column -->
 <div class="card-group">
   <div class="card">
+    <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
     <img src="
     @if ($mov1->img_url !== null)
     {{$mov1->img_url}}
     @else
     https://picsum.photos/200
     @endif
-    " class="card-img-top" alt="..."/>
+    " class="card-img-top" alt="..."/></a>
     <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
             <h5 class="card-title">{{$mov1->title}}</h5>
@@ -137,13 +123,14 @@
     </div>
   </div>
   <div class="card">
+      <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
     <img src="
     @if ($mov2->img_url !== null)
     {{$mov2->img_url}}
     @else
     https://picsum.photos/200
     @endif
-    " class="card-img-top" alt="..."/>
+    " class="card-img-top" alt="..."/></a>
     <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
             <h5 class="card-title">{{$mov2->title}}</h5>
@@ -152,13 +139,13 @@
     </div>
   </div>
   <div class="card">
-    <img src="
+     <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}"><img src="
     @if ($mov3->img_url !== null)
     {{$mov3->img_url}}
     @else
     https://picsum.photos/200
     @endif
-    " class="card-img-top" alt="..."/>
+    " class="card-img-top" alt="..."/></a>
     <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
             <h5 class="card-title">{{$mov3->title}}</h5>
