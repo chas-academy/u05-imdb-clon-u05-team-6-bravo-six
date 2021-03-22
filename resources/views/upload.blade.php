@@ -10,15 +10,9 @@
          <div class="card-body">
            <form action="{{route('upload.uploadfile')}}" method="post" enctype="multipart/form-data">
               @csrf
-              <select name="id" class="form-control">
-                @foreach (\App\Models\User::all() as $user)
-                @if ($user->id === intval($id))
-                  <option selected value="{{$user->id}}">{{$user->name}}</option>
-                @else
-                  <option value="{{$user->id}}">{{$user->name}}</option>
-                @endif
-                @endforeach
-              </select>
+              <p name="id" class="form-control">
+                {{ Auth::user()->name }}
+              </p>
               <div class="form-group">
                 <label for="file">Choose File</label>
                 <input type="file" class="form-control" name="file" id="file"/>
