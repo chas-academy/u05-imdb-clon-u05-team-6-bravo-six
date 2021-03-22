@@ -33,6 +33,7 @@
                 </form>
         </p>
         </section> -->
+
 {{-- <!-- Right Side Of Navbar -->--}}
 {{--        <ul class="navbar-nav ml-auto">--}}
 {{--            <!-- Authentication Links -->--}}
@@ -95,7 +96,7 @@
 <p>
     <section class="new-movies-container row">
 
-    <div class="movie border border-secondary col-md-4 col-sm-12">
+    <div class="movie border border-secondary col-md-4 col-sm-12 p-0 m-1">
         {{-- <div class="img-box "> --}}
             <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
         {{-- </div> --}}
@@ -105,7 +106,7 @@
             <p>Last updated...</p>
         </div>
     </div>
-    <div class="movie border border-secondary col-md-4 col-sm-12">
+    <div class="movie border border-secondary col-md-4 col-sm-12 p-0 m-1">
         {{-- <div class="img-box"> --}}
             <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
         {{-- </div> --}}
@@ -115,7 +116,7 @@
             <p>Last updated...</p>
         </div>
     </div>
-    <div class="movie border border-secondary col-md-4 col-sm-12">
+    <div class="movie border border-secondary col-md-4 col-sm-12 p-0 m-1">
         {{-- <div class="img-box"> --}}
             <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
         {{-- </div> --}}
@@ -131,21 +132,21 @@
 <!-- recommended movies column -->
 <p>
 <div class="card-group">
-  <div class="card">
+  <div class="card m-1">
     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Movie nr.1</h5>
       <p class="card-text">Lorem ipsum dolor sit amet.</p>
     </div>
   </div>
-  <div class="card">
+  <div class="card m-1">
     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Movie nr.2</h5>
       <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut cumque tempore animi veniam odio laboriosam?</p>
     </div>
-    </div>
-    <div class="card">
+  </div>
+  <div class="card m-1">
     <img src="https://picsum.photos/200" class="card-img-top" alt="...">
     <div class="card-body">
       <h5 class="card-title">Movie nr.3</h5>
@@ -153,8 +154,9 @@
     </div>
  </div>
 </p>
+
  <!-- review card -->
- <section class="card reviewcard" style="width: 18em;">
+    <section class="card reviewcard m-1">
         <div class="card-header">
             Top Reviews
         </div>
