@@ -17,6 +17,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 // image
 use App\Http\Controllers\UploadController;
 // image
@@ -35,9 +36,8 @@ use App\Http\Controllers\WatchlistItemController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
 Route::get('/bootstrap', function () {
     return view('bootstrap');
 });

@@ -86,6 +86,7 @@
     </div>
   </div>
 <!-- New movies column -->
+
 <div class="new-movies-container row">
     <div class="movie border border-secondary col-md-4 col-sm-12">
         {{-- <div class="img-box "> --}}
@@ -121,39 +122,74 @@
 <!-- recommended movies column -->
 <div class="card-group">
   <div class="card">
-    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+    <img src="
+    @if ($mov1->img_url !== null)
+    {{$mov1->img_url}}
+    @else
+    https://picsum.photos/200
+    @endif
+    " class="card-img-top" alt="..."/>
     <div class="card-body">
-      <h5 class="card-title">Movie nr.1</h5>
-      <p class="card-text">Lorem ipsum dolor sit amet.</p>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
+            <h5 class="card-title">{{$mov1->title}}</h5>
+        </a>
+      <p class="card-text">Average rating: {{round($mov1->avgRating(), 2)}} / 5</p>
     </div>
   </div>
   <div class="card">
-    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+    <img src="
+    @if ($mov2->img_url !== null)
+    {{$mov2->img_url}}
+    @else
+    https://picsum.photos/200
+    @endif
+    " class="card-img-top" alt="..."/>
     <div class="card-body">
-      <h5 class="card-title">Movie nr.2</h5>
-      <p class="card-text">Lorem ipsum dolor, sit amet consectetur adipisicing elit. Ut cumque tempore animi veniam odio laboriosam?</p>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
+            <h5 class="card-title">{{$mov2->title}}</h5>
+        </a>
+      <p class="card-text">Average rating: {{round($mov2->avgRating(), 2)}} / 5</p>
     </div>
-    </div>
-    <div class="card">
-    <img src="https://picsum.photos/200" class="card-img-top" alt="...">
+  </div>
+  <div class="card">
+    <img src="
+    @if ($mov3->img_url !== null)
+    {{$mov3->img_url}}
+    @else
+    https://picsum.photos/200
+    @endif
+    " class="card-img-top" alt="..."/>
     <div class="card-body">
-      <h5 class="card-title">Movie nr.3</h5>
-      <p class="card-text">Lorem ipsum dolor sit amet.</p>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
+            <h5 class="card-title">{{$mov3->title}}</h5>
+        </a>
+      <p class="card-text">Average rating: {{round($mov3->avgRating(), 2)}} / 5</p>
     </div>
- </div>
+  </div>
  <!-- review card -->
  <div class="card reviewcard" style="width: 18em;">
         <div class="card-header">
-            Top Reviews
+            Most popular reviews
         </div>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item">Review #1</li>
-                <li class="list-group-item">Review #2</li>
-                <li class="list-group-item">Review #3</li>
-                <li class="list-group-item">Review #4</li>
-                <li class="list-group-item">Review #5</li>
-                <li class="list-group-item">Review #6</li>
-               
+                @foreach ($topReviews as $review)
+                <li class="list-group-item">
+                    <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
+                        {{$review->title}}
+                    </a>
+                    <br>
+                    <small class="text-muted">
+                        {{strlen($review->body)>35 ? substr($review->body,0,34) . "...": $review->body}}
+                    </small>
+                    <br>
+                    <small>
+                        With {{$review->comments_query_count}} comments.
+                    </small>
+                    <small class="text-muted content-end">
+                         By:  {{$review->user()->name}}
+                    </small>
+                </li>
+                @endforeach
             </ul>
     </div>
 </div> 
