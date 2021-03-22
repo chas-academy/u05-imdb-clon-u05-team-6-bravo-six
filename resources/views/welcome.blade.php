@@ -71,29 +71,86 @@
         </ul>
     </nav>
 </div>
+<style>
+    .carousel-item img{
+        object-fit: contain;
+        /* margin: 0 auto; */
+    }
+    .img-carousel-wrapper{
+        position: relative;
+        height: 380px;
+        width: 100%;
+        display: flex;
+        /* clip-path: circle(50%); */
+        border-radius: 20px;
+        overflow: hidden;
+        justify-content: center;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon{
+        font-size: 3rem;
+    }
+    #carouselExampleSlides {
+        height: 430px;
+    }
+    .carousel-indicators {
+                /* background-color: rgba(155, 142, 142, 0.404); */
+            /* height: 30%; */
+            
+    }
+    .carousel-indicators > * {
+        width: 50px !important;
+        height: 7px !important;
+        background-color: rgb(90, 73, 73) !important;
 
+    }
+</style>
 <!-- slider -->
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-      @foreach($randomMovies as $movie)
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="http://placeimg.com/1000/360/any" alt="First slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://placebeard.it/1000/360" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.fillmurray.com/1000/360" alt="Third slide">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleSlides" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleSlides" data-slide-to="1"></li>
+    <li data-target="#carouselExampleSlides" data-slide-to="2"></li>
+  </ol>
+    <div class="carousel-inner">
+      @foreach($randomMovies as $number => $movie)
+    <div class="carousel-item 
+    @if($number === 0)
+    active
+    @endif
+    ">
+    <a class="img-carousel-wrapper" href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+      <img class="img-fluid"  src="{{$movie->img_url}}" alt="First slide"></a>
     </div>
     @endforeach
+     {{-- <a class="carousel-control-prev" href="#carouselExampleSlides" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon text-dark" aria-hidden="true"><i  class="fas fa-arrow-left"></i></span>
+    <span class="sr-only"></span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleSlides" role="button" data-slide="next">
+    <span class="carousel-control-next-icon text-dark" aria-hidden="true"><i class="fas fa-arrow-right"></i></span>
+    <span class="sr-only"></span>
+  </a> --}}
   </div>
+</div>
+  <script>
+      $(() => {
+        $('#carouselExampleSlides').carousel();
+        // $('.carousel-control-next').on('click', () => {
+        //     $('#carouselExampleSlides').carousel('next')
+        // })
+        // $('.carousel-control-prev').on('click', () => {
+        //     $('#carouselExampleSlides').carousel('prev')
+        // })
+      })
+      </script>
 <!-- New movies column -->
+<div class="container">
 <h2>Recently updated movies</h2>
 <div class="new-movies-container row">
     @foreach ($recentMovies as $movie)
     <div class="movie border border-secondary col-md-4 col-sm-12">
         {{-- <div class="img-box "> --}}
-            <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+            <a class="text-center d-block" href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
             <img class="img-fluid" src="{{$movie->img_url}}" alt=""></a>
         {{-- </div> --}}
         <div class="description p-2">
@@ -107,7 +164,7 @@
     @endforeach
 </div >
 <!-- recommended movies column -->
-<div class="card-group">
+<div class="card-group row">
   <div class="card">
     <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
     <img src="
@@ -182,4 +239,6 @@
             </ul>
     </div>
 </div> 
+</div>
+</div>
 @endsection
