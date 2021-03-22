@@ -40,7 +40,7 @@ class UploadController extends Controller
         $user->img_url = null;
         $user->save();
 
-        return redirect()->action([UserController::class, 'index']);
+        return redirect()->back();
     }
 
 }
