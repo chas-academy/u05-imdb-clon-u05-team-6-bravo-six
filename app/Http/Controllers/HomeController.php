@@ -48,6 +48,10 @@ class HomeController extends Controller
 
         $recentMovies = Title::orderBy('updated_at', 'desc')->take(3)->get();
 
-        return view('welcome', ['mov1' => $mov1, 'mov2' => $mov2, 'mov3' => $mov3, 'topReviews' => $topReviews, 'recentMovies' => $recentMovies]);
+        $randomMovies = [];
+        for ($i = 0; $i < 3; $i++) {
+            array_push($randomMovies, Title::inRandomOrder()->first());
+        };
+        return view('welcome', ['mov1' => $mov1, 'mov2' => $mov2, 'mov3' => $mov3, 'topReviews' => $topReviews, 'recentMovies' => $recentMovies, 'randomMovies' => $randomMovies]);
     }
 }

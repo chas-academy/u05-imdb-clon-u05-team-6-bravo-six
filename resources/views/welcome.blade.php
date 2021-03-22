@@ -75,6 +75,7 @@
 <!-- slider -->
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
+      @foreach($randomMovies as $movie)
     <div class="carousel-item active">
       <img class="d-block w-100" src="http://placeimg.com/1000/360/any" alt="First slide">
     </div>
@@ -84,6 +85,7 @@
     <div class="carousel-item">
       <img class="d-block w-100" src="https://www.fillmurray.com/1000/360" alt="Third slide">
     </div>
+    @endforeach
   </div>
 <!-- New movies column -->
 <h2>Recently updated movies</h2>
