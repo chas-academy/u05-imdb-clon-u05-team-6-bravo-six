@@ -46,15 +46,13 @@ class HomeController extends Controller
                 $mov3=$movie;
             }
         }
-        // $reviews = Review::with('comments')->orderBy(function($review){
-        //     return $review->comments->count();
-        // });
-        // $reviews = Review::all()->withCount('comments');
-        $reviews = Review::withCount('comments')->get();
-        $topReviews = $reviews.orderBy('comments_count', 'desc'); 
-         dd($topReviews);
+        
+        $reviews = Review::withCount('commentsQuery')->get();
+        $topReviews = $reviews->sortByDesc('comments_query_count')->take(5);
         
         
-        return view('welcome' ,['mov1'=> $mov1, 'mov2'=> $mov2, 'mov3'=> $mov3]);
+        
+        
+        return view('welcome' ,['mov1'=> $mov1, 'mov2'=> $mov2, 'mov3'=> $mov3, 'topReviews' => $topReviews]);
     }
 }
