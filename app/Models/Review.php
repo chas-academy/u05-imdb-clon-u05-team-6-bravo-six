@@ -22,6 +22,10 @@ class Review extends Model
     public function comments()
     {
         return $this->hasMany('\App\Models\Comment')->get();
+        
+    }
+    public function commentsQuery(){
+        return $this->hasMany('\App\Models\Comment');
     }
     use HasFactory;
 }
