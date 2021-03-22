@@ -93,6 +93,7 @@ Route::get('/search', [TitleController::class, 'search'])->name('search');
 
 Route::get('/upload', [UploadController::class, 'uploadForm']);
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
+Route::post('/remove/{user}', [UploadController::class, 'destroy']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
