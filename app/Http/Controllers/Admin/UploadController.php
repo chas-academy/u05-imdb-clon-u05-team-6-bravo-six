@@ -37,11 +37,10 @@ class UploadController extends Controller
     }
 
     public function destroy(User $user) {
-        // $basic_pic = 'https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg';
-        // $user->img_url = $basic_pic;
-        // dd($user);
 
-        $user->delete($user->img_url);
+        Storage::delete($user->img_url);
+        $user->img_url = null;
+        $user->save();
 
         return redirect()->action([UserController::class, 'index']);
     }
