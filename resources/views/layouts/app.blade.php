@@ -47,30 +47,30 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
-                        <li class="nav-item dropdown mr-2">
-                            <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                                Dropdown button
-                            </a>
-                            {{-- <a class="btn btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                Dropdown button
-                            </a> --}}
-                            <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                                <li><a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
-                                <li><a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
-                                <li><a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a></li>
-                                <li><a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
-                        {{ csrf_field() }}
-                        <div class="input-group">
-                            <input type="text" class="form-control mr-sm-2" placeholder="Search for..." name="q">
-                            <span class="input-group-btn">
-                                <button class="btn btn-secondary" type="submit">Go!</button>
-                            </span>
-                        </div>
-                    </form>
+                    <li class="nav-item dropdown mr-2">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </a>
+                        {{-- <a class="btn btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Dropdown button
+                        </a> --}}
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a></li>
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
+                        </ul>
+                    </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
+                    {{ csrf_field() }}
+                    <div class="input-group">
+                        <input type="text" class="form-control mr-sm-2" placeholder="Search for..." name="q">
+                        <span class="input-group-btn">
+                            <button class="btn btn-secondary" type="submit">Go!</button>
+                        </span>
+                    </div>
+                </form>
 
                         <!-- Right Side Of Navbar -->
                         <ul class="navbar-nav ml-auto">
@@ -99,11 +99,11 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('dashboard') }}">
                                             {{ __('Dashboard') }}
-                                        </a>
-
+                                        </a> 
                                    <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}} }}">
                                         {{ __('Profile') }}
                                     </a>
+                                    <hr class="dropdown-divider">
 
                                         <a class="dropdown-item" href="{{ route('logout') }}"
                                            onclick="event.preventDefault();
