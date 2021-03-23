@@ -1,78 +1,8 @@
 @extends('layouts.app')
 @section('content')
 
-<!-- Dropdown menu -->
-<div class="container">
-  <nav class="navbar navbar navbar-dark bg-dark">
-        <div class="dropdown">
-            <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown button
-            </button>
-            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a>
-                <a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a>
-
-            </div>
-        </div>
-
- <!-- Search Widget -->
-        <div class="navbar-nav ml-auto justify-content-end">
-                <form class="form-inline my-2 my-lg-0" action="/search" method="GET" role="search">
-                    {{ csrf_field() }}
-                    <div class="input-group">
-                        <input type="text" class="form-control mr-sm-2" placeholder="Search for..." name="q">
-                        <span class="input-group-btn">
-                    <button class="btn btn-secondary" type="submit">Go!</button>
-                </span>
-                    </div>
-                </form>
-        </div>
- <!-- Right Side Of Navbar -->
-        <ul class="navbar-nav ml-auto">
-            <!-- Authentication Links -->
-            @guest
-                @if (Route::has('login'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                @endif
-
-                @if (Route::has('register'))
-                    <li class="nav-item">
-                        <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
-                    </li>
-                @endif
-            @else
-            <x-image-layout :user="Auth::user()"></x-image-layout>
-                <li class="nav-item dropdown">
-                    <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                        {{ Auth::user()->name }}
-                    </a>
-
-                    <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ route('dashboard') }}">
-                            {{ __('Dashboard') }}
-                        </a>
-
-                        <a class="dropdown-item" href="{{ route('logout') }}"
-                            onclick="event.preventDefault();
-                                            document.getElementById('logout-form').submit();">
-                            {{ __('Logout') }}
-                        </a>
-
-                        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
-                            @csrf
-                        </form>
-                    </div>
-                </li>
-            @endguest
-        </ul>
-    </nav>
-</div>
-
 <!-- slider -->
+
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
   <div class="carousel-inner">
     <div class="carousel-item active">
@@ -85,94 +15,118 @@
       <img class="d-block w-100" src="https://www.fillmurray.com/1000/360" alt="Third slide">
     </div>
   </div>
-<!-- New movies column -->
+</div>
 
-<div class="new-movies-container row">
-    <div class="movie border border-secondary col-md-4 col-sm-12">
-        {{-- <div class="img-box "> --}}
-            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
-        {{-- </div> --}}
-        <div class="description p-2">
-            <h2>Movie Title</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
-            <p>Last updated...</p>
+<!-- New movies column -->
+<section class="new-movies-container row">
+
+    <div class="col-md-4 col-sm-12 p-0">
+      <div class="card border border-secondary m-1">
+        <img src="https://via.placeholder.com/370x180" class="card-img-top" alt="">
+        <div class="card-body">
+          <h2>Movie Title</h2>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p>Last updated...</p>
         </div>
+      </div>
     </div>
-    <div class="movie border border-secondary col-md-4 col-sm-12">
-        {{-- <div class="img-box"> --}}
-            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
-        {{-- </div> --}}
-        <div class="description p-2">
-            <h2>Movie Two</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
-            <p>Last updated...</p>
+
+    <div class="col-md-4 col-sm-12 p-0">
+      <div class="card border border-secondary m-1">
+        <img src="https://via.placeholder.com/370x180" class="card-img-top" alt="">
+        <div class="card-body">
+          <h2>Movie Title</h2>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p>Last updated...</p>
         </div>
+      </div>
     </div>
-    <div class="movie border border-secondary col-md-4 col-sm-12">
-        {{-- <div class="img-box"> --}}
-            <img class="img-fluid" src="https://via.placeholder.com/370x180" alt="">
-        {{-- </div> --}}
-        <div class="description p-2">
-            <h2>Movie Three</h2>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia quidem pariatur voluptates perspiciatis vel quod, debitis quo distinctio culpa tenetur.</p>
-            <p>Last updated...</p>
+
+    <div class="col-md-4 col-sm-12 p-0">
+      <div class="card border border-secondary m-1">
+        <img src="https://via.placeholder.com/370x180" class="card-img-top" alt="">
+        <div class="card-body">
+          <h2>Movie Title</h2>
+          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+          <p>Last updated...</p>
         </div>
+      </div>
     </div>
-</div >
+
+</section>
+
 <!-- recommended movies column -->
-<div class="card-group">
-  <div class="card">
-    <img src="
-    @if ($mov1->img_url !== null)
+
+<div class="card-group row">
+
+  <div class="col-sm-3 p-0">
+    <div class="card m-1">
+      <img src="
+      
+      @if ($mov1->img_url !== null)
     {{$mov1->img_url}}
     @else
     https://picsum.photos/200
     @endif
-    " class="card-img-top" alt="..."/>
-    <div class="card-body">
+      
+      " class="card-img-top" alt="">
+      <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
             <h5 class="card-title">{{$mov1->title}}</h5>
         </a>
       <p class="card-text">Average rating: {{round($mov1->avgRating(), 2)}} / 5</p>
+      </div>
     </div>
   </div>
-  <div class="card">
-    <img src="
+
+  <div class="col-sm-3 p-0">
+    <div class="card m-1">
+      <img src="
+      
     @if ($mov2->img_url !== null)
     {{$mov2->img_url}}
     @else
     https://picsum.photos/200
     @endif
-    " class="card-img-top" alt="..."/>
-    <div class="card-body">
+      
+      " class="card-img-top" alt="">
+      <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
             <h5 class="card-title">{{$mov2->title}}</h5>
         </a>
       <p class="card-text">Average rating: {{round($mov2->avgRating(), 2)}} / 5</p>
+      </div>
     </div>
   </div>
-  <div class="card">
-    <img src="
-    @if ($mov3->img_url !== null)
-    {{$mov3->img_url}}
-    @else
-    https://picsum.photos/200
-    @endif
-    " class="card-img-top" alt="..."/>
-    <div class="card-body">
-        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
-            <h5 class="card-title">{{$mov3->title}}</h5>
-        </a>
-      <p class="card-text">Average rating: {{round($mov3->avgRating(), 2)}} / 5</p>
+
+  <div class="col-sm-3 p-0">
+    <div class="card m-1">
+      <img src="
+        @if ($mov3->img_url !== null)
+          {{$mov3->img_url}}
+        @else
+          https://picsum.photos/200
+        @endif
+      
+      " class="card-img-top" alt="">
+      <div class="card-body">
+         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
+         <h5 class="card-title">{{$mov3->title}}</h5>
+         </a>
+         <p class="card-text">Average rating: {{round($mov3->avgRating(), 2)}} / 5</p>
+      </div>
     </div>
   </div>
+
  <!-- review card -->
- <div class="card reviewcard" style="width: 18em;">
+  <div class="col-sm p-0">
+    <section class="card reviewcard m-1">
         <div class="card-header">
             Most popular reviews
         </div>
-            <ul class="list-group list-group-flush">
-                @foreach ($topReviews as $review)
+
+          <ul class="list-group list-group-flush">
+              @foreach ($topReviews as $review)
                 <li class="list-group-item">
                     <a href="{{action([App\Http\Controllers\ReviewController::class, 'show'], ["review"=>$review->id])}}">
                         {{$review->title}}
@@ -190,7 +144,10 @@
                     </small>
                 </li>
                 @endforeach
-            </ul>
-    </div>
-</div> 
+          </ul>
+    </section>
+  </div>
+
+
+</div>
 @endsection
