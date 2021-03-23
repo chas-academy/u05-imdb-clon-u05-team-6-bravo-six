@@ -105,7 +105,7 @@
                                         @if (Auth::user()->user_admin === 1)
                                         <a class="dropdown-item" href=" {{route('admin.dashboard')}} ">Admin Mode</a>
                                         @endif
-                                        @endif 
+                                        @endif
                                    <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}} }}">
                                         {{ __('Profile') }}
                                     </a>
@@ -168,9 +168,24 @@
     </main>
 </div>
 
+{{-- <style>
+    html { height: 100%; }
+    body {
+        min-height:100%;
+        position:relative;
+        padding-bottom:20%
+    }
+    footer {
+        position: absolute;
+        left: 0 ;
+        right: 0;
+        bottom: 0;
+    }
+</style> --}}
+
 <!-- Footer -->
 <footer class="bg-dark text-center text-white">
-    <div class="container p-4">
+    <div class="container p-4 ">
         <!-- Section: Social media -->
         <!-- Font Awesome -->
         {{--               <link--}}
