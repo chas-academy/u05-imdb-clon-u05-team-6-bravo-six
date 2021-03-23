@@ -1,5 +1,17 @@
 @extends('layouts.app')
 @section('content')
+ <!-- Search Widget -->
+ <div class="navbar-nav ml-auto justify-content-end">
+    <form class="form-inline my-2 my-lg-0" action="{{route('watchlists.search')}}" method="GET" role="search">
+        {{ csrf_field() }}
+        <div class="input-group">
+            <input type="text" class="form-control mr-sm-2" placeholder="Search for..." name="q">
+            <span class="input-group-btn">
+        <button class="btn btn-secondary" type="submit">Go!</button>
+    </span>
+        </div>
+    </form>
+</div>
 <div class="container">
     <h1>Watchlists</h1>
     <p>Find used-submitted watchlists here!</p>

@@ -84,12 +84,14 @@ Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::get('/reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
 Route::resource('reviews', ReviewController::class);
+Route::get('/watchlists/search', [WatchlistController::class, 'search'])->name('watchlists.search');
 Route::get('/watchlists/add_title_to_watchlist/{watchlist}/{title}', [WatchlistController::class, 'add_title_to_watchlist']); //this method is basically api
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
 Route::resource('user', UserController::class);
 //Search route
 Route::get('/search', [TitleController::class, 'search'])->name('search');
+
 
 Route::get('/upload', [UploadController::class, 'uploadForm']);
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
