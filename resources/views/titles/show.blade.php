@@ -1,6 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
+<div class="row mb-4">
     <img class="col-xl-3 col-lg-3" src="
 @if($title->img_url !== null)
 {{  $title->img_url}}
@@ -8,8 +9,16 @@
 https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
 @endif
     "/>
-    <div class="col-lg-9 col-xl-9 float-right mt-xl-5">
+    <div class="col-lg-9 col-xl-9 mt-xl-5">
         <h1>{{$title->title}}</h1>
+        {{-- genres --}}
+        <span class="row"><a class="mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $title->genre()->id])}}">{{$title->genre()->name}}</a></span>
+        <ul class="list-unstyled row">
+            @foreach($title->genres()->get() as $genre)
+                <li><a class="text-muted mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $genre->id])}}">{{$genre->name}}</a></li>
+            @endforeach
+        </ul>
+        
         {{-- this is copied from the title-card component --}}
         @auth
         <div class="dropdown col-md-3 float-right">
@@ -44,9 +53,11 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
         <hr/>
         <p class="text-muted">{{$title->description}}</p>
     </div>
+
     {{--<a href="{{action([\App\Http\Controllers\TitleController::class, 'reviews'], ['title'=>$title->id])}}">Reviews</a>
     write code for making column --}}
-    <form class="col-lg-9 col-xl-9 float-right" action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST">
+    <div class="col-lg-3 col-xl-3"></div>
+    <form class="col-lg-9 col-xl-9 mb-3" action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST">
                 @csrf
                 <input type="hidden" name="title_id" value="{{$title->id}}">
                 @if (Auth::check())
@@ -78,8 +89,9 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     @else
     <p>You need to <a href="{{route('login')}}">log in</a> to make a review!</p>
     @endif
+
     @foreach ($reviews as $review)
-    <div class="container float-left">
+    <div class="container">
             <div class="col-lg-3 col-xl-3 float-left">
                 @for($i=0; $i < $review->rating; $i++)
                     <img class="float-right" style="width: 15%; margin-right: 2%"src="
@@ -95,4 +107,5 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
         <br/>
         </div>
     @endforeach
+</div>
 @endsection

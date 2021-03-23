@@ -17,6 +17,7 @@ use App\Http\Controllers\CommentController;
 use App\Http\Controllers\TitleController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\HomeController;
 // image
 use App\Http\Controllers\UploadController;
 // image
@@ -35,9 +36,8 @@ use App\Http\Controllers\WatchlistItemController;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
+
 Route::get('/bootstrap', function () {
     return view('bootstrap');
 });
@@ -76,6 +76,7 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('watchlistItems', AdminWatchlistItemController::class);
     Route::get('/upload', [AdminUploadController::class, 'uploadFormAdmin']);
     Route::post('/upload', [AdminUploadController::class, 'uploadFileAdmin'])->name('upload.uploadfileadmin');
+    Route::post('/remove/{user}', [AdminUploadController::class, 'destroy']);
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -83,15 +84,18 @@ Route::resource('titles', TitleController::class);
 Route::resource('comments', CommentController::class);
 Route::get('/reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
 Route::resource('reviews', ReviewController::class);
+Route::get('/watchlists/search', [WatchlistController::class, 'search'])->name('watchlists.search');
 Route::get('/watchlists/add_title_to_watchlist/{watchlist}/{title}', [WatchlistController::class, 'add_title_to_watchlist']); //this method is basically api
 Route::resource('watchlists', WatchlistController::class);
 Route::resource('watchlistItems', WatchlistItemController::class);
 Route::resource('user', UserController::class);
 //Search route
-Route::get('/search', [TitleController::class, 'search']);
+Route::get('/search', [TitleController::class, 'search'])->name('search');
+
 
 Route::get('/upload', [UploadController::class, 'uploadForm']);
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
+Route::post('/remove/{user}', [UploadController::class, 'destroy']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

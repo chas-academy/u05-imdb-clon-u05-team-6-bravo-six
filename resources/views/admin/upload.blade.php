@@ -22,6 +22,7 @@
               <div class="form-group">
                 <label for="file">Choose File</label>
                 <input type="file" class="form-control" name="file" id="file"/>
+                <input type="hidden" name="img_url" value="{{Auth::user()->img_url}}">
               </div>
               <button type="submit" class="btn btn-success">Upload</button>
            </form>

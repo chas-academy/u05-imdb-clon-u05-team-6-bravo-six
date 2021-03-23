@@ -5,6 +5,9 @@ namespace App\Http\Controllers\Admin;
 use App\Http\Controllers\Controller;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
+
 
 
 class UserController extends Controller
@@ -20,13 +23,20 @@ class UserController extends Controller
 
     public function create()
     {
-        //
+        return view('admin.users.create');
     }
 
 
     public function store(Request $request)
     {
-        //
+        $user = new User;
+        $user->name = $request->user;
+        $user->email = $request->email;
+        $user->password = $request->password;
+
+        $user->save();
+
+        return redirect()->action([UserController::class, 'index']);
     }
 
 
@@ -38,7 +48,7 @@ class UserController extends Controller
 
     public function edit($id)
     {
-        //
+
     }
 
 
@@ -46,6 +56,11 @@ class UserController extends Controller
     {
         $user->name = $request->name;
         $user->email = $request->email;
+        if($request->user_admin == 'on') {
+            $user->user_admin = 1;
+        } else {
+            $user->user_admin = 0;
+        }
         $user->save();
         return redirect()->back();
     }
@@ -56,4 +71,6 @@ class UserController extends Controller
         $user->delete();
         return redirect()->action([UserController::class, 'index']);
     }
+
+
 }
