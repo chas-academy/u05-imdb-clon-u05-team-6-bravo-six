@@ -65,6 +65,7 @@ class GenreController extends Controller
         return view('genres.show', ['genre' => $genre, 'titles' => $titles]);
     }
 
+    
     /**
      * Show the form for editing the specified resource.
      *

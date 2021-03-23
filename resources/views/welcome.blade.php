@@ -34,7 +34,7 @@
             <img class="img-fluid" src="{{$movie->img_url}}" alt=""></a>
         <div class="card-body">
           <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
-                <h2>{{$movie->title}}</h2>  
+                <h2>{{$movie->title}}</h2>
             </a>
           <p class="card-text">{{$movie->description}}</p>
           <p>Last updated {{$movie->updated_at}}</p>
