@@ -2,10 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Comment;
 use App\Models\Review;
-use App\Models\Title;
-use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
@@ -14,27 +11,6 @@ use Illuminate\Support\Facades\Session;
 class ReviewController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        return view('reviews.index', ['reviews' => Review::all()]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //return a view for creating a review (review.create)
-        return view('review.create');
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -42,7 +18,6 @@ class ReviewController extends Controller
      */
     public function store(Request $request) //, Title $title
     {
-        // $this->validate($request, array()),[
         $title_id = $request->title_id;
         $review = new Review;
         $review->rating = $request->rating;
@@ -52,7 +27,6 @@ class ReviewController extends Controller
         $review->user_id = Auth::user()->id;
         $review->save();
         return redirect()->action([ReviewController::class, 'show'], ['review' => $review->id]);
-        // ]);
     }
 
     /**
