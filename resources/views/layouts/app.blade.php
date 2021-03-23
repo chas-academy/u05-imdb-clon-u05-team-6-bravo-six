@@ -51,15 +51,11 @@
                         <a class="nav-link dropdown-toggle" style="cursor: pointer" data-toggle="dropdown" data-target="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
                             Menu
                         </a>
-                        {{-- <a class="btn btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
-                        </a> --}}
+                        
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                             <li><a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Movies</a></li>
                             <li><a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
                             <li><a class="dropdown-item" href="{{action([App\Http\Controllers\WatchlistController::class, 'index'])}}">Watchlists</a></li>
-                            {{-- <li><a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a></li>
-                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li> --}}
                         </ul>
                     </li>
                 </ul>
@@ -132,39 +128,7 @@
     <main class="py-4">
         <div class="container">
             @yield('content')
-            {{--
-
-             --}}
         </div>
-        <!-- <div class="container">
-           <div class="row">
-               <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                   <li>ABC</li>
-                   <li>DEF</li>
-                   <li>GHI</li>
-                   <li>JKL</li>
-               </div>
-
-               <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                   <li>ABC</li>
-                   <li>DEF</li>
-                   <li>GHI</li>
-                   <li>JKL</li>
-               </div>
-               <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                   <li>ABC</li>
-                   <li>DEF</li>
-                   <li>GHI</li>
-                   <li>JKL</li>
-               </div>
-               <div class= "col-xl-3 col-lg-4 col-md-6 col-sm-12" style="border:1px solid black">
-                   <li>ABC</li>
-                   <li>DEF</li>
-                   <li>GHI</li>
-                   <li>JKL</li>
-               </div>
-           </div>
-       </div> -->
     </main>
 </div>
 
@@ -173,10 +137,6 @@
     <div class="container p-4">
         <!-- Section: Social media -->
         <!-- Font Awesome -->
-        {{--               <link--}}
-        {{--                   href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/css/all.min.css"--}}
-        {{--                   rel="stylesheet"--}}
-        {{--               />--}}
         <section class="mb-4">
             <!-- Facebook -->
             <a class="btn btn-outline-light btn-floating m-3" href="#" role="button">

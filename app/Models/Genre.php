@@ -20,12 +20,6 @@ class Genre extends Model
 
     public function titlesSecondary()
     {
-        // $rels = $this->secondary_genre_relationships();
-        // $titles = [];
-        // foreach ($rels as $rel) {
-        //     array_push($titles, $rel->title());
-        // };
-        // return $titles;
         return $this->belongsToMany(Title::class, 'secondary_genres');
     }
     use HasFactory;

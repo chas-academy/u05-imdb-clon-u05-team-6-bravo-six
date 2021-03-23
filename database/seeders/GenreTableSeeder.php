@@ -26,7 +26,6 @@ class GenreTableSeeder extends Seeder
             'Western',
             'Crime'
         ];
-        // \App\Models\Genre::factory()->count(25)->create();
         foreach ($genres as $genre) {
             \App\Models\Genre::create([
                 'name' => $genre

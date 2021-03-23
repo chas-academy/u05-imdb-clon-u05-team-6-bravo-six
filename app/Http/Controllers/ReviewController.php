@@ -100,7 +100,7 @@ class ReviewController extends Controller
         } else {
             $review->delete();
             Session::flash('success', 'Review removed!');
-            return redirect()->route('reviews.index');
+            return redirect()->action([TitleController::class, 'show'], ['title' => $review->title()->id]);
         }
     }
 }

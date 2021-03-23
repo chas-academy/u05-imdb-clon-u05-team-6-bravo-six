@@ -2,7 +2,6 @@
 
 @section('content')
     <div class="row">
-        {{-- class filter must remain on button for jquery to work --}}
     @foreach (\App\Models\Genre::all() as $genre)
         <button class="btn btn-sm m-1 filter" data-id="{{$genre->id}}">{{$genre->name}}</button>
         
@@ -39,6 +38,6 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
         </div>
         <x-navigation-aside></x-navigation-aside>
         
-        {{-- <div class="row">{{$titles->appends(['q' => request('q')])->links()}}</div> --}}
+        
     </div>
 @endsection

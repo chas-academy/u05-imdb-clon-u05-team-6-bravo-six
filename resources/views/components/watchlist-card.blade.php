@@ -1,7 +1,6 @@
 <div class="mx-2 title-card-wrapper">
     <div class="card title-card">
          <div class="row">
-         {{-- <span class="dropdown_activator"></span> --}}
          <div class=" col-md-6">
           <a href="{{action([App\Http\Controllers\WatchlistController::class, 'show'], ["watchlist"=>$watchlist->id])}}"><h3>{{$watchlist->name}}</h3></a>
          <p>Last updated: {{$watchlist->updated_at}}</p></div>

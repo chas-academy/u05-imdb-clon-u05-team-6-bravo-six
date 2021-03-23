@@ -46,17 +46,11 @@ class UserController extends Controller
     }
 
 
-    public function edit($id)
-    {
-
-    }
-
-
     public function update(Request $request, User $user)
     {
         $user->name = $request->name;
         $user->email = $request->email;
-        if($request->user_admin == 'on') {
+        if ($request->user_admin == 'on') {
             $user->user_admin = 1;
         } else {
             $user->user_admin = 0;
@@ -71,6 +65,4 @@ class UserController extends Controller
         $user->delete();
         return redirect()->action([UserController::class, 'index']);
     }
-
-
 }

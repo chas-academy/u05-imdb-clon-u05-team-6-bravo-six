@@ -11,7 +11,6 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     "/>
     <div class="col-lg-9 col-xl-9 mt-xl-5">
         <h1>{{$title->title}}</h1>
-        {{-- genres --}}
         <span class="row"><a class="mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $title->genre()->id])}}">{{$title->genre()->name}}</a></span>
         <ul class="list-unstyled row">
             @foreach($title->genres()->get() as $genre)
@@ -19,7 +18,6 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
             @endforeach
         </ul>
         
-        {{-- this is copied from the title-card component --}}
         @auth
         <div class="dropdown col-md-3 float-right">
             <?php 
@@ -31,11 +29,9 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <ul class="list-unstyled">
                          @foreach ($watchlists as $watchlist)
-                              {{-- loop through watchlists --}}
 
                               <li class="watchlist_listitem
                               @if($watchlist->watchlistItems()->contains('title_id', $title->id))
-                              {{-- if title is already in watchlist --}}
                                    added
                               @endif
                               " data-id="{{$watchlist->id}}" data-title="{{$title->id}}">{{$watchlist->name}}<span><i class="
@@ -50,13 +46,11 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
                     @endauth
                </div>
                @endauth
-               {{-- end --}}
         <hr/>
         <p class="text-muted">{{$title->description}}</p>
     </div>
 
-    {{--<a href="{{action([\App\Http\Controllers\TitleController::class, 'reviews'], ['title'=>$title->id])}}">Reviews</a>
-    write code for making column --}}
+
     <div class="col-lg-3 col-xl-3"></div>
     
     <form class="col-lg-9 col-xl-9 mb-3" action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST">

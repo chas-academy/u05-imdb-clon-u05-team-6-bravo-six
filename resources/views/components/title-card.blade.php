@@ -11,11 +11,9 @@
                " class="img-fluid img-thumbnail ">
 
           </div>
-          {{-- <span class="dropdown_activator"></span> --}}
           <div class=" col-md-6">
 
           <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$title->id])}}"><h3>{{$title->title}}</h3></a>
-          {{-- <div class="container"> --}}
                <span class="row"><a class="mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $title->genre()->id])}}">{{$title->genre()->name}}</a></span>
                <ul class="list-unstyled row">
                @foreach($title->genres()->get() as $genre)
@@ -23,7 +21,6 @@
                @endforeach
            
                </ul>
-          {{-- </div> --}}
           <p>{{$title->description}}</p>
           </div>
           @if($moddable)
@@ -34,12 +31,9 @@
                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
                     <ul class="list-unstyled">
                          @foreach ($watchlists as $watchlist)
-                              {{-- loop through watchlists --}}
-
                               <li class="watchlist_listitem
                               @if($watchlist->watchlistItems()->contains('title_id', $title->id))
-                              {{-- if title is already in watchlist --}}
-                                   added
+                              added
                               @endif
                               " data-id="{{$watchlist->id}}" data-title="{{$title->id}}">{{$watchlist->name}}<span><i class="
                                    @if($watchlist->watchlistItems()->contains('title_id', $title->id))

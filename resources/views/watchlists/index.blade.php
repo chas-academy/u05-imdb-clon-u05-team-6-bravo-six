@@ -38,7 +38,6 @@
         <th><a href="{{action([\App\Http\Controllers\WatchlistController::class, 'index'], ['sort' => 'name'])}}">Name</a></th>
         <th><a href="{{action([\App\Http\Controllers\WatchlistController::class, 'index'], ['sort' => 'user_id'])}}">User</a></th>
         <th><a href="{{action([\App\Http\Controllers\WatchlistController::class, 'index'], ['sort' => 'created_at'])}}">Created</a></th>
-        {{-- <th>Public</th> --}}
         <th>No. of items</th>
     </tr>
 </thead>
@@ -50,7 +49,6 @@
     <td>{{$list->name}}</td>
     <td>{{\App\Models\User::find($list->user_id)->name}}</td>
     <td>{{$list->created_at}}</td>
-    {{-- <td>{{$list->public? "True" : "False"}}</td> --}}
     <td class="text-center">{{$list->watchlistitems()->count()}}</td>
     <td><a href="{{action([\App\Http\Controllers\WatchlistController::class, 'show'], ['watchlist' => $list->id])}}">View</a></td>
 
