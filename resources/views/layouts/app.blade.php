@@ -37,7 +37,7 @@
     <nav class="navbar navbar-expand-md navbar-dark bg-dark shadow-sm">
         <div class="container">
             <a class="navbar-brand" href="{{ url('/') }}">
-                {{ config('Main page', 'Main page') }}
+                {{ config('BSMD', 'BSMD') }}
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
                     aria-controls="navbarSupportedContent" aria-expanded="false"
@@ -48,17 +48,18 @@
                 <!-- Left Side Of Navbar -->
                 <ul class="nav navbar-nav">
                     <li class="nav-item dropdown mr-2">
-                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" data-target="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
-                            Dropdown button
+                        <a class="nav-link dropdown-toggle" style="cursor: pointer" data-toggle="dropdown" data-target="dropdownMenuButton" aria-haspopup="true" aria-expanded="false">
+                            Menu
                         </a>
                         {{-- <a class="btn btn btn-dark dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                             Dropdown button
                         </a> --}}
                         <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Titles</a></li>
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\TitleController::class, 'index'])}}">Movies</a></li>
                             <li><a class="dropdown-item" href="{{action([App\Http\Controllers\GenreController::class, 'index'])}}">Genres</a></li>
-                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a></li>
-                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li>
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\WatchlistController::class, 'index'])}}">Watchlists</a></li>
+                            {{-- <li><a class="dropdown-item" href="{{action([App\Http\Controllers\ReviewController::class, 'index'])}}">Reviews</a></li>
+                            <li><a class="dropdown-item" href="{{action([App\Http\Controllers\CommentController::class, 'index'])}}">Comments</a></li> --}}
                         </ul>
                     </li>
                 </ul>
@@ -99,7 +100,12 @@
                                     <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                         <a class="dropdown-item" href="{{ route('dashboard') }}">
                                             {{ __('Dashboard') }}
-                                        </a> 
+                                        </a>
+                                        @if (Auth::check())
+                                        @if (Auth::user()->user_admin === 1)
+                                        <a class="dropdown-item" href=" {{route('admin.dashboard')}} ">Admin Mode</a>
+                                        @endif
+                                        @endif 
                                    <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}} }}">
                                         {{ __('Profile') }}
                                     </a>
