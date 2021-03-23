@@ -34,7 +34,7 @@ class WatchlistController extends Controller
             ->orderBy('created_at',)
             ->get(); //paginate(10)->onBothSides(1);
 
-        return view('wsearch', [
+        return view('watchlists.search', [
             'key' => $key,
             'watchlists' => $watchlists,
         ]);
