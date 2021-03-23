@@ -2,58 +2,47 @@
 @section('content')
 
 <!-- slider -->
-
 <div id="carouselExampleSlides" class="carousel slide" data-ride="carousel">
-  <div class="carousel-inner">
-    <div class="carousel-item active">
-      <img class="d-block w-100" src="http://placeimg.com/1000/360/any" alt="First slide">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleSlides" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleSlides" data-slide-to="1"></li>
+    <li data-target="#carouselExampleSlides" data-slide-to="2"></li>
+  </ol>
+    <div class="carousel-inner">
+      @foreach($randomMovies as $number => $movie)
+    <div class="carousel-item 
+    @if($number === 0)
+    active
+    @endif
+    ">
+    <a class="img-carousel-wrapper" href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+      <img class="img-fluid"  src="{{$movie->img_url}}" alt="First slide"></a>
     </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://placebeard.it/1000/360" alt="Second slide">
-    </div>
-    <div class="carousel-item">
-      <img class="d-block w-100" src="https://www.fillmurray.com/1000/360" alt="Third slide">
-    </div>
+    @endforeach
   </div>
 </div>
 
 <!-- New movies column -->
+
+
+<!-- New movies column -->
 <section class="new-movies-container row">
-
+ @foreach ($recentMovies as $movie)
     <div class="col-md-4 col-sm-12 p-0">
       <div class="card border border-secondary m-1">
-        <img src="https://via.placeholder.com/370x180" class="card-img-top" alt="">
+        <a class="d-block m-auto" href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+            <img class="img-fluid" src="{{$movie->img_url}}" alt=""></a>
         <div class="card-body">
-          <h2>Movie Title</h2>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <p>Last updated...</p>
+          <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
+                <h2>{{$movie->title}}</h2>  
+            </a>
+          <p class="card-text">{{$movie->description}}</p>
+          <p>Last updated {{$movie->updated_at}}</p>
         </div>
       </div>
     </div>
-
-    <div class="col-md-4 col-sm-12 p-0">
-      <div class="card border border-secondary m-1">
-        <img src="https://via.placeholder.com/370x180" class="card-img-top" alt="">
-        <div class="card-body">
-          <h2>Movie Title</h2>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <p>Last updated...</p>
-        </div>
-      </div>
-    </div>
-
-    <div class="col-md-4 col-sm-12 p-0">
-      <div class="card border border-secondary m-1">
-        <img src="https://via.placeholder.com/370x180" class="card-img-top" alt="">
-        <div class="card-body">
-          <h2>Movie Title</h2>
-          <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-          <p>Last updated...</p>
-        </div>
-      </div>
-    </div>
-
-</section>
+    @endforeach
+  </section>
 
 <!-- recommended movies column -->
 
