@@ -3,7 +3,7 @@
 @section('title', '| Edit Review')
 
 @section('content')
-<form class="col-lg-9 col-xl-9 float-right" action=" {{action([\App\Http\Controllers\ReviewController::class, 'update'], ['review' => $review->id])}}" method="POST">
+<form class="col-lg-9 col-xl-9" action=" {{action([\App\Http\Controllers\ReviewController::class, 'update'], ['review' => $review->id])}}" method="POST">
     @method('PUT')
     @csrf
     @if (Auth::check())
@@ -31,13 +31,13 @@
             <label for="body">Edit your review here</label>
             <textarea class="form-control" name="body" id="body" required>{{$review->body}}</textarea>
         </div>
-        <button class="glyphicon glyphicon-trash" onsubmit="" class="btn">Update review</button>
+        <button class="btn btn-success" class="btn">Update review</button>
     </div>
 </div>
 </form>
 <form action="{{route('reviews.delete', $review->id)}}" method="GET">
     @csrf
-    <button type="submit" class="glyphicon glyphicon-trash" class="btn">Delete</button>
+    <button type="submit" class="btn btn-danger" class="btn">Delete</button>
 </form>
 @else
 <p>You need to <a href="{{route('login')}}">log in</a> to make a review!</p>

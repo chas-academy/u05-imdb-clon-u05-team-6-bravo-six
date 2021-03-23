@@ -26,6 +26,7 @@
 
 
 <!-- New movies column -->
+<h2>Most recently updated movies</h2>
 <section class="new-movies-container row">
  @foreach ($recentMovies as $movie)
     <div class="col-md-4 col-sm-12 p-0">
@@ -45,12 +46,12 @@
   </section>
 
 <!-- recommended movies column -->
-
+<h2>Highest rated movies right now</h2>
 <div class="card-group row">
 
   <div class="col-sm-3 p-0">
     <div class="card m-1">
-      <img src="
+      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov1])}}"><img src="
       
       @if ($mov1->img_url !== null)
     {{$mov1->img_url}}
@@ -58,7 +59,7 @@
     https://picsum.photos/200
     @endif
       
-      " class="card-img-top" alt="">
+      " class="card-img-top" alt=""></a>
       <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
             <h5 class="card-title">{{$mov1->title}}</h5>
@@ -70,7 +71,7 @@
 
   <div class="col-sm-3 p-0">
     <div class="card m-1">
-      <img src="
+      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov2])}}"><img src="
       
     @if ($mov2->img_url !== null)
     {{$mov2->img_url}}
@@ -78,7 +79,7 @@
     https://picsum.photos/200
     @endif
       
-      " class="card-img-top" alt="">
+      " class="card-img-top" alt=""></a>
       <div class="card-body">
         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
             <h5 class="card-title">{{$mov2->title}}</h5>
@@ -90,14 +91,15 @@
 
   <div class="col-sm-3 p-0">
     <div class="card m-1">
-      <img src="
+      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov3])}}">
+        <img src="
         @if ($mov3->img_url !== null)
           {{$mov3->img_url}}
         @else
           https://picsum.photos/200
         @endif
       
-      " class="card-img-top" alt="">
+      " class="card-img-top" alt=""></a>
       <div class="card-body">
          <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
          <h5 class="card-title">{{$mov3->title}}</h5>

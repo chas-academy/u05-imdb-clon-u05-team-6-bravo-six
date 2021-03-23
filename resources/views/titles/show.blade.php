@@ -44,6 +44,7 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
                                    @endif
                                    "></i></span></li>
                               @endforeach
+                              <li><a href="{{route('dashboard')}}">Add watchlist</a></li>
                               </ul>
                          </div>
                     @endauth
@@ -57,7 +58,9 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     {{--<a href="{{action([\App\Http\Controllers\TitleController::class, 'reviews'], ['title'=>$title->id])}}">Reviews</a>
     write code for making column --}}
     <div class="col-lg-3 col-xl-3"></div>
+    
     <form class="col-lg-9 col-xl-9 mb-3" action="{{action([\App\Http\Controllers\ReviewController::class, 'store'])}}" method="POST">
+        <h2>Post a review!</h2>
                 @csrf
                 <input type="hidden" name="title_id" value="{{$title->id}}">
                 @if (Auth::check())

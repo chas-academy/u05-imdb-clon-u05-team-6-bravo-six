@@ -53,6 +53,7 @@ class TitleController extends Controller
     {
         $title->title = $request->title;
         $title->genre_id = $request->genre_id;
+        $title->description = $request->description;
         $title->img_url = $request->src ? $request->src : $title->img_url;
         $title->save();
         return redirect()->back();
@@ -76,7 +77,7 @@ class TitleController extends Controller
         return redirect()->action([TitleController::class, 'index']);
     }
     public function update_genres(Request $request, Title $title)
-    { 
+    {
         $data = $request->except(['_token', '_method']);
         $haystack = $title->secondary_genre_relationships();
         foreach ($data as $key => $value) {
@@ -94,6 +95,5 @@ class TitleController extends Controller
             };
         };
         return redirect()->back();
-    } 
-    
+    }
 }

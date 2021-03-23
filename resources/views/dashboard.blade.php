@@ -2,9 +2,9 @@
 @section('content')
             <div class="container">
                 <div class="row justify-content-center">
-                    <h1 class="text-center mr-3">Welcome </h1>  
-                    <x-image-layout :user="Auth::user()"></x-image-layout>
-                    <h1 class="ml-3"> {{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}} </h1>
+                    <h1 class="text-center mr-3">Welcome</h1>  
+
+                    <h1 class="ml-1">{{{ isset(Auth::user()->name) ? Auth::user()->name : Auth::user()->email }}}</h1>
                 </div>
                 <hr/>
                 <div class="d-flex flex-row flex-wrap">
@@ -53,7 +53,10 @@
                         
                         
                             <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                                
+                                @if(count($reviews))
                                 <h3 class="text-center">Your reviews:</h3>
+                                @endif
                                 <hr/>
                             @foreach ($reviews as $review)
                                 <div class="card">
@@ -81,8 +84,11 @@
                             <br/>
                             @endforeach
                         </div>
+    
                         <div class= "col-xl-6 col-lg-6 col-md-12 col-sm-12">
+                            @if(count($comments))
                             <h3 class="text-center ">Your comments:</h3>
+                            @endif
                             <hr/>
                             @foreach ($comments as $comment)
                             <div class="card">
@@ -105,8 +111,11 @@
                     </div>
                     
                     <aside class= "col-xl-4 col-lg-4 col-md-12 col-sm-12">
+                        @if(count($sortedData))
                         <h3 class="text-center">Recent activity:</h3>
-                    
+                        @else
+                        <h3 class="text-center">No recent activity!</h3>
+                        @endif
                     <div class="d-flex flex-row justify-content-evenly flex-wrap">
                     @foreach ($sortedData as $data)
                     <div class="card col-xl-12 col-lg-12 col-md-6 col-sm-12 mb-2">
