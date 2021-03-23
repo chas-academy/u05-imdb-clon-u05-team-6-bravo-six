@@ -30,7 +30,14 @@
     @method("DELETE")
     @csrf
     <td>
-        <button class="btn btn-danger btn-lg" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete this user?')">Delete</button>
+        <button class="btn btn-danger btn-lg" type="submit" value="Delete" onclick="return confirm('Are you sure you want to delete your profile?')">Delete</button>
+    </td>
+</form>
+<form method="POST" action="{{action([\App\Http\Controllers\UploadController::class, 'destroy'], ['user' => $user])}}">
+    @method("POST")
+    @csrf
+    <td>
+        <button class="btn btn-danger btn-lg" type="submit" value="Remove pic" onclick="return confirm('Are you sure you want to delete your profile picture?')">Delete profile picture</button>
     </td>
 </form>
 

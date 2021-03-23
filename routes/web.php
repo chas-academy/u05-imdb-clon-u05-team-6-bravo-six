@@ -76,6 +76,7 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::resource('watchlistItems', AdminWatchlistItemController::class);
     Route::get('/upload', [AdminUploadController::class, 'uploadFormAdmin']);
     Route::post('/upload', [AdminUploadController::class, 'uploadFileAdmin'])->name('upload.uploadfileadmin');
+    Route::post('/remove/{user}', [AdminUploadController::class, 'destroy']);
 });
 Route::resource('genres', GenreController::class);
 Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
@@ -92,6 +93,7 @@ Route::get('/search', [TitleController::class, 'search'])->name('search');
 
 Route::get('/upload', [UploadController::class, 'uploadForm']);
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
+Route::post('/remove/{user}', [UploadController::class, 'destroy']);
 
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 
