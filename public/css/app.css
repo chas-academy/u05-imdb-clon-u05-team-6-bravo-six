@@ -10119,3 +10119,35 @@ button.filter {
 button.selected-filter {
   background-color: #9798df !important;
 }
+
+.carousel-item img {
+  -o-object-fit: contain;
+     object-fit: contain;
+  /* margin: 0 auto; */
+}
+
+.img-carousel-wrapper {
+  position: relative;
+  height: 380px;
+  width: 100%;
+  display: flex;
+  /* clip-path: circle(50%); */
+  border-radius: 20px;
+  overflow: hidden;
+  justify-content: center;
+}
+
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  font-size: 3rem;
+}
+
+#carouselExampleSlides {
+  height: 430px;
+}
+
+.carousel-indicators > * {
+  width: 50px !important;
+  height: 7px !important;
+  background-color: #5a4949 !important;
+}

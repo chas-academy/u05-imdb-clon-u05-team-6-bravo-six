@@ -46,9 +46,12 @@ class HomeController extends Controller
         $reviews = Review::withCount('commentsQuery')->get();
         $topReviews = $reviews->sortByDesc('comments_query_count')->take(5);
 
+        $recentMovies = Title::orderBy('updated_at', 'desc')->take(3)->get();
 
-
-
-        return view('welcome', ['mov1' => $mov1, 'mov2' => $mov2, 'mov3' => $mov3, 'topReviews' => $topReviews]);
+        $randomMovies = [];
+        for ($i = 0; $i < 3; $i++) {
+            array_push($randomMovies, Title::inRandomOrder()->first());
+        };
+        return view('welcome', ['mov1' => $mov1, 'mov2' => $mov2, 'mov3' => $mov3, 'topReviews' => $topReviews, 'recentMovies' => $recentMovies, 'randomMovies' => $randomMovies]);
     }
 }

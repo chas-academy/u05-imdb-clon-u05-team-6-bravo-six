@@ -142,4 +142,7 @@ $(() => {
             }).catch(err => console.log(error))
         })
     }
+    if ($('#carouselExampleSlides') !== undefined) {
+        $('#carouselExampleSlides').carousel();
+    }
 })
