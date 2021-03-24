@@ -9,9 +9,7 @@ use App\Models\WatchlistItem;
 
 class WatchlistItemController extends Controller
 {
-    public function index($watchlistItem){
 
-    }
     public function destroy(WatchlistItem $watchlistItem)
     {
         $watchlistItem->delete();

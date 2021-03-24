@@ -10004,6 +10004,23 @@ h3 {
     border-color: #dee2e6;
   }
 }
+html {
+  height: 100%;
+}
+
+body {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 20%;
+}
+
+footer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+
 .ajaxItem .card {
   display: block;
   position: relative;
@@ -10131,7 +10148,6 @@ button.selected-filter {
   height: 380px;
   width: 100%;
   display: flex;
-  /* clip-path: circle(50%); */
   border-radius: 20px;
   overflow: hidden;
   justify-content: center;

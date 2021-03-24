@@ -7,6 +7,25 @@
 // Bootstrap
 @import "~bootstrap/scss/bootstrap";
 
+
+//STICKY FOOTER STYLING
+html {
+    height: 100%;
+}
+
+body {
+    min-height: 100%;
+    position: relative;
+    padding-bottom: 20%
+}
+
+footer {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+}
+
 // ADMIN PANEL STYLING
 .ajaxItem .card {
     display: block;
@@ -17,6 +36,7 @@
     width: auto;
     user-select: none;
 }
+
 .hidden-radio {
     position: absolute;
     opacity: 0;
@@ -25,6 +45,7 @@
     width: 100%;
     z-index: 2;
 }
+
 .span-image {
     position: absolute;
     top: 0;
@@ -33,12 +54,15 @@
     width: 100%;
     background-repeat: no-repeat;
 }
+
 #search-results .row {
     list-style-type: none;
 }
+
 #hidden-absolute-container {
     display: none;
 }
+
 #hidden-absolute-container.shown {
     display: block;
     position: absolute;
@@ -50,58 +74,73 @@
     top: 25%;
     width: 50%;
 }
+
 td,
 th {
     padding-right: 1em;
 }
+
 ///
 
 // WATCHLISTS FEATURE/ TITLE-CARD
 .title-card {
     padding: 1em;
 }
+
 #dropdownMenuButton {
     float: right;
     font-weight: 900;
 }
+
 .watchlist_listitem {
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
+
 .watchlist_listitem.added {
     background-color: rgba(136, 194, 136, 0.589);
 }
+
 .watchlist_listitem.error {
     background-color: red;
 }
+
 .title-card .col-6 {
     padding: 0;
     margin: 0;
 }
+
 .dropdown-menu .list-unstyled {
     padding: 0.5em;
 }
+
 .dropdown-menu .list-unstyled li {
     margin-bottom: 5px;
     padding: 0.3em 0.5em;
 }
+
 .dropdown-menu .list-unstyled li.added:hover {
     background-color: rgba(136, 194, 136, 0.377);
 }
+
 .dropdown-menu .list-unstyled li:hover:not(.added) {
     background-color: rgba(179, 179, 179, 0.377);
 }
+
 .title-card-wrapper {
     margin: 0.5em 0;
 }
+
 ///////////
 // this is to style the search-results filtering buttons
 .hidden {
     display: none;
 }
+
 button.filter {
     border: 1.5px solid black;
 }
+
 button.selected-filter {
     background-color: rgb(151, 152, 223) !important;
 }
@@ -112,6 +151,7 @@ button.selected-filter {
     object-fit: contain;
     /* margin: 0 auto; */
 }
+
 .img-carousel-wrapper {
     position: relative;
     height: 380px;
@@ -121,14 +161,17 @@ button.selected-filter {
     overflow: hidden;
     justify-content: center;
 }
+
 .carousel-control-prev-icon,
 .carousel-control-next-icon {
     font-size: 3rem;
 }
+
 #carouselExampleSlides {
     height: 430px;
 }
-.carousel-indicators > * {
+
+.carousel-indicators>* {
     width: 50px !important;
     height: 7px !important;
     background-color: rgb(90, 73, 73) !important;

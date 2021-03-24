@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-{{-- <ul> --}}
     <nav aria-label="breadcrumb">
     <ol class="breadcrumb">
 <a class="breadcrumb-item" href="{{action([\App\Http\Controllers\WatchlistController::class, 'index'])}}">Watchlists</a>

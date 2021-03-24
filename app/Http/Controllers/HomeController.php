@@ -2,12 +2,8 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\Title;
 use App\Models\Review;
-use App\Models\Comment;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Collection;
 
 class HomeController extends Controller
 {
