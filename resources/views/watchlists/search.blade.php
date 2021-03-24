@@ -23,7 +23,7 @@
                 <small>{{$key}}</small>
             </h1>
             @foreach ($watchlists as $watchlist)
-            @if($watchlist->public === 1 || $watchlist->user_id === Auth::id())
+            @if($watchlist->public || $watchlist->user_id === Auth::id())
             <div class="movie">
                 <x-watchlist-card :watchlist="$watchlist" :user="$watchlist->user()"></x-watchlist-card>
             </div>
