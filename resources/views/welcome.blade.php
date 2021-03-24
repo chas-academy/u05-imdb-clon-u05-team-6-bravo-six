@@ -47,7 +47,7 @@
 
 <!-- recommended movies column -->
 <h2>Highest rated movies right now</h2>
-<div class="card-group row">
+{{-- <div class="card-group row">
 
   <div class="col-sm-3 p-0">
     <div class="card m-1">
@@ -107,7 +107,7 @@
          <p class="card-text">Average rating: {{round($mov3->avgRating(), 2)}} / 5</p>
       </div>
     </div>
-  </div>
+  </div> --}}
 
  <!-- review card -->
   <div class="col-sm p-0">
