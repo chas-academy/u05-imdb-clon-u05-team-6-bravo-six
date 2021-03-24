@@ -125,29 +125,12 @@
         </div>
     </nav>
 
-    <main class="py-4">
+    <main id="main" class="py-4">
         <div class="container">
             @yield('content')
         </div>
     </main>
 </div>
-
-{{-- <style>
-    html { height: 100%; }
-    body {
-        min-height:100%;
-        position:relative;
-        padding-bottom:20%
-    }
-    footer {
-        position: absolute;
-        left: 0 ;
-        right: 0;
-        bottom: 0;
-    }
-</style> --}}
-
-<!-- Footer -->
 <footer class="bg-dark text-center text-white">
     <div class="container p-4 ">
         <!-- Section: Social media -->
@@ -206,16 +189,16 @@
         <!-- Section: Links -->
         <section class="">
             <div class="row">
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4 mb-md-0">
                     <a class="text-white" href=""><h5 class="text-uppercase">News</h5></a>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4 mb-md-0">
                     <a class="text-white" href=""><h5 class="text-uppercase">About us</h5></a>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4 mb-md-0">
                     <a class="text-white" href=""><h5 class="text-uppercase">Contacts</h5></a>
                 </div>
-                <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="col-lg-3 col-md-6 col-sm-6 mb-4 mb-md-0">
                     <a class="text-white" href=""><h5 class="text-uppercase">Help</h5></a>
                 </div>
             </div>
