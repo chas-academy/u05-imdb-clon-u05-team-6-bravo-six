@@ -14,12 +14,13 @@
 </thead>
 <tbody>
 @foreach ($watchlists as $list)
+
 <tr>
     <td>{{$list->id}}</td>
     <td>{{$list->name}}</td>
     <td>{{$list->user_id}}</td>
     <td>{{$list->created_at}}</td>
-    <td>{{$list->public}}</td>
+    <td>{{$list->public? "True" : "False"}}</td>
     <td class="text-center">{{$list->watchlistitems()->count()}}</td>
     <td><a href="{{action([\App\Http\Controllers\Admin\WatchlistController::class, 'show'], ['watchlist' => $list->id])}}">View</a></td>
 

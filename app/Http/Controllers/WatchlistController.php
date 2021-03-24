@@ -30,7 +30,6 @@ class WatchlistController extends Controller
         $key = trim($request->get('q'));
         $watchlists = Watchlist::query()
             ->where('name', 'like', "%{$key}%")
-            ->where('public', 'like', 1)
             ->orderBy('created_at',)
             ->get(); //paginate(10)->onBothSides(1);
 
