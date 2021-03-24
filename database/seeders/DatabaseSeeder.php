@@ -25,13 +25,13 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'user_admin' => true
         ]);
-        \App\Models\User::factory(50)->create();
-        $this->call(GenreTableSeeder::class);
+        // \App\Models\User::factory(50)->create();
+        // $this->call(GenreTableSeeder::class);
         $this->call(TitleTableSeeder::class);
-        $this->call(SecondaryGenreTableSeeder::class);
-        $this->call(ReviewTableSeeder::class);
-        $this->call(CommentTableSeeder::class);
-        $this->call(WatchlistSeeder::class);
-        $this->call(WatchlistItemSeeder::class);
+        // $this->call(SecondaryGenreTableSeeder::class);
+        // $this->call(ReviewTableSeeder::class);
+        // $this->call(CommentTableSeeder::class);
+        // $this->call(WatchlistSeeder::class);
+        // $this->call(WatchlistItemSeeder::class);
     }
 }
