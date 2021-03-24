@@ -51,7 +51,7 @@
         </thead>
         <tbody>
         @foreach ($watchlists as $list)
-        @if($list->public === 1 || $list->user_id === Auth::id())
+        @if($list->public || $list->user_id === Auth::id())
         <tr>
             <td class="hide-on-mobile">{{$list->id}}</td>
             <td>{{$list->name}}</td>
