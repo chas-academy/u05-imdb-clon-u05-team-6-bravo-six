@@ -19,10 +19,10 @@ class UploadController extends Controller
         return view('upload', ['id' => request('id')]);
     }
 
-    public function uploadFile(Request $request, User $user)
+    public function uploadFile(Request $request)
     {
         $path = $request->img_url;
-        if($path !== null) {
+        if ($path !== null) {
             Storage::delete($path);
         }
         $path = $request->file->store('storage');
@@ -34,13 +34,15 @@ class UploadController extends Controller
         return redirect()->action([UserController::class, 'show'], ['user' => $user]);
     }
 
-    public function destroy(User $user) {
-
+    public function destroy(User $user)
+    {
+        if ($user->id !== Auth::id()) {
+            return redirect()->back();
+        };
         Storage::delete($user->img_url);
         $user->img_url = null;
         $user->save();
 
         return redirect()->back();
     }
-
 }

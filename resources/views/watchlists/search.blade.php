@@ -1,13 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-    {{-- <div class="row">
-        class filter must remain on button for jquery to work
-    @foreach (\App\Models\Genre::all() as $genre)
-        <button class="btn btn-sm m-1 filter" data-id="{{$genre->id}}">{{$genre->name}}</button>
 
-    @endforeach
-    </div> --}}
 <div class="navbar-nav ml-auto justify-content-end">
             <form class="form-inline my-2 my-lg-0" action="{{route('watchlists.search')}}" method="GET" role="search">
                     {{ csrf_field() }}
@@ -35,7 +29,5 @@
             @endforeach
         </div>
         <x-navigation-aside></x-navigation-aside>
-
-        {{-- <div class="row">{{$titles->appends(['q' => request('q')])->links()}}</div> --}}
     </div>
 @endsection

@@ -24,7 +24,7 @@ class TitleTableSeeder extends Seeder
             curl_setopt($detail_curl, CURLOPT_RETURNTRANSFER, true);
             $detail_response = curl_exec($detail_curl);
             $detail_data = json_decode($detail_response, true);
-            $title = \App\Models\Title::create([ //i hope the title remains
+            $title = \App\Models\Title::create([
                 'title' => $movie['Title'],
                 'description' => trim($detail_data['Plot']) ?? "",
                 'img_url' => $movie['Poster'],
@@ -33,7 +33,6 @@ class TitleTableSeeder extends Seeder
             ]);
 
             $genres = explode(',', $detail_data['Genre']);
-            //
 
             foreach ($genres as $i => $inner_genre) {
                 if (\App\Models\Genre::where('name', 'like',  "%" . trim($inner_genre) . "%")->count() === 0) {
@@ -64,23 +63,11 @@ class TitleTableSeeder extends Seeder
                     }
                 }
             };
-
-            // $limit = rand(1, 4);
-            // for ($i = 0; $i <  $limit; $i++) {
-            //     $genre = \App\Models\Genre::inRandomOrder()->first();
-            //     \App\Models\SecondaryGenre::create([
-            //         'name' => $genre->name,
-            //         'title_id' => $title->id,
-            //         'genre_id' => $genre->id
-            //     ]);
-            // }
         }
     }
     public function run()
     {
         // \App\Models\Title::factory()->count(75)->create();
-        // test
-
         $this->addMovies('harry');
         $this->addMovies('mom');
         $this->addMOvies('action');

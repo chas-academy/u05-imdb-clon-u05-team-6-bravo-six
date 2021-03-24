@@ -21,9 +21,8 @@ class UploadController extends Controller
 
     public function uploadFileAdmin(Request $request, User $user)
     {
-
         $path = $request->img_url;
-        if($path !== null) {
+        if ($path !== null) {
             Storage::delete($path);
         }
         $path = $request->file->store('storage');
@@ -33,18 +32,14 @@ class UploadController extends Controller
         $user->img_url = $path;
         $user->save();
         return redirect()->action([UserController::class, 'show'], ['user' => $user]);
-
     }
 
-    public function destroy(User $user) {
-
+    public function destroy(User $user)
+    {
         Storage::delete($user->img_url);
         $user->img_url = null;
         $user->save();
 
         return redirect()->action([UserController::class, 'index']);
     }
-
 }
-
-

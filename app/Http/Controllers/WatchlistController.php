@@ -39,11 +39,7 @@ class WatchlistController extends Controller
             'watchlists' => $watchlists,
         ]);
     }
-    public function create()
-    {
-        //return a view for creating a review (review.create)
-        return view('watchlist.create');
-    }
+
     public function store(Request $request) //, Title $title
     {
         // $this->validate($request, array()),[

@@ -36,21 +36,18 @@ use App\Http\Controllers\WatchlistItemController;
 |
 */
 
+// this renders the landing page for visitors
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index']);
 
-Route::get('/bootstrap', function () {
-    return view('bootstrap');
-});
-
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth'])->name('dashboard');
-
+// this renders the page after login, what we call dashboard
 Route::get('/dashboard', [App\Http\Controllers\DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 require __DIR__ . '/auth.php';
 
 Auth::routes();
+
+
+// all admin routes are here, inside of a protecting middleware
 Route::prefix('admin')->middleware('user_admin')->group(function () {
     Route::get('/', [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::resource('users', AdminUserController::class);
@@ -74,32 +71,30 @@ Route::prefix('admin')->middleware('user_admin')->group(function () {
 
     //WATCHLISTITEM ROUTE FOR ADMIN
     Route::resource('watchlistItems', AdminWatchlistItemController::class);
+
+    // for uploading images
     Route::get('/upload', [AdminUploadController::class, 'uploadFormAdmin']);
     Route::post('/upload', [AdminUploadController::class, 'uploadFileAdmin'])->name('upload.uploadfileadmin');
     Route::post('/remove/{user}', [AdminUploadController::class, 'destroy']);
 });
-Route::resource('genres', GenreController::class);
-Route::get('/titles/{title}/reviews', [TitleController::class, 'reviews']);
-Route::resource('titles', TitleController::class);
-Route::resource('comments', CommentController::class);
+
+
+// miscellaneous routes 
 Route::get('/reviews/{review}/delete', [ReviewController::class, 'delete'])->name('reviews.delete');
-Route::resource('reviews', ReviewController::class);
 Route::get('/watchlists/search', [WatchlistController::class, 'search'])->name('watchlists.search');
 Route::get('/watchlists/add_title_to_watchlist/{watchlist}/{title}', [WatchlistController::class, 'add_title_to_watchlist']); //this method is basically api
-Route::resource('watchlists', WatchlistController::class);
-Route::resource('watchlistItems', WatchlistItemController::class);
-Route::resource('user', UserController::class);
-//Search route
 Route::get('/search', [TitleController::class, 'search'])->name('search');
-
-
 Route::get('/upload', [UploadController::class, 'uploadForm']);
 Route::post('/upload', [UploadController::class, 'uploadFile'])->name('upload.uploadfile');
 Route::post('/remove/{user}', [UploadController::class, 'destroy']);
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
-// Auth::routes();
-
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Image route
+
+
+// resource routes
+Route::resource('genres', GenreController::class);
+Route::resource('reviews', ReviewController::class);
+Route::resource('titles', TitleController::class);
+Route::resource('comments', CommentController::class);
+Route::resource('watchlists', WatchlistController::class);
+Route::resource('watchlistItems', WatchlistItemController::class);
+Route::resource('user', UserController::class);

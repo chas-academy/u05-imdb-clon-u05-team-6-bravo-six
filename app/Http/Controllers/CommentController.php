@@ -3,36 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Comment;
-use App\Models\Review;
 use Illuminate\Support\Facades\Gate;
-use Facade\FlareClient\View;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class CommentController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
-    {
-        //
-        return view('comments.index', ['comments' => Comment::all()]);
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
     /**
      * Store a newly created resource in storage.
      *
@@ -47,8 +24,6 @@ class CommentController extends Controller
             'comment'   =>  'required|min:5|max:2000'
         ));
 
-        // $review = Post::find($review_id);
-
         $comment = new Comment();
         $comment->name = Auth::user()->name;
         $comment->user_id = Auth::user()->id;
@@ -57,18 +32,6 @@ class CommentController extends Controller
         $comment->save();
         return redirect()->back();
     }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Comment  $comment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Comment $comment)
-    {
-        return view('comments.show', ['comment' => $comment]);
-    }
-
     /**
      * Show the form for editing the specified resource.
      *
