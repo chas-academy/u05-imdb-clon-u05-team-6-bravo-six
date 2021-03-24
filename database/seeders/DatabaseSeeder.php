@@ -26,7 +26,7 @@ class DatabaseSeeder extends Seeder
             'user_admin' => true
         ]);
         // \App\Models\User::factory(50)->create();
-        // $this->call(GenreTableSeeder::class);
+        $this->call(GenreTableSeeder::class);
         $this->call(TitleTableSeeder::class);
         // $this->call(SecondaryGenreTableSeeder::class);
         // $this->call(ReviewTableSeeder::class);
