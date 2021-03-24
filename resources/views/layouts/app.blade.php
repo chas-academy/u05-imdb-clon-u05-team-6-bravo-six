@@ -102,7 +102,7 @@
                                         <a class="dropdown-item" href=" {{route('admin.dashboard')}} ">Admin Mode</a>
                                         @endif
                                         @endif
-                                   <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}} }}">
+                                   <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">
                                         {{ __('Profile') }}
                                     </a>
                                     <hr class="dropdown-divider">
