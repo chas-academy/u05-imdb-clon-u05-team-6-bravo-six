@@ -9,10 +9,10 @@
 </nav>
     <h1 class="border-bottom">{{$watchlist->name}}</h1>
     <h4 class="text-mutet">By: {{\App\Models\User::find($watchlist->user_id)->name}}</h4>
-    @if($watchlist->public === 1)
-<small class="text-muted">Public</small>
+    @if($watchlist->public)
+<small class="text-muted float-left">Public</small>
 @else
-<small class="text-muted">Private</small>
+<small class="text-muted float-left">Private</small>
 @endif
     <?php $deletable = Auth::id() === $watchlist->user_id; ?>
     @foreach ($watchlistItems as $item)
