@@ -98,7 +98,7 @@
                                             {{ __('Dashboard') }}
                                         </a>
                                         @if (Auth::check())
-                                        @if (Auth::user()->user_admin === 1)
+                                        @if (Auth::user()->user_admin === true)
                                         <a class="dropdown-item" href=" {{route('admin.dashboard')}} ">Admin Mode</a>
                                         @endif
                                         @endif
