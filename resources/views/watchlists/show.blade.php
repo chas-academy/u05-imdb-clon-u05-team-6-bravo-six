@@ -7,13 +7,19 @@
 <a class="breadcrumb-item active" href="{{action([\App\Http\Controllers\WatchlistController::class, 'show'], ['watchlist' => $watchlist->id])}}">{{$watchlist->name}}</a>
     </ol>
 </nav>
-    <h1 class="border-bottom">{{$watchlist->name}}</h1>
-    <h4 class="text-mutet">By: {{\App\Models\User::find($watchlist->user_id)->name}}</h4>
+    <h1 class="border-bottom">{{$watchlist->name}}</h1>    
     @if($watchlist->public)
-<small class="text-muted float-left">Public</small>
-@else
-<small class="text-muted float-left">Private</small>
-@endif
+
+    <small class="text-muted float-left">Public</small>
+
+    @else
+
+    <small class="text-muted float-left">Private</small>
+
+    @endif
+
+    <h4 class="text-mutet">By: {{\App\Models\User::find($watchlist->user_id)->name}}</h4>
+
     <?php $deletable = Auth::id() === $watchlist->user_id; ?>
     @foreach ($watchlistItems as $item)
     <?php
