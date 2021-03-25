@@ -27,7 +27,7 @@ class HomeController extends Controller
         $mov2 = null;
         $mov3 = null;
         foreach ($movies as $movie) {
-            if ($topMovies[2] < $movie->avgRating() && $topMovies[1] < $movie->avgRating() && $topMovies[0] < $movie->avgRating()) {
+            if ($topMovies[2] < $movie->avgRating() && $topMovies[1] < $movie->avgRating() && $topMovies[0] <= $movie->avgRating()) {
                 
                 if($topMovies[1] !== 0 && $topMovies[2] !== 0){
                     $topMovies[2] = $mov2->avgRating();
@@ -41,16 +41,16 @@ class HomeController extends Controller
                 }
                 $topMovies[0] = $movie->avgRating();
                 $mov1 = $movie;
-            } elseif ($movie->avgRating() > $topMovies[2] && $movie->avgRating() > $topMovies[1]) {
+            } elseif ($movie->avgRating() > $topMovies[2] && $movie->avgRating() >= $topMovies[1]) {
                 
-                if($topMovies[2] !== 0){
+                if($topMovies[2] !== 0 && $topMovies[1] !== 0){
                     $topMovies[2] = $mov2->avgRating();
                     $mov3 = $mov2;
                     
                 }
                 $topMovies[1] = $movie->avgRating();
                 $mov2 = $movie;
-            } elseif ($movie->avgRating() > $topMovies[2]) {
+            } elseif ($movie->avgRating() >= $topMovies[2]) {
                 $topMovies[2] = $movie->avgRating();
                 $mov3 = $movie;
             }

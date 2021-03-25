@@ -44,7 +44,7 @@
     </div>
     @endforeach
   </section>
-{{dd($mov1, $mov2, $mov3)}}
+
 <!-- recommended movies column -->
 <h2>Highest rated movies right now</h2>
 <div class="card-group row">
