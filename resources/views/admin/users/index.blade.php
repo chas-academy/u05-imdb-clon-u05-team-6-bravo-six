@@ -5,7 +5,7 @@
 <thead>
     <tr>
         <th><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'index'], ['sort' => 'id'])}}">Id</a></th>
-        <th></th>
+        {{-- <th></th> --}}
         <th><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'index'], ['sort' => 'name'])}}">Name</a></th>
         <th><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'index'], ['sort' => 'email'])}}">Email</a></th>
         <th><a href="{{action([\App\Http\Controllers\Admin\UserController::class, 'index'], ['sort' => 'created_at'])}}">Member since</a></th>
@@ -17,7 +17,7 @@
 @foreach ($users as $user)
 <tr>
     <td>{{$user->id}}</td>
-    <td><x-image-layout :user="$user"></x-image-layout></td>
+    {{-- <td><x-image-layout :user="$user"></x-image-layout></td> --}}
     <td>{{$user->name}}</td>
     <td>{{$user->email}}</td>
     <td>{{$user->created_at}}</td>
