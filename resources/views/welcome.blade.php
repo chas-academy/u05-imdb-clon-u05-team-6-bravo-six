@@ -37,7 +37,7 @@
           <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
                 <h2>{{$movie->title}}</h2>
             </a>
-          <p class="card-text">{{$movie->description}}</p>
+          <p class="card-text">{{strlen($movie->description)>35 ? substr($movie->description,0,34) . "...": $movie->description}}</p>
           <p>Last updated {{$movie->updated_at}}</p>
         </div>
       </div>
