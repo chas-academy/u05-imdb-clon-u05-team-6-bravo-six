@@ -7,7 +7,7 @@
 <a class="breadcrumb-item active" href="{{action([\App\Http\Controllers\WatchlistController::class, 'show'], ['watchlist' => $watchlist->id])}}">{{$watchlist->name}}</a>
     </ol>
 </nav>
-    <h1 class="border-bottom">{{$watchlist->name}}<span class="text-mutet">By: {{\App\Models\User::find($watchlist->user_id)->name}}</span></h1>    
+    <h1 class="border-bottom">{{$watchlist->name}} <small class="text-muted">By: {{\App\Models\User::find($watchlist->user_id)->name}}</small></h1>    
     @if($watchlist->public)
 
     <small class="text-muted float-left">Public</small>
