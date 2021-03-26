@@ -25,7 +25,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'user_admin' => true
         ]);
-        // \App\Models\User::factory(50)->create();
+        \App\Models\User::factory(50)->create();
         $this->call(GenreTableSeeder::class);
         $this->call(TitleTableSeeder::class);
         // $this->call(SecondaryGenreTableSeeder::class);

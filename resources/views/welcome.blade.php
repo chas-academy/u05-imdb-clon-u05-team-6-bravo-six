@@ -48,66 +48,31 @@
 <!-- recommended movies column -->
 <h2>Highest rated movies right now</h2>
 <div class="card-group row">
+@foreach($topMovies as $mov)
+
 
   <div class="col-sm-3 p-0">
     <div class="card m-1">
-      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov1])}}"><img src="
+      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov])}}"><img src="
       
-      @if ($mov1->img_url !== null)
-    {{$mov1->img_url}}
+      @if ($mov->img_url !== null)
+    {{$mov->img_url}}
     @else
     https://picsum.photos/200
     @endif
       
       " class="card-img-top" alt=""></a>
       <div class="card-body">
-        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov1->id])}}">
-            <h5 class="card-title">{{$mov1->title}}</h5>
+        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov->id])}}">
+            <h5 class="card-title">{{$mov->title}}</h5>
         </a>
-      <p class="card-text">Average rating: {{round($mov1->avgRating(), 2)}} / 5</p>
+      <p class="card-text">Average rating: {{round($mov->avgRating, 2)}} / 5</p>
       </div>
     </div>
   </div>
 
-  <div class="col-sm-3 p-0">
-    <div class="card m-1">
-      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov2])}}"><img src="
-      
-    @if ($mov2->img_url !== null)
-    {{$mov2->img_url}}
-    @else
-    https://picsum.photos/200
-    @endif
-      
-      " class="card-img-top" alt=""></a>
-      <div class="card-body">
-        <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov2->id])}}">
-            <h5 class="card-title">{{$mov2->title}}</h5>
-        </a>
-      <p class="card-text">Average rating: {{round($mov2->avgRating(), 2)}} / 5</p>
-      </div>
-    </div>
-  </div>
-
-  <div class="col-sm-3 p-0">
-    <div class="card m-1">
-      <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov3])}}">
-        <img src="
-        @if ($mov3->img_url !== null)
-          {{$mov3->img_url}}
-        @else
-          https://picsum.photos/200
-        @endif
-      
-      " class="card-img-top" alt=""></a>
-      <div class="card-body">
-         <a href="{{action([App\Http\Controllers\TitleController::class, 'show'], ["title"=>$mov3->id])}}">
-         <h5 class="card-title">{{$mov3->title}}</h5>
-         </a>
-         <p class="card-text">Average rating: {{round($mov3->avgRating(), 2)}} / 5</p>
-      </div>
-    </div>
-  </div>
+@endforeach 
+  
 
  <!-- review card -->
   <div class="col-sm p-0">
