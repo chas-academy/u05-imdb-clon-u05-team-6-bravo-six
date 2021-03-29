@@ -2,7 +2,7 @@
 
 
 @section('content')
-    <img class="col-xl-3 col-lg-3" src="
+    <img class="col-xl-3 col-lg-3 col-sm-6 col-xs-6" src="
     
     @if($review->title()->img_url !== null)
    {{$review->title()->img_url}}
@@ -13,7 +13,7 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     
     
     "/>
-    <div class="col-lg-9 col-xl-9 float-right mt-xl-5">
+    <div class="col-lg-9 col-xl-9 float-right mt-xl-5 col-sm-6 col-xs-6">
         <div class="col-md-8 col-md-offset-2">
             <small>Review by {{$review->user()->name}}</small>
                 <h1>{{ $review->title }}</h1>
