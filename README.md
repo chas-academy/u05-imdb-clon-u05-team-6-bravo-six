@@ -38,7 +38,7 @@
 <!-- ABOUT THE PROJECT -->
 ## About The Project
 
-We first started this project for a school assignment, but it has since grown and is currently maintained by some of the original crew.
+We first started this project for a school assignment, but it has potential to grow through contributions.
 It was meant as an introductory look into MVC frameworks, specifically Laravel.
 We were initially 9 people working on the project.
 
