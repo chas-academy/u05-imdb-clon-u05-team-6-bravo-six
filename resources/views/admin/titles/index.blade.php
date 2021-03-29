@@ -9,7 +9,7 @@
         <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'genre_id'])}}">Primary Genre</a></th>
         <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'created_at'])}}">Posted at</a></th>
         <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'updated_at'])}}">Updated at</a></th>
-        <th></th>
+        {{-- <th></th> --}}
         <th><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'index'], ['sort' => 'user_id'])}}">Posted by</a></th>
     </tr>
 </thead>
@@ -21,9 +21,9 @@
     <td>{{$title->genre()->name}}</td>
     <td>{{$title->created_at}}</td>
     <td>{{$title->updated_at}}</td>
-    <td>
+    {{-- <td>
         <x-image-layout :user="$user"></x-image-layout>
-    </td>
+    </td> --}}
     <td>{{$title->user()->name}}</td>
     <td><a href="{{action([\App\Http\Controllers\Admin\TitleController::class, 'show'], ['title' => $title->id])}}">View</a></td>
 </tr>

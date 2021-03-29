@@ -30,14 +30,14 @@
 <section class="new-movies-container row">
  @foreach ($recentMovies as $movie)
     <div class="col-md-4 col-sm-12 p-0">
-      <div class="card border border-secondary m-1">
+      <div class="card border m-1 h-100">
         <a class="d-block m-auto" href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
             <img class="img-fluid" src="{{$movie->img_url}}" alt=""></a>
         <div class="card-body">
           <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
                 <h2>{{$movie->title}}</h2>
             </a>
-          <p class="card-text">{{$movie->description}}</p>
+          <p class="card-text">{{strlen($movie->description)>35 ? substr($movie->description,0,34) . "...": $movie->description}}</p>
           <p>Last updated {{$movie->updated_at}}</p>
         </div>
       </div>
@@ -52,7 +52,7 @@
 
 
   <div class="col-sm-3 p-0">
-    <div class="card m-1">
+    <div class="card m-1 h-100">
       <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov])}}"><img src="
       
       @if ($mov->img_url !== null)

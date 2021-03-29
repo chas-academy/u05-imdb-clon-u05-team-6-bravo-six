@@ -14,6 +14,7 @@
 </thead>
 <tbody>
 @foreach ($watchlists as $list)
+
 <tr>
     <td>{{$list->id}}</td>
     <td>{{$list->name}}</td>

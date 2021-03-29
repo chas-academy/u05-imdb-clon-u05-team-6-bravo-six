@@ -86,7 +86,7 @@
                                     </li>
                                 @endif
                             @else
-                                <x-image-layout :user="Auth::user()"></x-image-layout>
+                                {{-- <x-image-layout :user="Auth::user()"></x-image-layout> --}}
                                 <li class="nav-item dropdown">
                                     <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button"
                                        data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
@@ -98,11 +98,11 @@
                                             {{ __('Dashboard') }}
                                         </a>
                                         @if (Auth::check())
-                                        @if (Auth::user()->user_admin === 1)
+                                        @if (Auth::user()->user_admin === true)
                                         <a class="dropdown-item" href=" {{route('admin.dashboard')}} ">Admin Mode</a>
                                         @endif
                                         @endif
-                                   <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}} }}">
+                                   <a class="dropdown-item" href="{{action([App\Http\Controllers\UserController::class, 'show'], ['user' => Auth::id()])}}">
                                         {{ __('Profile') }}
                                     </a>
                                     <hr class="dropdown-divider">

@@ -16,7 +16,7 @@ class CreateTitlesTable extends Migration
         Schema::create('titles', function (Blueprint $table) {
             $table->id();
             $table->string('title');
-            $table->string('description');
+            $table->longText('description');
             $table->longText('img_url')->nullable();
             $table->timestamps();
             $table->foreignId('genre_id')->constrained()->onDelete('cascade');

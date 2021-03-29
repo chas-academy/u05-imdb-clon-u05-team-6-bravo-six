@@ -15,7 +15,7 @@ return [
     |
     */
 
-    'default' => env('DB_CONNECTION', 'mysql'),
+    'default' => env('DB_CONNECTION', 'pgsql'),
 
     /*
     |--------------------------------------------------------------------------
@@ -34,7 +34,6 @@ return [
     */
 
     'connections' => [
-
         'sqlite' => [
             'driver' => 'sqlite',
             'url' => env('DATABASE_URL'),
@@ -42,7 +41,6 @@ return [
             'prefix' => '',
             'foreign_key_constraints' => env('DB_FOREIGN_KEYS', true),
         ],
-
         'mysql' => [
             'driver' => 'mysql',
             'url' => env('DATABASE_URL'),
@@ -63,20 +61,38 @@ return [
             ]) : [],
         ],
 
+        // postgres://kojkqxznjagmcp:d5d391e0f2efccaa577feae000f568213b94a5800c14c7ff13d9bfb463d74c23@ec2-54-235-108-217.compute-1.amazonaws.com:5432/d264p1r8bj99ci
+
         'pgsql' => [
             'driver' => 'pgsql',
             'url' => env('DATABASE_URL'),
-            'host' => env('DB_HOST', '127.0.0.1'),
-            'port' => env('DB_PORT', '5432'),
-            'database' => env('DB_DATABASE', 'forge'),
-            'username' => env('DB_USERNAME', 'forge'),
-            'password' => env('DB_PASSWORD', ''),
+            'host' => "ec2-54-235-108-217.compute-1.amazonaws.com",
+            'port' => "5432",
+            'database' => "d264p1r8bj99ci",
+            'username' =>
+            "kojkqxznjagmcp",
+            'password' =>
+            "d5d391e0f2efccaa577feae000f568213b94a5800c14c7ff13d9bfb463d74c23",
             'charset' => 'utf8',
             'prefix' => '',
             'prefix_indexes' => true,
             'schema' => 'public',
             'sslmode' => 'prefer',
         ],
+        // 'pgsql' => [
+        //     'driver' => 'pgsql',
+        //     'url' => env('DATABASE_URL'),
+        //     'host' => env('DB_HOST', '127.0.0.1'),
+        //     'port' => env('DB_PORT', '5432'),
+        //     'database' => env('DB_DATABASE', 'forge'),
+        //     'username' => env('DB_USERNAME', 'forge'),
+        //     'password' => env('DB_PASSWORD', ''),
+        //     'charset' => 'utf8',
+        //     'prefix' => '',
+        //     'prefix_indexes' => true,
+        //     'schema' => 'public',
+        //     'sslmode' => 'prefer',
+        // ],
 
         'sqlsrv' => [
             'driver' => 'sqlsrv',

@@ -6,11 +6,11 @@
          <p>Last updated: {{$watchlist->updated_at}}</p></div>
           <div class="col-md-6">
                <div class="col-md-8 float-right">
-          @if ($user->img_url !== null)
+          {{-- @if ($user->img_url !== null)
                <img src="{{ asset('storage/' . $user->img_url) }}" alt="No photo" class="rounded-circle float-right" style="max-width: 80px">
           @else
                <img src="https://crestedcranesolutions.com/wp-content/uploads/2013/07/facebook-profile-picture-no-pic-avatar.jpg" alt="No profile picture" class="rounded-circle float-right" style="max-width: 80px">
-          @endif
+          @endif --}}
          <p class="float-right">Created by: {{$user->name}}</p>
          </div>
          </div>

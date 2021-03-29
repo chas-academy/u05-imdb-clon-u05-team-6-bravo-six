@@ -31,7 +31,7 @@ $watchlists = Auth::check() ? Auth::user()->watchlists() : null?>
                 <small>{{$key}}</small>
             </h1>
             @foreach ($titles as $title)
-            <div class="@foreach($title->genres()->get() as $genre) {{$genre->id}} @endforeach movie">
+            <div class="@foreach($title->genres()->get() as $genre) {{$genre->id}} @endforeach {{$title->genre_id}} movie">
                 <x-title-card :title="$title" :watchlists="$watchlists" :moddable="true"></x-title-card>
             </div>
                 @endforeach
