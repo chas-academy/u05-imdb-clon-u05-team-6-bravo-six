@@ -30,7 +30,7 @@
 <section class="new-movies-container row">
  @foreach ($recentMovies as $movie)
     <div class="col-md-4 col-sm-12 p-0">
-      <div class="card border border-secondary m-1">
+      <div class="card border m-1 h-100">
         <a class="d-block m-auto" href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $movie->id])}}">
             <img class="img-fluid" src="{{$movie->img_url}}" alt=""></a>
         <div class="card-body">
@@ -52,7 +52,7 @@
 
 
   <div class="col-sm-3 p-0">
-    <div class="card m-1">
+    <div class="card m-1 h-100">
       <a href="{{action([\App\Http\Controllers\TitleController::class, 'show'], ['title' => $mov])}}"><img src="
       
       @if ($mov->img_url !== null)
