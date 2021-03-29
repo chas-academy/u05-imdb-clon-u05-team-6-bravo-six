@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="row mb-4">
-    <img class="col-xl-3 col-lg-3" src="
+    <img class="col-xl-3 col-lg-3 col-sm-6 col-xs-6" src="
 @if($title->img_url !== null)
 {{  $title->img_url}}
 @else
 https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
 @endif
     "/>
-    <div class="col-lg-9 col-xl-9 mt-xl-5">
+    <div class="col-lg-9 col-xl-9 mt-xl-5 col-sm-6 col-xs-6">
         <h1>{{$title->title}}</h1>
         <span class="row"><a class="mr-2 px-1 card" href="{{action([\App\Http\Controllers\GenreController::class, 'show'], ['genre' => $title->genre()->id])}}">{{$title->genre()->name}}</a></span>
         <ul class="list-unstyled row">
@@ -88,14 +88,14 @@ https://i.pinimg.com/564x/2b/55/06/2b55061c90ebcda12a3aedbbb00bbaf5.jpg
     @endif
 
     @foreach ($reviews as $review)
-    <div class="container">
-            <div class="col-lg-3 col-xl-3 float-left">
+    <div class="container row">
+            <div class="col-3 ">
                 @for($i=0; $i < $review->rating; $i++)
                     <img class="float-right" style="width: 15%; margin-right: 2%"src="
                     https://images-wixmp-ed30a86b8c4ca887773594c2.wixmp.com/f/dbe21d7e-5f33-4784-9f21-218c9a3b9b8a/d74335n-ed3a5286-29c7-4ac4-901c-4c226eca5d43.png?token=eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1cm46YXBwOiIsImlzcyI6InVybjphcHA6Iiwib2JqIjpbW3sicGF0aCI6IlwvZlwvZGJlMjFkN2UtNWYzMy00Nzg0LTlmMjEtMjE4YzlhM2I5YjhhXC9kNzQzMzVuLWVkM2E1Mjg2LTI5YzctNGFjNC05MDFjLTRjMjI2ZWNhNWQ0My5wbmcifV1dLCJhdWQiOlsidXJuOnNlcnZpY2U6ZmlsZS5kb3dubG9hZCJdfQ.DSmPWj593mwpaUhvhevqkQ4Gw1tuaM8QREKj613031I"/>
                 @endfor
             </div>
-            <div class="card col-lg-9 col-xl-9 float-right">
+            <div class="card col-9 col-xs-12">
                 <h3><a class="float-left" href=" {{action([App\Http\Controllers\ReviewController::class, 'show'], ['review' => $review->id])}} ">{{$review->title}}</a>
                     <small class="text-muted float-right">{{$review->user()->name}}</small>
                 </h3>
