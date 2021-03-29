@@ -7,7 +7,7 @@ $(() => {
     // this is the code for filtering genres on search results
     if ($('.filter') && $('.movie')) {
         const arrGenres = [];
-        // 
+        //
         $('.filter').on('click', function () {
             $(this).toggleClass('selected-filter')
             const id = this.dataset.id;
@@ -33,7 +33,7 @@ $(() => {
             $('#search-results').empty();
             $('#hidden-absolute-container').removeClass('shown')
         })
-        const baseUrl = "http://www.omdbapi.com/?apikey=3367eb14&";
+        const baseUrl = "https://www.omdbapi.com/?apikey=3367eb14&";
         const searchResults = $('#search-results')
         //this is meant to be a widget to represent each search result.
         $.widget('u05.ajaxItem', {
@@ -75,6 +75,7 @@ $(() => {
 
 
         async function doRequest(query) {
+
             const request = await fetch(`${baseUrl}s=${query}`).then(response => response.json()).then(data => {
                 $('#status').text(data.Error ? data.Error : '');
                 if (data.Search) {
@@ -95,7 +96,9 @@ $(() => {
                 } else {
                     searchResults.empty();
                 }
-            })
+            }).catch(function (error) {
+                console.log(error);
+            });
         }
         $('#search-input').on('keydown', function (e) {
             if (e.keyCode === 13) {
