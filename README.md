@@ -41,7 +41,7 @@
   <p align="center">
     This project aims to be a partial clone of the website IMDB - International Movie DataBase.
     It features multiple resources and modules, and enables user registration.
-    
+
 
   </p>
 </p>
@@ -90,7 +90,7 @@
     We first started this project for a school assignment, but it has since grown and is currently maintained by some of the original crew.
     It was meant as an introductory look into MVC frameworks, specifically Laravel.
     We were initially 9 people working on the project.
-    
+
 ### Built With
 
 - Laravel
@@ -168,15 +168,6 @@ _For more examples, please refer to the [Documentation](https://example.com)_
 
 #### How Bootstrap grid system works:
 <a href="https://getbootstrap.com/docs/4.0/layout/grid/">Documentation</a>
-
-<!-- ADD PROFILE PICTURES -->
-## Upload profile pictures
-
-You have to create a storage link to be able to see and upload profile pictures.
-    
-```sh
-php artisan storage:link
-```
 
 <!-- ROADMAP -->
 ## Roadmap
