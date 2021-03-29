@@ -96,7 +96,9 @@ $(() => {
                 } else {
                     searchResults.empty();
                 }
-            })
+            }).catch(function(error) {
+        console.log(error);
+    });
         }
         $('#search-input').on('keydown', function (e) {
              console.log(baseUrl);
