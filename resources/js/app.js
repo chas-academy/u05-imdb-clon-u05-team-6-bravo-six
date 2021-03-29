@@ -75,6 +75,7 @@ $(() => {
 
 
         async function doRequest(query) {
+            console.log(baseUrl);
             const request = await fetch(`${baseUrl}s=${query}`).then(response => response.json()).then(data => {
                 $('#status').text(data.Error ? data.Error : '');
                 if (data.Search) {
