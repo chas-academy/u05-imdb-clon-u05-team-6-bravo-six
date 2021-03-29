@@ -33,7 +33,7 @@ $(() => {
             $('#search-results').empty();
             $('#hidden-absolute-container').removeClass('shown')
         })
-        const baseUrl = "http://www.omdbapi.com/?apikey=3367eb14&";
+        const baseUrl = "https://www.omdbapi.com/?apikey=3367eb14&";
         const searchResults = $('#search-results')
         //this is meant to be a widget to represent each search result.
         $.widget('u05.ajaxItem', {
